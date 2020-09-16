@@ -134,7 +134,7 @@ ${pad(time2.getHours(), 2)}:${pad(time2.getMinutes(), 2)}
     function showRoute(route) {
         selectRoute = route;
         let url = `https://bot.ithu.tw/v6/pages/cc_util_busroute_server.php?routeid=${route}`;
-        $.get(`readPage.php?URL=${url}`, function (data) {
+        $.get(`https://ziting.hostingerapp.com/THUBus/readPage.php?URL=${url}`, function (data) {
             if (data.indexOf("不行駛") == -1) {
                 $("#busRoute").html(data);
                 //讀出時間表

@@ -38,14 +38,12 @@ function classFilter(day, time) {
             let result = true;
             //辨識二校教學區
             if ($("#chooseAceptRegion").val() == "2") {
-                let t = false;
-                t |= o.room.search(/[FA|M|MU|PG]\d/) != -1;
-                result &= t;
+                t = o.room.search(/[FA|M|MU|PG]\d/) != -1;
+                result = (result==t);
             }
             if ($("#chooseAceptRegion").val() == "1") {
-                let t = false;
-                t |= o.room.search(/[FA|M|MU|PG]\d/) == -1;
-                result &= t;
+                t = o.room.search(/[FA|M|MU|PG]\d/) == -1;
+                result = (result==t);
             }
             return (o.time.indexOf(weekDayWord[day]) != -1) && result;
         });

@@ -1,0 +1,100 @@
+::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+}
+
+html,
+body,
+#app {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+}
+
+#app {
+	background-color: #FFCCBC;
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+
+#page2 {
+	display: none;
+}
+
+a:hover {
+	color: #EF9A9A;
+}
+
+.scannerImg {
+	position: fixed;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	height: 0px;
+	z-index: -2;
+	box-shadow: 0px 0px 15px 5px rgba(255, 255, 256, 1);
+}
+
+#footer {
+	position: fixed;
+	bottom: 10px;
+	width: 100%;
+	height: 10px;
+	z-index: 99;
+	opacity: 0.6;
+}
+
+#busTimeline>.tag>h5 {
+	text-align: right;
+	color: #B2DFDB;
+}
+
+#clock {
+	color: #B2DFDB;
+}
+
+#footer>span {
+	font-size: medium;
+	margin-left: -2em;
+}
+
+.bgColor1 {
+	background-color: #EF9A9A;
+}
+
+.color1 {
+	color: #EF9A9A;
+}
+
+.bgColor2 {
+	background-color: #FFCCBC;
+}
+
+.color2 {
+	color: #FFCCBC;
+}
+
+.bgColor3 {
+	background-color: #1A237E;
+}
+
+.color3 {
+	color: #1A237E;
+}
+
+.bgColor4 {
+	background-color: #B2DFDB;
+}
+
+.color4 {
+	color: #B2DFDB;
+}
+
+.bgColor5 {
+	background-color: #E8F5E9;
+}
+
+.color5 {
+	color: #E8F5E9;
+}

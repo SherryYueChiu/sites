@@ -1,14 +1,12 @@
-::-webkit-scrollbar {
-	width: 0px;
-	height: 0px;
-}
-
 html,
 body,
 #app {
 	width: 100%;
 	height: 100%;
-	overflow-y: auto;
+}
+
+textarea {
+	font-size: x-large;
 }
 
 #app {
@@ -16,6 +14,8 @@ body,
 	position: fixed;
 	left: 0;
 	top: 0;
+	z-index: 0;
+	overflow-y: scroll;
 }
 
 #bgImg1 {
@@ -40,6 +40,10 @@ body,
 	z-index: -4;
 }
 
+.rounded {
+    border-radius: 1em!important;
+}
+
 .floatingBtn {
 	position: fixed;
 	width: 60px;
@@ -54,26 +58,37 @@ body,
 	box-shadow: 2px 2px 3px #999;
 }
 
-.rounded {
-    border-radius: 1em!important;
+.modal-body {
+	background-color: #B2DFDB;
 }
 
-a:hover {
-	color: #EF9A9A;
-}
-
-#footer {
-	position: fixed;
-	bottom: 3em;
+.einvoice>.einvoiceImg {
 	width: 100%;
-	height: 10px;
-	z-index: 99;
-	opacity: 0.6;
+	height: auto;
 }
 
-#footer>span {
-	font-size: medium;
-	margin-left: -2em;
+.member>.memberImg {
+	width: 100%;
+	height: auto;
+	opacity: 0;
+}
+
+.coupon>.couponImg {
+	width: 100%;
+	height: auto;
+	opacity: 0;
+}
+
+.member {
+	opacity: 0.1;
+}
+
+.coupon {
+	opacity: 0.1;
+}
+
+.profile {
+	opacity: 0.1;
 }
 
 .bold {
@@ -81,41 +96,41 @@ a:hover {
 }
 
 .bgColor1 {
-	background-color: #000000;
+	background-color: #CE8467;
 }
 
 .color1 {
-	color: #000000;
+	color: #CE8467;
 }
 
 .bgColor2 {
-	background-color: #272727;
+	background-color: #838BB2;
 }
 
 .color2 {
-	color: #272727;
+	color: #838BB2;
 }
 
 .bgColor3 {
-	background-color: #FCFCFC;
+	background-color: #EECFBB;
 }
 
 .color3 {
-	color: #FCFCFC;
+	color: #EECFBB;
 }
 
 .bgColor4 {
-	background-color: #7B7B7B;
+	background-color: #CACFE3;
 }
 
 .color4 {
-	color: #7B7B7B;
+	color: #CACFE3;
 }
 
 .bgColor5 {
-	background-color: #5C5C5C;
+	background-color: #838BB2;
 }
 
 .color5 {
-	color: #5C5C5C;
+	color: #838BB2;
 }

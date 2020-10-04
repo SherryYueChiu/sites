@@ -9,7 +9,7 @@
       <script src="../js/jquery.min.js"></script>
       <script src="../js/bootstrap.min.js"></script>
       <link rel="stylesheet" type="text/css" href="./css/index.css">
-      <script type="text/javascript" src="./js/showdown.min.js"></script>
+      <script type="text/javascript" src="../js/showdown.min.js"></script>
       <link href="../css/pretty-vendor.83ac49e057c3eac4fce3.css" rel="stylesheet">
       <link href="../css/pretty.6607e4cfcd263e0e943b.css" rel="stylesheet">
    </head>

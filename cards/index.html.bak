@@ -15,7 +15,7 @@
    </head>
    <body>
       <div id="app">
-         <button class="floatingBtn" data-toggle="collapse" data-target="#collapse">✎</button>
+         <button class="floatingBtn btn btn-dark" data-toggle="collapse" data-target="#collapse">✎</button>
          <img src="./img/machi1.png" id="bgImg1"/>
          <img src="./img/pusheen1.png" id="bgImg2"/>
          <div class="scannerImg"></div>

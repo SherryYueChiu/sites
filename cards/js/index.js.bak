@@ -1,8 +1,8 @@
 function customMdMod(html){
-html = html.replace(/:::success(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-success">$1</div>');
-html = html.replace(/:::info(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-info">$1</div>');
-html = html.replace(/:::warning(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-warning">$1</div>');
-html = html.replace(/:::danger(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-danger">$1</div>');
+html = html.replace(/:::success<br \/>([\s\S]*):::<\/p>/gi,'<div class="alert alert-success">$1</div>');
+html = html.replace(/:::info<br \/>([\s\S]*):::<\/p>/gi,'<div class="alert alert-info">$1</div>');
+html = html.replace(/:::warning<br \/>([\s\S]*):::<\/p>/gi,'<div class="alert alert-warning">$1</div>');
+html = html.replace(/:::danger<br \/>([\s\S]*):::<\/p>/gi,'<div class="alert alert-danger">$1</div>');
 html = html.replace(/:::spoiler([\s\S]*):::/gi,'<details><summary>[摺疊]</summary>$1</details>');
 return html;
 }
@@ -41,7 +41,6 @@ $(function () {
         ["良興", "eclife.png"],
         ["燦坤", "phoneNumber.png"],
         ["順發", "phoneNumber.png"],
-        ["新東陽", "hty.png"],
         
         ["newline", "美妝"],
         ["康是美", "cosmed.png", "simulate::cosmed2.jpg"],

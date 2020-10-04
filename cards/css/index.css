@@ -1,14 +1,8 @@
-::-webkit-scrollbar {
-	width: 0px;
-	height: 0px;
-}
-
 html,
 body,
 #app {
 	width: 100%;
 	height: 100%;
-	overflow-y: auto;
 }
 
 #app {
@@ -16,28 +10,33 @@ body,
 	position: fixed;
 	left: 0;
 	top: 0;
+	z-index: 0;
+	overflow-y: scroll;
+	font-weight: bolder;
 }
 
-#bgImg1 {
-	position: fixed;
-	right: 0;
-	bottom: 0;
-	min-width: 40%;
-	max-width: 60%;
-	height: auto;
-	opacity: 0.2;
-	z-index: -3;
+.modal-title {
+	color: #237AEA;
+	font-weight: bolder;
 }
 
-#bgImg2 {
-	position: fixed;
-    left: 5%;
-	top: 5%;
-	min-width: 40%;
-	max-width: 60%;
-	height: auto;
-	opacity: 0.2;
-	z-index: -4;
+.modal-body {
+	background-color: #E5E7EA;
+	font-weight: bolder;
+}
+
+.tag h5 {
+    color: #1F1F20;
+	font-weight: bolder;
+}
+
+.tabs * {
+    font-color: #46484C;
+	font-weight: bolder;
+}
+
+.rounded {
+    border-radius: 1em!important;
 }
 
 .floatingBtn {
@@ -52,28 +51,28 @@ body,
 	border-radius: 50px;
 	text-align: center;
 	box-shadow: 2px 2px 3px #999;
-}
-
-.rounded {
-    border-radius: 1em!important;
-}
-
-a:hover {
-	color: #EF9A9A;
-}
-
-#footer {
-	position: fixed;
-	bottom: 3em;
-	width: 100%;
-	height: 10px;
 	z-index: 99;
-	opacity: 0.6;
 }
 
-#footer>span {
-	font-size: medium;
-	margin-left: -2em;
+.memberImg,
+.couponImg,
+.einvoiceImg {
+	width: 100%;
+	height: auto;
+}
+
+.memberImg,
+.couponImg,
+.mdNote img {
+	opacity: 0;
+}
+
+.member {
+	opacity: 0.1;
+}
+
+.coupon {
+	opacity: 0.1;
 }
 
 .bold {
@@ -81,19 +80,19 @@ a:hover {
 }
 
 .bgColor1 {
-	background-color: #000000;
+	background-color: #1F1F20;
 }
 
 .color1 {
-	color: #000000;
+	color: #1F1F20;
 }
 
 .bgColor2 {
-	background-color: #272727;
+	background-color: #333333;
 }
 
 .color2 {
-	color: #272727;
+	color: #333333;
 }
 
 .bgColor3 {
@@ -118,4 +117,51 @@ a:hover {
 
 .color5 {
 	color: #5C5C5C;
+}
+
+.scannerImg {
+	position: fixed;
+	left: 0;
+	top: 100%;
+	width: 100%;
+	height: 0px;
+	z-index: -2;
+	box-shadow: 0px 0px 15px 5px rgba(255, 255, 256, 1);
+}
+
+#bgImg1 {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 40%;
+	max-width: 60%;
+	height: auto;
+	opacity: 0.2;
+	z-index: -3;
+}
+
+#bgImg2 {
+	position: fixed;
+    left: 5%;
+	top: 5%;
+	min-width: 40%;
+	max-width: 60%;
+	height: auto;
+	opacity: 0.2;
+	z-index: -4;
+}
+
+#popupImg {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	min-height: 100%;
+	z-index: 100;
+}
+
+#simulateBtn {
+	position: fixed;
+	right: 0;
+	top: 0;
 }

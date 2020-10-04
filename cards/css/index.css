@@ -136,7 +136,7 @@ body,
 	min-width: 40%;
 	max-width: 60%;
 	height: auto;
-	opacity: 0.2;
+	opacity: 0.5;
 	z-index: -3;
 }
 
@@ -147,7 +147,7 @@ body,
 	min-width: 40%;
 	max-width: 60%;
 	height: auto;
-	opacity: 0.2;
+	opacity: 0.5;
 	z-index: -4;
 }
 

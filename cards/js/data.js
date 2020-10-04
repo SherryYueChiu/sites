@@ -1,8 +1,6 @@
     var preNote = `
 ### 萊爾富茶葉蛋
-:::spoiler
-![](./couponImg/LefCyd.png)
-:::
+![](./couponsImg/LefCyd.png)
     `;
     
             //所有會員卡

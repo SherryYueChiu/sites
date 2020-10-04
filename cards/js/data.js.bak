@@ -1,6 +1,5 @@
     var preNote = `
-## 票券
-### 萊爾富茶葉蛋x1
+### 萊爾富茶葉蛋
 ![](./couponsImg/LefCyd.png)
     `;
     

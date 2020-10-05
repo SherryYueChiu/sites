@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="format-detection" content="telephone=no">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>優惠本</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../css/bootstrap.min.css">
+		<script src="./js/couponList.js"></script>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="./css/index.css">
+	</head>
+	<body>
+		<div id="app">
+			<button class="floatingBtn" data-toggle="collapse" data-target="#collapse">✎</button>
+			<img src="./img/machi1.png" id="bgImg1"/>
+			<img src="./img/pusheen1.png" id="bgImg2"/>
+			<div class="scannerImg"></div>
+			<div id="container" class="align-center pb-5">
+				<div class="tag einvoice bg-white p-4 mt-5 rounded mx-auto shadow-lg w-75">
+					<span class="color1">
+						<h1>載具</h1>
+					</span>
+					<img class="einvoiceImg" src="./img/NSDGGV9.png">
+				</div>
+				<div class="tag member bg-white p-4 mt-3 rounded mx-auto shadow-lg w-75">
+					<h1><span id="item" class="color1">優惠券</span></h1>
+					<span id="description" class="color2">→點我←</span>
+					<img class="memberImg" src="./img/draw.png">
+				</div>
+			</div>
+			<div align="center" id="footer" class="m-3">玥餅</div>
+		</div>
+		<div class="modal" id="shops">
+			<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title">選一個</h1>
+						<button type="button" class="close" data-dismiss="modal">×</button>
+					</div>
+					<div class="modal-body">
+						<ul class="list-group list-group-flush">
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="./js/index.js"></script>
+	</body>
+</html>

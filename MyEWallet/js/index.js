@@ -1,11 +1,42 @@
 function customMdMod(html){
-html = html.replace(/:::success(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-success">$1</div>');
-html = html.replace(/:::info(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-info">$1</div>');
-html = html.replace(/:::warning(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-warning">$1</div>');
-html = html.replace(/:::danger(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-danger">$1</div>');
-html = html.replace(/:::spoiler([\s\S]*):::/gi,'<details><summary>[摺疊]</summary>$1</details>');
-return html;
+    html = html.replace(/:::success(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-success">$1</div>');
+    html = html.replace(/:::info(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-info">$1</div>');
+    html = html.replace(/:::warning(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-warning">$1</div>');
+    html = html.replace(/:::danger(?:<br \/>)([\s\S]*?):::<\/p>/gi,'<div class="alert alert-danger">$1</div>');
+    html = html.replace(/:::spoiler([\s\S]*):::/gi,'<details><summary>[摺疊]</summary>$1</details>');
+    return html;
 }
+
+
+
+function md2arr(md){
+    //translate Markdown text to 2-dim array by lines and spaces
+    line = [], pattern = [];
+    line = md.split(/[\r\n]+/);
+    line.forEach(function(o){
+        pattern.push(o.split(/\s+/));
+    });
+
+    arr=[];
+    pattern.forEach(function(o){
+        if(o[0] != "" || !o){
+            //ready for parsing
+            if(o[0] == "##"){
+                arr.push(["newline", o[1]]);
+            }
+            if(o[0] == "###"){
+                arr.push([o[1]]);
+            }
+            if(o[0] == "-"){
+                arr[arr.length-1].push(o[1]);
+            }
+        }
+    });
+    return arr;
+}
+
+cards = md2arr(cardsMd);
+einvoice = md2arr(einvoiceMd);
 
 $(function () {
 
@@ -126,20 +157,16 @@ $(function () {
     
 
     storedMd = "";
-    //$('#mdIpt').val(localStorage.getItem("storedMd2"));
-    $('#mdIpt').val(preNote);
+    $('#mdIpt').val(localStorage.getItem("storedMd2"));
     convert();
 
     $('#mdIpt').on('input propertychange', convert);
-    
-    /*
     timer = setInterval(function() {
         if (storedMd != $("#mdIpt").val()) {
             storedMd = $("#mdIpt").val();
             localStorage.setItem("storedMd2", storedMd);
         }
     }, 2000);
-    */
 
     function convert() {
         converter = new showdown.Converter({

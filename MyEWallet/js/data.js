@@ -17,7 +17,7 @@ cardsMd=`
 ### OK
 - okmart.png
         
-## 飲食
+## 餐飲
 ### 路易莎
 - louisa.png
 ### It'sDavid
@@ -35,7 +35,7 @@ cardsMd=`
 ### 六角美食
 - laka.png
         
-## 大商場
+## 大型商場
 ### 家樂福
 - carrefour.jpg
 ### 全聯
@@ -50,7 +50,7 @@ cardsMd=`
 ### 秀泰
 - showtime.png
         
-## 小商場
+## 小型賣場
 ### 四季
 - phoneNumber.png
 ### 良興
@@ -72,7 +72,7 @@ cardsMd=`
 ### 寶雅
 - poya.png
         
-## 文書
+## 文房圖書
 ### 誠品
 - eslite.png
 ### 無印良品

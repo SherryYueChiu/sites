@@ -118,10 +118,10 @@ cardsMd=`
 var einvoiceMd = `
 ### 玥餅的
 - NSDGGV9.png
+### 滙儀的
+- VZNTH9S.png
 ### 性別不明關懷協會
 - xbbmghxh.png
-### 酷兒權益推動聯盟
-- keqitdlm.png
 ### 台中基地協會
 - tzjdxh.png
 `;

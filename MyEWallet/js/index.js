@@ -11,13 +11,19 @@ function createBarCode(format, value){
   if(format=="IMG"){
   return `
 <img src="./cardsImg/${value}">`;
+  }
+  else if(format.search(/QR/i) != -1){
+    return QRCode.generateSVG(value, {
+      ecclevel: format.charAt(format.search(/[L|M|Q|H]$/i)).toUpperCase() || "H",
+      modulesize: 1
+    });
   }else{
-  return `<svg class="barcode"
-  jsbarcode-height="100"
-  jsbarcode-format="${format}"
-  jsbarcode-value="${value}"
-  jsbarcode-displayvalue="false">
-</svg>`;
+    return `<svg class="barcode"
+    jsbarcode-height="100"
+    jsbarcode-format="${format}"
+    jsbarcode-value="${value}"
+    jsbarcode-displayvalue="false">
+    </svg>`;
   }
 }
 

@@ -6,7 +6,7 @@ body,
 }
 
 #app {
-	background-color: #C9CCD0;
+	background-color: #1C1E23;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -15,24 +15,66 @@ body,
 	font-weight: bolder;
 }
 
-.modal-title {
-	color: #237AEA;
+.modal-content, .modal-header, .modal-body {
+	border: 0!important;
+}
+
+.modal-header {
+	background-color: #242526!important;
+	padding: 1em 0em 0em 1em!important;
+	color: #B0B3B8;
 	font-weight: bolder;
 }
 
 .modal-body {
-	background-color: #E5E7EA;
+	background-color: #1C1E23;
 	font-weight: bolder;
 }
 
-.tag h5 {
-    color: #1F1F20;
-	font-weight: bolder;
+#einvoiceImg > *, #memberImg > * {
+    height: auto;
+    width: 100%;
+	box-shadow: 0 0 7px 7px rgb(255 255 255 / 100%);
+}
+
+.hr {
+	border-bottom-style: solid;
+	border-color: #333;
+	border-bottom-width: 1px;
+	padding: 5px;
+}
+
+.hr > *{
+    color: #E4E6EB!important;
+	margin: 0!important;
+}
+
+.close {
+	color: #b0b3b8!important;
+}
+.cardSec {
+	width: 85%;
+	background-color: #242526!important;
+    color: #E4E6EB;
+	overflow-x: auto;
+	font-weight: bolder!important;
+    padding: .5em 2em 2em 2em!important;
+}
+
+.StoreTag {
+	background-color: #242526!important;
+    color: #E4E6EB;
+	overflow-x: auto;
+	font-weight: bolder!important;
+    padding: 1.5em!important;
 }
 
 .tabs * {
-    font-color: #46484C;
-	font-weight: bolder;
+    color: #242526;
+}
+
+#einvoiceImg, #memberImg {
+	margin-top: 1em;
 }
 
 .rounded {
@@ -41,12 +83,12 @@ body,
 
 .floatingBtn {
 	position: fixed;
-	width: 60px;
-	height: 60px;
-	bottom: 40px;
-	right: 40px;
-	background-color: #E8E9EB !important;
-	color: #101412 !important;
+	width: 4em;
+	height: 4em;
+	bottom: 1.5em;
+	right: 1.5em;
+	background-color: rgb(255 255 255 / 10%)!important;
+	color: #e4e6eb!important;
 	font-weight: bolder !important;
 	border-radius: 50px;
 	text-align: center;
@@ -54,13 +96,8 @@ body,
 	z-index: 99;
 }
 
-.barcode, #einvoiceImg>*, #memberImg>* {
-	width: 100%;
-	height: 100px;
-}
-
-.member {
-	opacity: 0.1;
+.member, .note {
+	opacity: 0.3;
 }
 
 .bold {
@@ -68,35 +105,35 @@ body,
 }
 
 .bgColor1 {
-	background-color: #1F1F20;
+	background-color: #242526;
 }
 
 .color1 {
-	color: #1F1F20;
+	color: #242526;
 }
 
 .bgColor2 {
-	background-color: #333333;
+	background-color: #1C1E23;
 }
 
 .color2 {
-	color: #333333;
+	color: #1C1E23;
 }
 
 .bgColor3 {
-	background-color: #FCFCFC;
+	background-color: #B0B3B8;
 }
 
 .color3 {
-	color: #FCFCFC;
+	color: #B0B3B8;
 }
 
 .bgColor4 {
-	background-color: #7B7B7B;
+	background-color: #E4E6EB;
 }
 
 .color4 {
-	color: #7B7B7B;
+	color: #E4E6EB;
 }
 
 .bgColor5 {

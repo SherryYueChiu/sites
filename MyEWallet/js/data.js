@@ -1,7 +1,4 @@
     var preNote = `
-## 票券
-### 萊爾富茶葉蛋x1
-![](./couponsImg/LefCyd.png)
     `;
     
 //所有會員卡
@@ -23,14 +20,14 @@ cardsMd=`
         
 ## 餐飲
 ### 路易莎
-- IMG
-- louisa.png
+- QR_H
+- 6Y8VjpNB/3Bpfel6ZQftuQ==
 ### It'sDavid
 - CODE128
 - -J625Y232
 ### 雙饗卡
-- IMG
-- pk.jpg
+- QR_L
+- 421313634
 ### 85°C
 - CODE128
 - 0979476252
@@ -78,8 +75,8 @@ cardsMd=`
 - GID83842391170920
 - simulate::cosmed2.jpg
 ### 屈臣氏
-- IMG
-- wastons.png
+- QR_H
+- 9932705006593607
 - simulate::wastons2.png
 ### 寶雅
 - CODE128
@@ -93,8 +90,8 @@ cardsMd=`
 - CODE128
 - 020035607227
 ### 金石堂
-- CODE128
-- kingstone.jpg
+- CODE39
+- 6657489613415
 ### 久大
 - CODE39
 - A00039140
@@ -115,7 +112,7 @@ cardsMd=`
 ### 台中市圖
 - CODE128
 - 1742404549
-- simulate::thusid2.png
+- simulate::TCLib2.png
         
 ## 服飾
 ### Uniqlo
@@ -139,10 +136,10 @@ cardsMd=`
 var einvoiceMd = `
 ### 玥餅的
 - CODE39
-- NSDGGV9
+- /NSDGGV9
 ### 滙儀的
 - CODE39
-- VZNTH9S
+- /VZNTH9S
 ### 性別不明關懷協會
 - CODE39
 - 563

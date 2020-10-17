@@ -56,7 +56,7 @@ body,
 
 .barcode, #einvoiceImg>*, #memberImg>* {
 	width: 100%;
-	height: 100px;
+	height: 10em;
 }
 
 .member {

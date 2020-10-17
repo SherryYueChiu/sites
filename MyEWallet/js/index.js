@@ -7,7 +7,19 @@ function customMdMod(html){
     return html;
 }
 
-
+function createBarCode(format, value){
+  if(format=="IMG"){
+  return `
+<img src="./cardsImg/${value}">`;
+  }else{
+  return `<svg class="barcode"
+  jsbarcode-height="100"
+  jsbarcode-format="${format}"
+  jsbarcode-value="${value}"
+  jsbarcode-displayvalue="false">
+</svg>`;
+  }
+}
 
 function md2arr(md){
     //translate Markdown text to 2-dim array by lines and spaces
@@ -111,7 +123,8 @@ $(function () {
                 if (str.indexOf(o[0]) != -1) {
                     $("#einvoice").modal("hide");
                     $("#einvoiceName").eq(0).html(o[0]);
-                    $(".einvoiceImg").attr("src", `./einvoiceImg/${o[1]}`);
+                    $("#einvoiceImg").html(createBarCode(o[1], o[2]));
+    JsBarcode("#einvoiceImg>.barcode").init();
 
                 }
             });
@@ -145,9 +158,10 @@ $(function () {
                 if (str.indexOf(o[0]) != -1) {
                     $("#cards").modal("hide");
                     $("#member").html(o[0]);
-                    $(".memberImg").attr("src", `./cardsImg/${o[1]}`);
-                    if (o[2] && o[2].indexOf("simulate") != -1) {
-                        showSimulateBtn(o[2].split("::")[1]);
+                    $("#memberImg").html(createBarCode(o[1], o[2]));
+                    JsBarcode("#memberImg>.barcode").init();
+                    if (o[3] && o[3].indexOf("simulate") != -1) {
+                        showSimulateBtn(o[3].split("::")[1]);
                     } else {
                         $("#simulateBtn").fadeOut(100);
                     }
@@ -190,5 +204,6 @@ $(function () {
         $("#htmlOpt").html(html)
 
     }
+    JsBarcode(".barcode").init();
 
 });

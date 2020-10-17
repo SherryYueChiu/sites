@@ -1,5 +1,5 @@
     var preNote = `
-# 票券
+## 票券
 ### 萊爾富茶葉蛋x1
 ![](./couponsImg/LefCyd.png)
     `;
@@ -9,119 +9,144 @@ cardsMd=`
 
 ## 超商
 ### OpenPoint
-- openpoint.jpg
+- CODE128
+- GID87813081207656
 ### 全家
-- famimart.png
+- CODE128
+- 1511376760
 ### 萊爾富
-- hilife.png
+- CODE128
+- 7102109023290639
 ### OK
-- okmart.png
+- CODE128
+- OK0902329063A
         
 ## 餐飲
 ### 路易莎
+- IMG
 - louisa.png
 ### It'sDavid
-- itsdavid.png
+- CODE128
+- -J625Y232
 ### 雙饗卡
+- IMG
 - pk.jpg
 ### 85°C
-- 85.jpg
+- CODE128
+- 0979476252
 ### 添好運
-- timhowan.png
+- CODE128
+- -LQ1PW4V2
 ### 築間
-- zhujian.png
+- CODE128
+- -L3OZ84K9
 ### 三商
-- mercuries.jpg
+- CODE128
+- 100001009723728
 ### 六角美食
-- laka.png
+- CODE128
+- 090000239277
         
 ## 大型商場
 ### 家樂福
-- carrefour.jpg
-### 全聯
-- pxmart.png
-- simulate::pxmart2.jpg
+- CODE128
+- 6392720070289729
 ### 大潤發
-- rtmart.png
+- CODE128
+- 8010300003304774
 ### IKEA
-- ikea.jpg
+- CODE128
+- H124858515
 ### 三井Outlet
-- mop.jpg
+- CODE128
+- 5532100000651552
 ### 秀泰
-- showtime.png
+- CODE128
+- 603578996
         
 ## 小型賣場
-### 四季
-- phoneNumber.png
 ### 良興
-- eclife.png
-### 燦坤
-- phoneNumber.png
-### 順發
-- phoneNumber.png
+- CODE128
+- 0622000021283
 ### 新東陽
-- hty.png
+- CODE128
+- 20172284921
         
 ## 美妝
 ### 康是美
-- cosmed.png
+- CODE128
+- GID83842391170920
 - simulate::cosmed2.jpg
 ### 屈臣氏
+- IMG
 - wastons.png
 - simulate::wastons2.png
 ### 寶雅
-- poya.png
+- CODE128
+- 2670006776315
         
 ## 文房圖書
 ### 誠品
-- eslite.png
+- CODE128
+- 3991705343
 ### 無印良品
-- muji.png
+- CODE128
+- 020035607227
 ### 金石堂
+- CODE128
 - kingstone.jpg
 ### 久大
-- 9ta.png
+- CODE39
+- A00039140
         
 ## 集點
 ### HappyGo
-- happygo.jpg
+- EAN13
+- 2999107784464
         
 ## 身份
 ### 學生證
-- thusid.jpg
+- CODE39
+- S06351019
 - simulate::thusid2.png
 ### 身分證
-- id.png
+- CODE128
+- H124858515
 ### 台中市圖
-- TCLib.png
+- CODE128
+- 1742404549
 - simulate::thusid2.png
         
 ## 服飾
 ### Uniqlo
-- uniqlo.png
+- EAN13
+- 7105139097013
 ### OB嚴選
-- ob.png
+- CODE128
+- 804078608
         
 ## 加油
 ### 中油
-- cpc.png
+- CODE128
+- ID08600901476082
 ### 全國加油站
-- npc.jpg
-        
-## 其他
-### 銀櫃
-- huixingPhone.png
+- CODE128
+- 668100500054772300000100
 `;
 
 
 //所有載具
 var einvoiceMd = `
 ### 玥餅的
-- NSDGGV9.png
+- CODE39
+- NSDGGV9
 ### 滙儀的
-- VZNTH9S.png
+- CODE39
+- VZNTH9S
 ### 性別不明關懷協會
-- xbbmghxh.png
+- CODE39
+- 563
 ### 台中基地協會
-- tzjdxh.png
+- CODE39
+- 1069
 `;

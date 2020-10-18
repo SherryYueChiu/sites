@@ -1,3 +1,22 @@
+//PWA config
+async function registerSW() { 
+  if ('serviceWorker' in navigator) { 
+    try {
+      await navigator.serviceWorker.register('./sw.js'); 
+    } catch (e) {
+      alert('ServiceWorker registration failed. Sorry about that.'); 
+    }
+  } else {
+    document.querySelector('.alert').removeAttribute('hidden'); 
+  }
+}
+
+window.addEventListener('load', e => {
+  new PWAConfApp();
+  registerSW(); 
+});
+
+//some hand-made methods
 function md2arr(md) {
   //translate Markdown text to 2-dim array by lines and spaces
   line = [],
@@ -10,7 +29,7 @@ function md2arr(md) {
   arr = [];
   pattern.forEach(function (o) {
     if (o[0] != "" || !o) {
-      //ready for parsing
+      //parse StoreClss, storeTag, and store param from pattern into array
       if (o[0] == "##") {
         arr.push(["newline", o[1]]);
       }
@@ -28,21 +47,22 @@ function md2arr(md) {
 cards = md2arr(cardsMd);
 einvoice = md2arr(einvoiceMd);
 
+//page and function all initialized
 $(function () {
 
-  //展示原App截圖
+  //popup screenshot of that store
   function showSimulateBtn(img) {
     $("#simulateBtn").fadeIn(100).click(function () {
       $("#popupImg").attr("src", `./cardsImg/${img}`).fadeIn(100);
     });
   }
 
-  //再次點擊以退出模擬模式
+  //click everywhere to dismiss popup img
   $("#popupImg").click(function () {
     $(this).fadeOut(100);
   });
 
-  //點擊以顯示/隱藏區塊
+  //toggle show and hide for bar/QR code blocks
   $(".cardSec").click(function () {
     if ($(this).css("opacity") > 0.5) {
       $(this).animate({
@@ -61,7 +81,7 @@ $(function () {
     }
   });
 
-  //彈出選單選張載具
+  //popup modal to select einvoice code
   $(".einvoice").dblclick(function () {
     $("#einvoice").modal("show");
     $(this).animate({
@@ -72,7 +92,7 @@ $(function () {
     }, 100);
   });
 
-  //彈出選單選張會員卡
+  //popup modal to select store member code
   $(".member").dblclick(function () {
     $("#cards").modal("show");
     $(this).animate({
@@ -83,7 +103,7 @@ $(function () {
     }, 100);
   });
 
-  //背景掃碼動畫
+  //a scanning animation
   setInterval(function () {
     $(".scannerImg").animate({
       "top": "0"
@@ -92,7 +112,7 @@ $(function () {
     }, 1500);
   }, 3000);
 
-  //載入所有載具
+  //load all einvoices
   einvoice.forEach(function (o) {
     $("#einvoice ul").append(`<li class="list-group-item">${o[0]}</li>`);
     $("#einvoice ul>li").click(function () {
@@ -109,7 +129,8 @@ $(function () {
     });
   });
 
-  //載入所有會員卡
+  //load all member cards
+  //parse array to html
   str = `<div class="row">`;
   cards.forEach(function (o) {
     if (o[0] != "newline") {
@@ -130,6 +151,8 @@ $(function () {
   });
   str += `</div>`;
   $("#cards .modal-body").append(str);
+  
+  //bind clicking event
   $("#cards .StoreTag").click(function () {
     let str = $(this).html();
     cards.forEach(function (o) {

@@ -1,3 +1,21 @@
+//PWA config
+async function registerSW() { 
+  if ('serviceWorker' in navigator) { 
+    try {
+      await navigator.serviceWorker.register('./sw.js'); 
+    } catch (e) {
+      alert('ServiceWorker registration failed. Sorry about that.'); 
+    }
+  } else {
+    document.querySelector('.alert').removeAttribute('hidden'); 
+  }
+}
+
+window.addEventListener('load', e => {
+  new PWAConfApp();
+  registerSW(); 
+});
+
 //some hand-made methods
 function md2arr(md) {
   //translate Markdown text to 2-dim array by lines and spaces

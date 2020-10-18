@@ -64,7 +64,7 @@ $(function () {
   });
 
   //popup modal to select einvoice code
-  $(".einvoice").dblclick(function () {
+  $("#einvoiceImg").click(function () {
     $("#einvoice").modal("show");
     $(this).animate({
       opacity: 1
@@ -75,7 +75,7 @@ $(function () {
   });
 
   //popup modal to select store member code
-  $(".member").dblclick(function () {
+  $("#memberImg").click(function () {
     $("#cards").modal("show");
     $(this).animate({
       opacity: 1
@@ -118,7 +118,7 @@ $(function () {
     if (o[0] != "newline") {
       str += `
 		<div class="StoreTag col-5 bg-white p-4 m-3 rounded mr-auto shadow-lg pull-left">
-			<p class="color1 bold mr-auto pull-left"><h5>${o[0]}</h5></p>
+			<p class="color1 bold mr-auto pull-left">${o[0]}</p>
 		</div>
             `;
     } else {

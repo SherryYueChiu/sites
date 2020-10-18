@@ -1,16 +1,17 @@
 {
-  "name": "玥餅卡片夾",
-  "short_name": "卡片夾",
-  "start_url": ".",
-  "display": "standalone",
-  "background_color": "#1C1E23",
-  "description": "集合了常用載具和會員條碼的WPA應用",
-  "theme_color": "#2A3443",
-  "icons": [
-    {
-      "src": "./img/icon.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+    "name": "玥餅卡片夾",
+    "short_name": "卡片夾",
+    "start_url": "https://sherryyuechiu.github.io/sites/MyEWallet/",
+    "display": "standalone",
+    "background_color": "#1C1E23",
+    "description": "集合了常用載具和會員條碼的WPA應用",
+    "theme_color": "#2A3443",
+    "icons": [
+        {
+            "src": "./img/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "portrait"
 }

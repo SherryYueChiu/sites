@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+"<!DOCTYPE html>
 <html>
 	<head>
 		<meta name="format-detection" content="telephone=no">
@@ -10,10 +10,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<script src="./js/couponList.js"></script>
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="./css/index.css">
+      <script type="text/javascript" src="./js/JsBarcode.all.min.js"></script>
+      <script type="text/javascript" src="./js/qrjs2.min.js"></script>
+      <script type="text/javascript" src="./js/global.js"></script>
+      <script type="text/javascript" src="./js/data.js"></script>
 	</head>
 	<body>
 		<div id="app">
@@ -26,12 +29,23 @@
 					<span class="color1">
 						<h1>載具</h1>
 					</span>
-					<img class="einvoiceImg" src="./img/NSDGGV9.png">
+					<div class="einvoiceImg">
+					<svg class="barcode"
+  jsbarcode-format="CODE39"
+  jsbarcode-value="/NSDGGV9"
+  jsbarcode-displayvalue="false">
+</svg>
+				  </div>
 				</div>
 				<div class="tag member bg-white p-4 mt-3 rounded mx-auto shadow-lg w-75">
 					<h1><span id="item" class="color1">優惠券</span></h1>
 					<span id="description" class="color2">→點我←</span>
-					<img class="memberImg" src="./img/draw.png">
+					<div id="memberImg" class="memberImg">
+					  <img src="./img/draw.png"/>
+					</div>
+					<div id="memberImg2" class="memberImg hide">
+					  <img src="./img/draw.png"/>
+					</div>
 				</div>
 			</div>
 			<div align="center" id="footer" class="m-3">玥餅</div>

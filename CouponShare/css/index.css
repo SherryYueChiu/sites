@@ -13,14 +13,9 @@ body,
 	top: 0;
 }
 
-.einvoice>.einvoiceImg {
-	width: 100%;
-	height: auto;
-}
-
-.member>.memberImg {
-	width: 100%;
-	height: auto;
+.einvoiceImg > *, .memberImg > * {
+    height: auto;
+    width: 100%;
 }
 
 .floatingBtn {
@@ -129,4 +124,8 @@ body,
 	height: 10px;
 	z-index: 99;
 	color: #FFF;
+}
+
+.hide {
+  display: none;
 }

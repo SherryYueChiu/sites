@@ -1,5 +1,4 @@
 function PaintCode(format, value) {
-  console.log(format, value)
   //show picture file directly
   //file name -> Img Html
   if (format == "IMG") {

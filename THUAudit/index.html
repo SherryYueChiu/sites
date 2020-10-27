@@ -1,109 +1,110 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>為旁聽而生的它</title>
-		<meta name="Description" content="東海大學旁聽情報小冊">
-		<meta name="KeyWords" content="玥餅'東海大學'課表'選課'旁聽">
-		<meta name="KeyWords" content="Sherry'Yue'THU'TungHai'class'audit">
-		<meta name="Author" content="玥餅">
-		<link rev="made" href="mailto:S06351019@thu.edu.tw">
-		<meta name="Expired" content="15-feb-2021 00:00:00">
-		<meta HTTP-EQUIV="Pragma" content="no_cache">
-		<meta name="Creation-Date" content="23-feb-2020 06:00:00">
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		
-		<script src="../js/jquery.min.js"></script>
-		<script src="../js/popper.min.js"></script>
-		<script src="../js/bootstrap.min.js"></script>
-		<link rel="stylesheet" href="../css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="./css/index.css">
-		
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158922630-1"></script>
-		<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-158922630-1');
-		</script>
-	</head>
-	<body>
-		<div id="app" class="w-100 h-100">
-		
-         <img src="./img/machi1.png" id="bgImg1"/>
-         <img src="./img/pusheen1.png" id="bgImg2"/>
-         <button class="floatingBtn" data-toggle="collapse" data-target="#collapse" onclick="javascript:window.open('https://hackmd.io/@sherryyue/ByUr2wkBD')">🛸</button>
-			
-			<!--第一頁 選星期-->
-			<div id="page1" class="w-100 h-100 page" align="center">
-				<div class="tag bg-white p-4 mt-5 rounded-lg mx-auto shadow-lg w-75">
-					<span id="greetingMsg"></span>
-					<select class="form-control-lg w-100 h-75 mt-3" id="chooseDay" name="chooseDay">
-						<option value="1" align="center">星期一</option>
-						<option value="2" align="center">星期二</option>
-						<option value="3" align="center">星期三</option>
-						<option value="4" align="center">星期四</option>
-						<option value="5" align="center">星期五</option>
-						<option value="6" align="center">星期六</option>
-						<option value="0" align="center">星期天</option>
-					</select>
-					<select class="form-control-lg w-100 h-75 mt-3" id="chooseAceptTime" name="chooseAceptTime">
-						<option value="1" align="center">第一節（早8）</option>
-						<option value="2" align="center">第二節（早9）</option>
-						<option value="3" align="center">第三節（10.）</option>
-						<option value="4" align="center">第四節（11.）</option>
-						<option value="5" align="center">第五節（13.）</option>
-						<option value="6" align="center">第六節（14.）</option>
-						<option value="7" align="center">第七節（15.）</option>
-						<option value="8" align="center">第八節（16.）</option>
-						<option value="9" align="center">第九節（17.）</option>
-						<option value="10" align="center">第十節（18.）</option>
-						<option value="11" align="center">第11節（19.）</option>
-						<option value="12" align="center">第12節（20.）</option>
-						<option value="13" align="center">第13節（21.）</option>
-					</select>
-				</div>
-				
-				<div class="form-group w-75 mt-3">
-					<select class="w-100 h-75 form-control-lg mx-auto shadow-lg" id="chooseAceptRegion" style="opacity: 0.6; border: 0;">
-						<option value="0" selected="selected">一二校都可</option>
-						<option value="1">只在一校</option>
-						<option value="2">只在二校</option>
-					</select>
-				</div>
-				
-				<div class="tag bg-dark p-4 mt-3 mb-5 rounded-lg mx-auto shadow-lg w-75">
-					<button id="page1Submit" class="btn btn-block bgColor4">OK</button>
-				</div>
-			</div>
-			
-			<!--第二頁 篩選結果-->
-			<div id="page2" class="w-100 h-100 page" align="center">
-				<div id="classList" class="w-100 h-100" align="center">
-				</div>
-			</div>
-				
-			<div align="center" id="footer" class="m-3 mb-4">
-				<span class="badge badge-pill badge-light p-2 pl-3 pr-3 color4">玥餅 / THU 109-1</span>
-			</div>
-		</div>
-		
-    
-		<script type="text/javascript" src="./js/index.js"></script>
-<!-- Default Statcounter code for THUAudit
-http://sherryyue.azurewebsites.net/audit -->
-<script type="text/javascript">
-var sc_project=12205318; 
-var sc_invisible=1; 
-var sc_security="3a1d72a6"; 
-var sc_https=1; 
-</script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-StatCounter" href="https://statcounter.com/" target="_blank"><img
-class="statcounter" src="https://c.statcounter.com/12205318/0/3a1d72a6/1/"
-alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
-<!-- End of Statcounter Code -->
-	</body>
+  <head>
+    <title>為旁聽而生的它</title>
+    <meta name="Description" content="東海大學旁聽情報小冊" />
+    <meta name="KeyWords" content="玥餅'東海大學'課表'選課'旁聽" />
+    <meta name="KeyWords" content="Sherry'Yue'THU'TungHai'class'audit" />
+    <meta name="Author" content="玥餅" />
+    <link rev="made" href="mailto:S06351019@thu.edu.tw" />
+    <meta name="Expired" content="15-feb-2021 00:00:00" />
+    <meta http-equiv="Pragma" content="no_cache" />
+    <meta name="Creation-Date" content="23-feb-2020 06:00:00" />
+
+    <!--config-->
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!--frameworks-->
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <script src="../js/popper.min.js"></script>
+
+    <!--local sources-->
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
+  </head>
+  <body>
+    <div id="app" class="w-100 h-100">
+      <img src="./img/machi1.png" id="bgImg1" />
+      <img src="./img/pusheen1.png" id="bgImg2" />
+      <button class="floatingBtn" data-toggle="collapse" data-target="#collapse" onclick="javascript:window.open('https://hackmd.io/@sherryyue/ByUr2wkBD')">🛸</button>
+
+      <!--第一頁 選星期-->
+      <div id="page1" class="w-100 h-100 page" align="center">
+        <div class="tag bg-white p-4 mt-5 rounded-lg mx-auto shadow-lg w-75">
+          <span id="greetingMsg"></span>
+          <select class="form-control-lg w-100 h-75 mt-3" id="chooseDay" name="chooseDay">
+            <option value="1" align="center">星期一</option>
+            <option value="2" align="center">星期二</option>
+            <option value="3" align="center">星期三</option>
+            <option value="4" align="center">星期四</option>
+            <option value="5" align="center">星期五</option>
+            <option value="6" align="center">星期六</option>
+            <option value="0" align="center">星期天</option>
+          </select>
+          <select class="form-control-lg w-100 h-75 mt-3" id="chooseAceptTime" name="chooseAceptTime">
+            <option value="1" align="center">第一節（早8）</option>
+            <option value="2" align="center">第二節（早9）</option>
+            <option value="3" align="center">第三節（10.）</option>
+            <option value="4" align="center">第四節（11.）</option>
+            <option value="5" align="center">第五節（13.）</option>
+            <option value="6" align="center">第六節（14.）</option>
+            <option value="7" align="center">第七節（15.）</option>
+            <option value="8" align="center">第八節（16.）</option>
+            <option value="9" align="center">第九節（17.）</option>
+            <option value="10" align="center">第十節（18.）</option>
+            <option value="11" align="center">第11節（19.）</option>
+            <option value="12" align="center">第12節（20.）</option>
+            <option value="13" align="center">第13節（21.）</option>
+          </select>
+        </div>
+
+        <div class="form-group w-75 mt-3">
+          <select class="w-100 h-75 form-control-lg mx-auto shadow-lg" id="chooseAceptRegion" style="opacity: 0.6; border: 0;">
+            <option value="0" selected="selected">一二校都可</option>
+            <option value="1">只在一校</option>
+            <option value="2">只在二校</option>
+          </select>
+        </div>
+
+        <div class="tag bg-dark p-4 mt-3 mb-5 rounded-lg mx-auto shadow-lg w-75">
+          <button id="page1Submit" class="btn btn-block bgColor4">OK</button>
+        </div>
+      </div>
+
+      <!--第二頁 篩選結果-->
+      <div id="page2" class="w-100 h-100 page" align="center">
+        <div id="classList" class="w-100 h-100" align="center"></div>
+      </div>
+
+      <div align="center" id="footer" class="m-3 mb-4">
+        <span class="badge badge-pill badge-light p-2 pl-3 pr-3 color4">玥餅 / THU 109-1</span>
+      </div>
+    </div>
+
+	<!--guest view tracker-->
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript">
+      var sc_project = 12205318;
+      var sc_invisible = 1;
+      var sc_security = "3a1d72a6";
+      var sc_https = 1;
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+      <div class="statcounter">
+        <a
+          title="Web Analytics Made Easy -
+StatCounter"
+          href="https://statcounter.com/"
+          target="_blank"
+        >
+          <img class="statcounter" src="https://c.statcounter.com/12205318/0/3a1d72a6/1/" alt="Web Analytics Made Easy - StatCounter" />
+        </a>
+      </div>
+    </noscript>
+	
+  </body>
 </html>

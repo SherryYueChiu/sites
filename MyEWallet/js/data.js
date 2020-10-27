@@ -1,5 +1,5 @@
-    var preNote = `
-    `;
+var preNote = `
+`;
     
 //所有會員卡
 cardsMd=`

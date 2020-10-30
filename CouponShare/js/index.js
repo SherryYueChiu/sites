@@ -66,12 +66,12 @@ $(function () {
       let pswd = o[6];
       if (url.indexOf(pswd) != -1)
         disable = false;
-    }
-    if (!!o[7]) {
-      disable = true;
-      let pswd = o[7];
-      if (prompt("密語").indexOf(pswd) != -1)
-        disable = false;
+      if (!!o[7]) {
+        disable = true;
+        let pswd = o[7];
+        if (prompt("密語").indexOf(pswd) != -1)
+          disable = false;
+      }
     }
     if (!disable) {
 

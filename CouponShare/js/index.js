@@ -61,17 +61,12 @@ $(function () {
   str = `<div class="row">`;
   coupons.forEach(function (o) {
     let disable = false;
-    if (!!o[6] && o[6]!="") {
+    if (!!o[6] && o[6] != "") {
       disable = true;
       let pswd = o[6];
       if (url.indexOf(pswd) != -1)
         disable = false;
-      if (!!o[7] && o[7]!="") {
-        disable = true;
-        let pswd = o[7];
-        if (prompt("密語").indexOf(pswd) != -1)
-          disable = false;
-      }
+      console.log("o6 test: " + o[1]);
     }
     if (!disable) {
 
@@ -100,6 +95,14 @@ $(function () {
     let str = $(this).html();
     coupons.forEach(function (o) {
       if (str.indexOf(o[0]) != -1) {
+        //request password
+        if (!!o[7] && o[7] != "") {
+          disable = true;
+          let pswd = o[7];
+          if (prompt("密語").indexOf(pswd) != -1)
+            disable = false;
+          console.log("o7 test: " + o[1]);
+        }
         //Log Visiter
 
         //$.get("log.php", {

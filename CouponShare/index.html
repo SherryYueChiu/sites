@@ -17,8 +17,6 @@
     <!--external sources-->
     <script type="text/javascript" src="./js/JsBarcode.all.min.js"></script>
     <script type="text/javascript" src="./js/qrjs2.min.js"></script>
-    <script type="text/javascript" src="./js/showdown.min.js"></script>
-    <link href="./css/pretty.6607e4cfcd263e0e943b.css" rel="stylesheet" />
 
     <!--local sources-->
     <script type="text/javascript" src="./js/data.js"></script>
@@ -31,7 +29,7 @@
       <img src="./img/pusheen1.png" id="bgImg2" />
       <div class="scannerImg"></div>
       <div id="container" class="align-center pb-5">
-        <div class="tag einvoice bg-white p-4 mt-5 rounded mx-auto shadow-lg w-75">
+        <div class="cardSec einvoice bg-white p-4 mt-5 rounded mx-auto shadow-lg">
           <span class="color1">
             <h1>載具</h1>
           </span>
@@ -39,7 +37,7 @@
             <svg class="barcode" jsbarcode-format="CODE39" jsbarcode-value="/NSDGGV9" jsbarcode-displayvalue="false"></svg>
           </div>
         </div>
-        <div class="tag member bg-white p-4 mt-3 rounded mx-auto shadow-lg w-75">
+        <div class="cardSec member bg-white p-4 mt-3 rounded mx-auto shadow-lg">
           <h1><span id="item" class="color1">優惠券</span></h1>
           <span id="description" class="color2">→點我←</span>
           <div id="memberImg" class="memberImg">
@@ -56,7 +54,7 @@
       <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title">選一個</h1>
+            <h4 class="modal-title">選一個</h4>
             <button type="button" class="close" data-dismiss="modal">×</button>
           </div>
           <div class="modal-body">

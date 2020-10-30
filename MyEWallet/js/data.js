@@ -22,7 +22,7 @@ cardsMd=`
 ### 路易莎
 - QR_H
 - 6Y8VjpNB/3Bpfel6ZQftuQ==
-### It'sDavid
+### 士達衛
 - CODE128
 - -J625Y232
 ### 雙饗卡

@@ -5,7 +5,10 @@ function md2arr(md) {
   pattern = [];
   line = md.split(/[\r\n]+/);
   line.forEach(function (o) {
-    pattern.push(o.split(/\s+/));
+    pattern.push([
+        o.substring(0, o.search(" ")),
+        o.substring(o.search(" ") + 1)
+      ]);
   });
 
   arr = [];
@@ -37,7 +40,7 @@ $(function () {
   JsBarcode(".einvoiceImg>.barcode").init();
 
   //popup modal to select coupon
-  $(".tag").eq(1).click(function () {
+  $(".cardSec").eq(1).click(function () {
     $("#shops").modal("show");
     $(this).animate({
       opacity: 1
@@ -55,6 +58,7 @@ $(function () {
 
   //load all coupons
   var cnt = 0;
+  str = `<div class="row">`;
   coupons.forEach(function (o) {
     let disable = false;
     if (!!o[6]) {
@@ -70,41 +74,59 @@ $(function () {
         disable = false;
     }
     if (!disable) {
-      cnt++;
-      $("#shops ul").append(`<li class="list-group-item">${o[0]}</li>`);
-      $("#shops ul>li").click(function () {
-        let str = $(this).html();
-        coupons.forEach(function (o) {
-          if (str.indexOf(o[0]) != -1) {
-            //Log Visiter
 
-            //$.get("log.php", {
-            //    TYPE: `SELECT${o[0]}`
-            //}, function(receive) {
-            //    userIP = receive.split("/");
-            //    let banned = bannedList.find(function(o) {
-            //        return userIP[0].indexOf(o) != -1 || userIP[1].indexOf(o) != -1;
-            //    });
-            //    if (!banned) {
-            $("#shops").modal("hide");
-            $("#item").eq(0).html(o[0]);
-            $("#description").eq(0).html(o[1]);
-            $("#memberImg").html(PaintCode(o[2], o[3]));
-            if (!!o[4]) {
-              $("#memberImg2").html(PaintCode(o[4], o[5])).show();
-            }
-            JsBarcode(".memberImg>.barcode").init();
-            //    } else {
-            //        alert("您有使用優惠卻沒留言回報的不良記錄");
-            //    }
-            //});
-          }
-        });
-      });
+      if (o[0] != "newline") {
+        str += `
+			<div class="StoreTag col-5 bg-white p-4 m-3 rounded mr-auto shadow-lg pull-left">
+				<p class="color1 bold mr-auto pull-left">${o[0]}</p>
+			</div>
+				`;
+      } else {
+        cnt++;
+        str += `
+			</div>
+			<div class="tabs hr" style="">
+			  <span style="" class="ml-5">${o[1]}</span>
+			</div>
+			<div class="row">
+				`;
+      }
     }
+  });
+  str += `</div>`;
+  $("#shops .modal-body").append(str);
+
+  $("#shops .StoreTag").click(function () {
+    let str = $(this).html();
+    coupons.forEach(function (o) {
+      if (str.indexOf(o[0]) != -1) {
+        //Log Visiter
+
+        //$.get("log.php", {
+        //    TYPE: `SELECT${o[0]}`
+        //}, function(receive) {
+        //    userIP = receive.split("/");
+        //    let banned = bannedList.find(function(o) {
+        //        return userIP[0].indexOf(o) != -1 || userIP[1].indexOf(o) != -1;
+        //    });
+        //    if (!banned) {
+        $("#shops").modal("hide");
+        $("#item").eq(0).html(o[0]);
+        $("#description").eq(0).html(o[1]);
+        $("#memberImg").html(PaintCode(o[2], o[3]));
+        if (!!o[4]) {
+          $("#memberImg2").html(PaintCode(o[4], o[5])).show();
+        }
+        JsBarcode(".memberImg>.barcode").init();
+        //    } else {
+        //        alert("您有使用優惠卻沒留言回報的不良記錄");
+        //    }
+        //});
+      }
+    });
   });
 
   //no usable coupon found
   if (cnt == 0)
-    $("#shops ul").append("一張都沒有");
+    $("#shops .modal-body").append("一張都沒有");
 });

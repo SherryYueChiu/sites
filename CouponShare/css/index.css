@@ -3,20 +3,85 @@ body,
 #app {
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  background-color: #ffccbc;
 }
 
 #app {
+  background-color: #1c1e23;
   position: fixed;
   left: 0;
   top: 0;
+  z-index: 0;
+  overflow-y: scroll;
+  font-weight: bolder;
+}
+
+.modal-content,
+.modal-header,
+.modal-body {
+  border: 0 !important;
+}
+
+.modal-header {
+  background-color: #242526 !important;
+  color: #b0b3b8;
+  font-weight: bolder;
+}
+
+.modal-body {
+  background-color: #1c1e23;
+  font-weight: bolder;
+}
+
+.modal-content {
+  height: 100%;
 }
 
 #einvoiceImg > *,
 .memberImg > * {
   height: auto;
   width: 100%;
+}
+
+.hr {
+  border-bottom-style: solid;
+  border-color: #333;
+  border-bottom-width: 1px;
+  padding: 5px;
+}
+
+.hr > * {
+  color: #e4e6eb !important;
+  margin: 0 !important;
+}
+
+.close {
+  color: #b0b3b8 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.cardSec {
+  width: 85%;
+  background-color: #fff !important;
+  color: #e4e6eb;
+  overflow-x: auto;
+  font-weight: bolder !important;
+  padding: 1em;
+}
+
+.StoreTag {
+  color: #1c1e23;
+  overflow-x: auto;
+  font-weight: bolder !important;
+  padding: 1.5em !important;
+}
+
+.StoreTag > * {
+  width: max-content;
+  font-size: larger;
+}
+
+.tabs * {
+  color: #242526;
 }
 
 .floatingBtn {
@@ -111,22 +176,42 @@ body,
   display: none;
 }
 
+.bgColor1 {
+  background-color: #242526;
+}
+
 .color1 {
-  color: #ef9a9a;
+  color: #242526;
+}
+
+.bgColor2 {
+  background-color: #1c1e23;
 }
 
 .color2 {
-  color: #ffccbc;
+  color: #1c1e23;
+}
+
+.bgColor3 {
+  background-color: #b0b3b8;
 }
 
 .color3 {
-  color: #1a237e;
+  color: #b0b3b8;
+}
+
+.bgColor4 {
+  background-color: #e4e6eb;
 }
 
 .color4 {
-  color: #b2dfdb;
+  color: #e4e6eb;
+}
+
+.bgColor5 {
+  background-color: rgb(255 255 255 / 10%);
 }
 
 .color5 {
-  color: #e8f5e9;
+  color: rgb(255 255 255 / 10%);
 }

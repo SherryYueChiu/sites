@@ -96,6 +96,7 @@ $(function () {
     coupons.forEach(function (o) {
       if (str.indexOf(o[0]) != -1) {
         //request password
+        let disable = false;
         if (!!o[7] && o[7] != "") {
           disable = true;
           let pswd = o[7];

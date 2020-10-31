@@ -61,17 +61,12 @@ $(function () {
   str = `<div class="row">`;
   coupons.forEach(function (o) {
     let disable = false;
-    if (!!o[6] && o[6]!="") {
+    if (!!o[6] && o[6] != "") {
       disable = true;
       let pswd = o[6];
       if (url.indexOf(pswd) != -1)
         disable = false;
-      if (!!o[7] && o[7]!="") {
-        disable = true;
-        let pswd = o[7];
-        if (prompt("密語").indexOf(pswd) != -1)
-          disable = false;
-      }
+      console.log("o6 test: " + o[1]);
     }
     if (!disable) {
 
@@ -100,28 +95,40 @@ $(function () {
     let str = $(this).html();
     coupons.forEach(function (o) {
       if (str.indexOf(o[0]) != -1) {
-        //Log Visiter
-
-        //$.get("log.php", {
-        //    TYPE: `SELECT${o[0]}`
-        //}, function(receive) {
-        //    userIP = receive.split("/");
-        //    let banned = bannedList.find(function(o) {
-        //        return userIP[0].indexOf(o) != -1 || userIP[1].indexOf(o) != -1;
-        //    });
-        //    if (!banned) {
-        $("#shops").modal("hide");
-        $("#item").eq(0).html(o[0]);
-        $("#description").eq(0).html(o[1]);
-        $("#memberImg").html(PaintCode(o[2], o[3]));
-        if (!!o[4]) {
-          $("#memberImg2").html(PaintCode(o[4], o[5])).show();
+        //request password
+        if (!!o[7] && o[7] != "") {
+          disable = true;
+          let pswd = o[7];
+          if (prompt("密語").indexOf(pswd) != -1)
+            disable = false;
+          console.log("o7 test: " + o[1]);
         }
-        JsBarcode(".memberImg>.barcode").init();
-        //    } else {
-        //        alert("您有使用優惠卻沒留言回報的不良記錄");
-        //    }
-        //});
+        if (!disable) {
+          //Log Visiter
+
+          //$.get("log.php", {
+          //    TYPE: `SELECT${o[0]}`
+          //}, function(receive) {
+          //    userIP = receive.split("/");
+          //    let banned = bannedList.find(function(o) {
+          //        return userIP[0].indexOf(o) != -1 || userIP[1].indexOf(o) != -1;
+          //    });
+          //    if (!banned) {
+          $("#shops").modal("hide");
+          $("#item").eq(0).html(o[0]);
+          $("#description").eq(0).html(o[1]);
+          $("#memberImg").html(PaintCode(o[2], o[3]));
+          if (!!o[4]) {
+            $("#memberImg2").html(PaintCode(o[4], o[5])).show();
+          }
+          JsBarcode(".memberImg>.barcode").init();
+          //    } else {
+          //        alert("您有使用優惠卻沒留言回報的不良記錄");
+          //    }
+          //});
+        } else {
+          alert("密語是錯的");
+        }
       }
     });
   });

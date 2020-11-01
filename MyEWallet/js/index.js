@@ -5,10 +5,7 @@ function md2arr(md) {
   pattern = [];
   line = md.split(/[\r\n]+/);
   line.forEach(function (o) {
-    pattern.push([
-        o.substring(0, o.search(" ")),
-        o.substring(o.search(" ") + 1)
-      ]);
+    pattern.push(o.split(/\s+/));
   });
 
   arr = [];

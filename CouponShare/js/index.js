@@ -92,7 +92,8 @@ $(function () {
   $("#shops .modal-body").append(str);
 
   $("#shops .StoreTag").click(function () {
-    let str = $(this).html();
+    disable = false;
+    str = $(this).html();
     coupons.forEach(function (o) {
       if (str.indexOf(o[0]) != -1) {
         //request password

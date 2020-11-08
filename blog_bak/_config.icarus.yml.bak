@@ -103,6 +103,7 @@ head:
 navbar:
     # Navigation menu items
     menu:
+    menu:
         文章: /archives
         分類: /categories
     # Links to be shown on the right of the navigation bar

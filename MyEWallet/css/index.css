@@ -77,8 +77,8 @@ body,
 	font-size: larger;
 }
 
-.tabs * {
-    color: #242526;
+.tabs {
+  color: #e4e6eb !important;
 }
 
 #einvoiceImg, #memberImg {

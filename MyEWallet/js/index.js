@@ -113,25 +113,47 @@ $(function () {
 
   //load all member cards
   //parse array to html
-  str = `<div class="row">`;
-  cards.forEach(function (o) {
+  str = `
+<div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+  `;
+  cards.forEach(function (o, i) {
     if (o[0] != "newline") {
-      str += `
-		<div class="StoreTag col-5 bg-white p-4 m-3 rounded mr-auto shadow-lg pull-left">
-			<p class="color1 bold mr-auto pull-left">${o[0]}</p>
-		</div>
-            `;
+        str += `
+	    	  	<div class="StoreTag col-5 bg-white p-4 m-3 rounded mr-auto shadow-lg pull-left">
+		    	  	<p class="color1 bold mr-auto pull-left">${o[0]}</p>
+		    	  </div>
+				`;
     } else {
-      str += `
+      if(i!=0){
+        str += `
         </div>
-        <div class="tabs hr" style="">
-          <span style="" class="ml-5">${o[1]}</span>
-        </div>
+      </div>
+    </div>
+        `;
+      }
+        str += `
+    <div class="card-header" role="tab" id="#${o[1]}_heading">
+      <a data-toggle="collapse" data-parent="#accordionEx" href="#${o[1]}_content" aria-expanded="${i==0?true:false}"
+        aria-controls="${o[1]}_content">
+        <h5 class="mb-0 tabs">
+          ${o[1]}<i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <div id="${o[1]}_content" class="collapse ${i==0?'show':''}" role="tabpanel" aria-labelledby="#${o[1]}_heading" data-parent="#accordionEx">
+      <div class="card-body">
         <div class="row">
-            `;
+				`;
     }
   });
-  str += `</div>`;
+  str += `
+        </div>
+      </div>
+    </div>  
+  </div>  
+</div>  
+`;
   $("#cards .modal-body").append(str);
   
   //bind clicking event

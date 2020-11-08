@@ -35,7 +35,7 @@ cardsMd=`
 - CODE128
 - 090000239277
         
-## 飲品/點心
+## 飲品／點心
 ### 路易莎
 - QR_H
 - 6Y8VjpNB/3Bpfel6ZQftuQ==

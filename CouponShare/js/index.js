@@ -58,8 +58,10 @@ $(function () {
 
   //load all coupons
   var cnt = 0;
-  str = `<div class="row">`;
-  coupons.forEach(function (o) {
+  str = `
+<div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+  `;
+  coupons.forEach(function (o, i) {
     let disable = false;
     if (!!o[6] && o[6] != "") {
       disable = true;
@@ -78,17 +80,37 @@ $(function () {
 				`;
       } else {
         cnt++;
+      if(i!=0){
         str += `
-			</div>
-			<div class="tabs hr" style="">
-			  <span style="" class="ml-5">${o[1]}</span>
-			</div>
-			<div class="row">
+        </div>
+      </div>
+    </div>
+        `;
+      }
+        str += `
+    <div class="card-header" role="tab" id="#${o[1]}_heading">
+      <a data-toggle="collapse" data-parent="#accordionEx" href="#${o[1]}_content" aria-expanded="${i==0?true:false}"
+        aria-controls="${o[1]}_content">
+        <h5 class="mb-0 tabs">
+          ${o[1]}<i class="fas fa-angle-down rotate-icon"></i>
+        </h5>
+      </a>
+    </div>
+
+    <div id="${o[1]}_content" class="collapse ${i==0?'show':''}" role="tabpanel" aria-labelledby="#${o[1]}_heading" data-parent="#accordionEx">
+      <div class="card-body">
+        <div class="row">
 				`;
       }
     }
   });
-  str += `</div>`;
+  str += `
+        </div>
+      </div>
+    </div>  
+  </div>  
+</div>  
+`;
   $("#shops .modal-body").append(str);
 
   $("#shops .StoreTag").click(function () {

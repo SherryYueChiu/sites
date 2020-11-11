@@ -1,103 +1,61 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <title>條碼本</title>
-      <!--config-->
-      <meta charset="utf-8">
-      <meta name="format-detection" content="telephone=no">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<html lang="en">
 
-      <!--frameworks-->
-      <script src="./js/jquery.min.js"></script>
-      <script src="./js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="./css/bootstrap.min.css">
-      
-      <script type="text/javascript" src="./js/global.js"></script>
-      
-      <!--external sources-->
-      <script type="text/javascript" src="./js/JsBarcode.all.min.js"></script>
-      <script type="text/javascript" src="./js/qrjs2.min.js"></script>
-      <script type="text/javascript" src="./js/showdown.min.js"></script>
-      <link href="./css/pretty.6607e4cfcd263e0e943b.css" rel="stylesheet">
-      
-      <!--local sources-->
-      <script type="text/javascript" src="./js/data.js"></script>
-      <link rel="stylesheet" type="text/css" href="./css/index.css">
-   </head>
-   <body>
-      <div id="app">
-         <button class="floatingBtn" data-toggle="collapse" data-target="#collapse">✎</button>
-         <img src="./img/machi1.png" id="bgImg1"/>
-         <img src="./img/pusheen1.png" id="bgImg2"/>
-         <div class="scannerImg"></div>
-         <div id="container" class="align-center pb-5">
-            <div class="cardSec einvoice bg-white p-3 mt-5 rounded mx-auto shadow-lg">
-               <span class="color2">
-                  <h1>載具</h1>
-               </span>
-               <span id="einvoiceName" class="color2">/NSDGGV9</span>
-              <div id="einvoiceImg">
-<svg class="barcode"
-  jsbarcode-format="CODE39"
-  jsbarcode-value="/NSDGGV9"
-  jsbarcode-displayvalue="false">
-</svg>
-              </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡片夾</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/JsBarcode.all.min.js"></script>
+    <script src="./js/qrjs2.min.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/showdown.min.js"></script>
+    <script src="./js/global.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div id="einvoiceSec" class="sec">
+            <h1>載具</h1>
+            <div id="eInvoiceName">/NSDGGV9</div>
+            <div id="eInvoiceCode" class="drawnCode">
+                <svg class="barcode" jsbarcode-format="CODE39" jsbarcode-value="/NSDGGV9" jsbarcode-displayvalue="false"></svg>
             </div>
-            <div class="cardSec member bg-white p-3 mt-4 rounded mx-auto shadow-lg">
-               <h1><span id="member" class="color2">會員</span></h1>
-               <span class="color2">
-                  <h3></h3>
-               </span>
-              <div id="memberImg">
-               <img class="" src="./cardsImg/draw.png">
-              </div>
+        </div>
+        <div id="cardSec" class="sec opacity">
+            <h1 id="cardName">會員</h1>
+            <div id="cardCode" class="drawnCode hide">
+                <img src="./img/draw.png" alt="default picture">
             </div>
-            <div class="cardSec note bg-white mt-4 rounded mx-auto shadow-lg">
-               <div id="htmlOpt" class="mdNote p-3 markdown-body">
-               </div>
-            </div>
-            <div class="row">
-               <div id="collapse" class="collapse  w-100">
-                  <div class="bg-white p-4 mt-3 rounded mx-auto shadow-lg w-75">
-                     <textarea class="form-control w-100" rows="10" id="mdIpt"></textarea>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <img id="popupImg" style="display: none;"/>
-         <button class="btn btn-lg btn-outline-dark m-2" id="simulateBtn" style="display: none;">
-         <span class="spinner-grow spinner-grow-sm"></span>
-         模擬
-         </button>
-      </div>
-      </div>
-      <div class="modal" id="einvoice">
-         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h2 class="modal-title">選張載具</h2>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-               </div>
-               <div class="modal-body">
-                  <ul class="list-group list-group-flush">
-                  </ul>
-               </div>
-            </div>
-         </div>
-      </div>
-      <div class="modal" id="cards">
-         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h4 class="modal-title">選張會員卡</h4>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-               </div>
-               <div class="modal-body">
-               </div>
-            </div>
-         </div>
-      </div>
-      <script type="text/javascript" src="./js/index.js"></script>
-   </body>
+        </div>
+        <div id="noteSec" class="sec opacity"></div>
+        <div id="editSec" class="fixSec fade">
+            <textarea id="mdInput" rows="4"></textarea>
+        </div>
+    </div>
+    <div id="einvoiceModal" class="modal fade">
+        <div class="modal-header">
+            <span>載具</span>
+            <span class="close" target="#einvoiceModal">X</span>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+    <div id="cardModal" class="modal fade">
+        <div class="modal-header">
+            <span>會員卡</span>
+            <span class="close" target="#cardModal">X</span></div>
+        <div class="modal-body"></div>
+    </div>
+    <div id="scannerAnim"></div>
+    <button id="editBtn">✎</button>
+
+    <img id="popupImg" class="fade" />
+    <button id="simulateBtn" class="fade">
+        模擬
+    </button>
+    <img src="./img/machi1.png" id="bgImg1" />
+    <img src="./img/pusheen1.png" id="bgImg2" />
+
+    <script src="app.js"></script>
+</body>
+
 </html>

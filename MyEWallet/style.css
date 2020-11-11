@@ -170,8 +170,14 @@ details {
 }
 
 summary {
-    list-style: none;
+    margin: .5em;
+    padding: .2em;
+    border-left: 5px aliceblue solid;
+    outline: none;
+}
 
+details>summary::-webkit-details-marker {
+  display:none;
 }
 
 #cardModal .storeTag {

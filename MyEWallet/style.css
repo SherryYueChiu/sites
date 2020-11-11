@@ -27,7 +27,7 @@ body {
 
 .sec>h1,
 .fixSec>h1 {
-    font-size: 3em;
+    font-size: 2em;
     margin: 0;
     font-weight: normal;
 }
@@ -137,7 +137,7 @@ body {
     padding: .7em;
     background: #242526;
     color: #B0B3B8;
-    font-size: 2em;
+    font-size: 1.5em;
 }
 
 .modal-body {
@@ -146,7 +146,7 @@ body {
     padding: .7em;
     background: #1C1E23;
     color: #e4e6eb;
-    font-size: 2em;
+    font-size: 1.5em;
     overflow-y: auto;
 }
 
@@ -169,11 +169,16 @@ details {
     align-content: center;
 }
 
+summary {
+    list-style: none;
+
+}
+
 #cardModal .storeTag {
     display: inline-block;
     background: aliceblue;
-    width: 30%;
-    height: 1.2em;
+    width: 35%;
+    height: 1.6em;
     margin: .2em;
     padding: .5em;
     border-radius: .5em;

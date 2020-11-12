@@ -1,3 +1,6 @@
+/*
+DOMs
+*/
 let einvoiceBtn = document.querySelector("#eInvoiceCode");
 let cardBtn = document.querySelector("#cardCode");
 let sections = document.querySelectorAll(".sec");
@@ -14,22 +17,31 @@ let eInvoiceCode = document.querySelector("#eInvoiceCode");
 let cardName = document.querySelector("#cardName");
 let cardCode = document.querySelector("#cardCode");
 
+/*
+DOM events
+*/
 editBtn.addEventListener("click", () => {
+    //toggle show
     if (editSec.classList.contains("fade")) {
         editSec.classList.remove("fade");
-    } else {
+    }
+    //toggle hide
+    else {
         editSec.classList.add("fade");
     }
 });
 
 sections.forEach((section) => {
     section.addEventListener("click", () => {
+        //toggle show
         if (section.classList.contains("opacity")) {
             section.classList.remove("opacity");
             try {
                 section.querySelector(".drawnCode").classList.remove("hide");
             } catch (e) {}
-        } else {
+        }
+        //toggle hide
+        else {
             section.classList.add("opacity");
             try {
                 section.querySelector(".drawnCode").classList.add("hide");
@@ -38,19 +50,22 @@ sections.forEach((section) => {
     });
 });
 
+//popup einvoice modal
 einvoiceBtn.addEventListener("click", (e) => {
     einvoiceModal.classList.remove("fade");
 });
 
+//popup card modal
 cardBtn.addEventListener("click", (e) => {
     cardModal.classList.remove("fade");
 });
 
+//click to dismiss fullpage image
 popupImg.addEventListener("click", (e) => {
     popupImg.classList.add("fade");
 });
 
-
+//"x" button for dismiss modal
 closeBtns.forEach((closeBtn) => {
     closeBtn.addEventListener("click", () => {
         target = closeBtn.getAttribute("target");
@@ -58,26 +73,27 @@ closeBtns.forEach((closeBtn) => {
     });
 });
 
-//some hand-made methods
+//translate Markdown text to 2-dim test array
 function md2arr(md) {
-    //translate Markdown text to 2-dim array by lines and spaces
-    line = [],
+    let line = [],
         pattern = [];
     line = md.split(/[\r\n]+/);
     line.forEach(function(o) {
         pattern.push(o.split(/\s+/));
     });
 
-    arr = [];
+    let arr = [];
     pattern.forEach(function(o) {
         if (o[0] != "" || !o) {
-            //parse StoreClss, storeTag, and store param from pattern into array
+            //see store classification as newline
             if (o[0] == "##") {
                 arr.push(["newline", o[1]]);
             }
+            //stores
             if (o[0] == "###") {
                 arr.push([o[1]]);
             }
+            //push store params
             if (o[0] == "-") {
                 arr[arr.length - 1].push(o[1]);
             }
@@ -86,7 +102,7 @@ function md2arr(md) {
     return arr;
 }
 
-//popup screenshot of that store
+//popup picture of that store
 function showSimulateBtn(img) {
     simulateBtn.addEventListener("click", () => {
         popupImg.setAttribute("src", `./cardsImg/${img}`);
@@ -94,12 +110,18 @@ function showSimulateBtn(img) {
     });
 }
 
-const cards = md2arr(cardsMd);
-const einvoices = md2arr(einvoiceMd);
 
+/*
+page loaded
+*/
 window.onload = function() {
 
-    //load all einvoices
+    const cards = md2arr(cardsMd);
+    const einvoices = md2arr(einvoiceMd);
+
+    /*
+    put einvoices to DOM
+    */
     var str = `<ul>`;
     einvoices.forEach(function(einvoice) {
         str += `<li class="list-group-item">${einvoice[0]}</li>`;
@@ -129,8 +151,9 @@ window.onload = function() {
         });
     });
 
-    //load all member cards
-    //parse array to html
+    /*
+    put cards to DOM
+    */
     str = `
     `;
     cards.forEach(function(o, i) {
@@ -152,7 +175,9 @@ window.onload = function() {
     });
     document.querySelector("#cardModal>.modal-body").innerHTML = str;
 
-    //bind clicking event
+    /*
+    bind event
+    */
     storeTags = document.querySelectorAll("#cardModal .StoreTag");
     storeTags.forEach((storeTag) => {
         storeTag.addEventListener("click", () => {
@@ -180,15 +205,18 @@ window.onload = function() {
         })
     });
 
+    /*
+    a editable and autosave markdown notebook
+    */
     storedMd = "";
-    editBox.value = localStorage.getItem("storedMd2");
+    editBox.value = localStorage.getItem("storedMd");
     convert();
 
     editBox.addEventListener('change', convert);
     timer = setInterval(function() {
         if (storedMd != editBox.value) {
             storedMd = editBox.value;
-            localStorage.setItem("storedMd2", storedMd);
+            localStorage.setItem("storedMd", storedMd);
         }
     }, 2000);
 };

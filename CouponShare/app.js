@@ -4,31 +4,24 @@ DOMs
 let einvoiceBtn = document.querySelector("#eInvoiceCode");
 let cardBtn = document.querySelector("#cardCode");
 let sections = document.querySelectorAll(".sec");
-let editSec = document.querySelector("#editSec");
-let editBox = document.querySelector("#mdInput");
 let noteSec = document.querySelector("#noteSec");
 let einvoiceModal = document.querySelector("#einvoiceModal");
 let cardModal = document.querySelector("#cardModal");
 let closeBtns = document.querySelectorAll(".close");
-let popupImg = document.querySelector("#popupImg");
-let simulateBtn = document.querySelector("#simulateBtn");
 let eInvoiceName = document.querySelector("#eInvoiceName");
 let eInvoiceCode = document.querySelector("#eInvoiceCode");
 let cardName = document.querySelector("#cardName");
+let cardDescription = document.querySelector("#cardDescription");
 let cardCode = document.querySelector("#cardCode");
+let cardCode2 = document.querySelector("#cardCode2");
+let aboutBtn = document.querySelector("#aboutBtn");
 
 /*
 DOM events
 */
-editBtn.addEventListener("click", () => {
-    //toggle show
-    if (editSec.classList.contains("fade")) {
-        editSec.classList.remove("fade");
-    }
-    //toggle hide
-    else {
-        editSec.classList.add("fade");
-    }
+aboutBtn.addEventListener("click", () => {
+    //href to author's projects page
+    window.open('https://hackmd.io/@sherryyue/ByUr2wkBD');
 });
 
 sections.forEach((section) => {
@@ -58,11 +51,6 @@ einvoiceBtn.addEventListener("click", (e) => {
 //popup card modal
 cardBtn.addEventListener("click", (e) => {
     cardModal.classList.remove("fade");
-});
-
-//click to dismiss fullpage image
-popupImg.addEventListener("click", (e) => {
-    popupImg.classList.add("fade");
 });
 
 //"x" button for dismiss modal
@@ -105,21 +93,12 @@ function md2arr(md) {
     return arr;
 }
 
-//popup picture of that store
-function showSimulateBtn(img) {
-    simulateBtn.addEventListener("click", () => {
-        popupImg.setAttribute("src", `./cardsImg/${img}`);
-        popupImg.classList.remove("fade");
-    });
-}
-
-
 /*
 page loaded
 */
 window.onload = function() {
 
-    const cards = md2arr(cardsMd);
+    const coupons = md2arr(couponsMd);
     const einvoices = md2arr(einvoiceMd);
 
     /*
@@ -155,11 +134,11 @@ window.onload = function() {
     });
 
     /*
-    put cards to DOM
+    put coupons to DOM
     */
     str = `
     `;
-    cards.forEach(function(o, i) {
+    coupons.forEach(function(o, i) {
         if (o[0] != "newline") {
             str += `
     <div class="StoreTag"><span>${o[0]}</span></div>
@@ -171,7 +150,7 @@ window.onload = function() {
                 `;
             }
             str += `
-<details>
+<details ${i == 0 ? "open" : ""}>
     <summary>${o[1]}</summary>
             `;
         }
@@ -184,42 +163,49 @@ window.onload = function() {
     storeTags = document.querySelectorAll("#cardModal .StoreTag");
     storeTags.forEach((storeTag) => {
         storeTag.addEventListener("click", () => {
-            let str = storeTag.innerHTML;
-            cards.forEach(function(o) {
+            disable = false;
+            str = storeTag.innerHTML;
+            coupons.forEach(function(o) {
                 if (str.indexOf(o[0]) != -1) {
-                    cardModal.classList.add("fade");
-                    cardName.innerHTML = o[0];
-                    cardCode.innerHTML = PaintCode(o[1], o[2]);
-                    JsBarcode(".barcode").init();
-                    if (o[3] && o[3].indexOf("simulate") != -1) {
-                        simulateBtn.classList.remove("fade");
-                        showSimulateBtn(o[3].split("::")[1]);
+                    //request password
+                    let disable = false;
+                    if (!!o[7] && o[7] != "") {
+                        disable = true;
+                        let pswd = o[7];
+                        if (prompt("密語").indexOf(pswd) != -1)
+                            disable = false;
+                        console.log("o7 test: " + o[1]);
+                    }
+                    if (!disable) {
+                        let str = storeTag.innerHTML;
+                        coupons.forEach(function(o) {
+                            if (str.indexOf(o[0]) != -1) {
+                                cardModal.classList.add("fade");
+                                cardName.innerHTML = o[0];
+                                cardDescription.innerHTML = o[1];
+                                cardCode.innerHTML = PaintCode(o[2], o[3]);
+                                cardCode2.classList.add("nodisplay");
+                                if (!!o[4]) {
+                                    cardCode2.innerHTML = PaintCode(o[4], o[5]);
+                                    cardCode2.classList.remove("nodisplay");
+                                }
+                                JsBarcode(".barcode").init();
+                            }
+                        });
+                        if (cardSec.classList.contains("opacity")) {
+                            cardSec.classList.remove("opacity");
+                            try {
+                                cardSec.querySelector(".drawnCode").classList.remove("hide");
+                            } catch (e) {}
+                        }
+
                     } else {
-                        simulateBtn.classList.add("fade");
+                        alert("密語是錯的");
                     }
                 }
             });
-            if (cardSec.classList.contains("opacity")) {
-                cardSec.classList.remove("opacity");
-                try {
-                    cardSec.querySelector(".drawnCode").classList.remove("hide");
-                } catch (e) {}
-            }
-        })
+        });
     });
 
-    /*
-    a editable and autosave markdown notebook
-    */
-    storedMd = "";
-    editBox.value = localStorage.getItem("storedMd");
-    convert();
-
-    editBox.addEventListener('change', convert);
-    timer = setInterval(function() {
-        if (storedMd != editBox.value) {
-            storedMd = editBox.value;
-            localStorage.setItem("storedMd", storedMd);
-        }
-    }, 2000);
+    JsBarcode(".barcode").init();
 };

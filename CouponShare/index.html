@@ -1,75 +1,63 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>優惠本</title>
-    <!--config-->
-    <meta charset="utf-8" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<html lang="en">
 
-    <!--frameworks-->
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>優惠券分享</title>
+    <link rel="icon" href="./images/logo.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="./js/JsBarcode.all.min.js"></script>
+    <script src="./js/qrjs2.min.js"></script>
+    <script src="./js/data.js"></script>
+    <script src="./js/showdown.min.js"></script>
+    <script src="./js/global.js"></script>
+</head>
 
-    <script type="text/javascript" src="./js/global.js"></script>
-
-    <!--external sources-->
-    <script type="text/javascript" src="./js/JsBarcode.all.min.js"></script>
-    <script type="text/javascript" src="./js/qrjs2.min.js"></script>
-
-    <!--local sources-->
-    <script type="text/javascript" src="./js/data.js"></script>
-    <link rel="stylesheet" type="text/css" href="./css/index.css" />
-  </head>
-  <body>
-    <div id="app">
-      <button class="floatingBtn" data-toggle="collapse" data-target="#collapse" onclick="javascript:window.open('https://hackmd.io/@sherryyue/ByUr2wkBD')">🛸</button>
-      <img src="./img/machi1.png" id="bgImg1" />
-      <img src="./img/pusheen1.png" id="bgImg2" />
-      <div class="scannerImg"></div>
-      <div id="container" class="align-center pb-5">
-        <div class="cardSec einvoice bg-white p-4 mt-5 rounded mx-auto shadow-lg">
-          <span class="color1">
+<body>
+    <div class="container">
+        <div id="einvoiceSec" class="fixSec">
             <h1>載具</h1>
-          </span>
-          <div id="einvoiceImg" class="einvoiceImg">
-            <svg class="barcode" jsbarcode-format="CODE39" jsbarcode-value="/NSDGGV9" jsbarcode-displayvalue="false"></svg>
-          </div>
+            <div id="eInvoiceName">/NSDGGV9</div>
+            <div id="eInvoiceCode" class="drawnCode">
+                <svg class="barcode" jsbarcode-format="CODE39" jsbarcode-value="/NSDGGV9" jsbarcode-displayvalue="false"></svg>
+            </div>
         </div>
-        <div class="cardSec member bg-white p-4 mt-3 rounded mx-auto shadow-lg">
-          <h1><span id="item" class="color1">票券夾</span></h1>
-          <span id="description" class="color2">→點我←</span>
-          <div id="memberImg" class="memberImg">
-            <img src="./img/draw.png" />
-          </div>
-          <div id="memberImg2" class="memberImg hide">
-            <img src="./img/draw.png" />
-          </div>
+        <div id="cardSec" class="sec">
+            <h1 id="cardName">票券夾</h1>
+            <div id="cardDescription"></div>
+            <div id="cardCode" class="drawnCode">
+                <img src="./images/draw.png" alt="default picture">
+            </div>
+            <div id="cardCode2" class="drawnCode">
+                <img src="./images/draw.png" class="nodisplay" alt="default picture">
+            </div>
         </div>
-		
-        <div class="cardSec bg-white p-4 mt-3 rounded mx-auto shadow-lg color2">
-			<h4>支持</h4>
-			<hr/>
-			LikeCoin是新形態的寫手生態，如果你願意拍手5下，作者能獲得平台分發的小額現金鼓勵<br>
-			<iframe data-v-b66e9a5a="" src="https://button.like.co/in/embed/sherryyue/button?referrer=https://sherryyuechiu.github.io/sites/CouponShare/" frameborder="0" class="lc-margin-top-64 lc-margin-bottom-32 lc-mobile"></iframe>
+        <div id="noteSec" class="sec">
+            <iframe data-v-b66e9a5a="" src="https://button.like.co/in/embed/sherryyue/button?referrer=https://sherryyuechiu.github.io/sites/CouponShare/" frameborder="0" class="lc-margin-top-64 lc-margin-bottom-32 lc-mobile"></iframe>
         </div>
-      </div>
-      <div align="center" id="footer" class="m-3">玥餅</div>
     </div>
-    <div class="modal" id="shops">
-      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">選一個</h4>
-            <button type="button" class="close" data-dismiss="modal">×</button>
-          </div>
-          <div class="modal-body">
-            <ul class="list-group list-group-flush"></ul>
-          </div>
+    <div id="einvoiceModal" class="modal fade">
+        <div class="modal-header">
+            <span>載具</span>
+            <span class="close" target="#einvoiceModal">X</span>
         </div>
-      </div>
+        <div class="modal-body"></div>
     </div>
-    <script type="text/javascript" src="./js/index.js"></script>
-  </body>
+    <div id="cardModal" class="modal fade">
+        <div class="modal-header">
+            <span>會員卡</span>
+            <span class="close" target="#cardModal">X</span></div>
+        <div class="modal-body"></div>
+    </div>
+    <div id="scannerAnim"></div>
+    <button id="aboutBtn">🛸</button>
+
+    <img id="popupImg" class="fade" />
+    </button>
+    <img src="./images/br_bkgd.png" id="bgImg_br" />
+    <img src="./images/tl_bkgd.png" id="bgImg_tl" />
+
+    <script src="app.js"></script>
+</body>
+
 </html>

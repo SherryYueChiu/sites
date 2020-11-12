@@ -1,0 +1,14 @@
+{
+    "short_name": "優惠券分享",
+    "name": "優惠券分享",
+    "icons": [{
+        "src": "/images/logo.png",
+        "type": "image/png",
+        "sizes": "512x512"
+    }],
+    "start_url": "/",
+    "background_color": "#1C1E23",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#1C1E23"
+}

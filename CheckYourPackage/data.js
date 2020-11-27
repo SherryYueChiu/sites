@@ -1,4 +1,4 @@
-lastUpdate = "~ 2020/11/27";
+lastUpdate = "~ 2020/11/27 10PM";
 packages = `
 To:張秀娟
 Room:3F

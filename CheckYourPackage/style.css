@@ -24,7 +24,6 @@ body {
 #packageContainer {
     width: 100%;
     flex: 1;
-    padding: 1em;
     border-radius: .5em;
 }
 

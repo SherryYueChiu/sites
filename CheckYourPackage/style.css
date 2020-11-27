@@ -22,10 +22,7 @@ body {
 }
 
 #packageContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex-direction: row;
+    width: 100%;
     flex: 1;
     padding: 1em;
     border-radius: .5em;
@@ -33,14 +30,14 @@ body {
 
 .package {
     display: block;
-    width: 90%;
+    width: 80%;
     height: 4em;
+    margin: auto;
     margin-bottom: 1em;
     background: rgb(65, 94, 119);
     color: black;
     font-size: 1em;
     padding: 1em;
-    text-align: center;
     border-radius: .5em;
 }
 

@@ -1,9 +1,5 @@
-lastUpdate = "~ 2020/12/01 18 PM";
+lastUpdate = "~ 2020/12/01 23PM";
 packages = `
-To:張筱楓
-From:監理站
-Color:粉紅
-
 To:張秀娟
 Room:3F
 From:郵局招領單

@@ -1,9 +1,5 @@
-lastUpdate = "~ 2020/12/01 23PM";
+lastUpdate = "~ 2020/12/03 20PM";
 packages = `
-To:陳昱廷
-From:玉山銀行
-Color:白色
-
 To:邱耀陞
 From:勞保局
 Room:507

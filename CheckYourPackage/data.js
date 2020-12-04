@@ -1,12 +1,12 @@
-lastUpdate = "~ 2020/12/03 20PM";
+lastUpdate = "~ 2020/12/04 20PM";
 packages = `
+To:吳美環
+From:全聯DM
+Color:白色
+
 To:邱耀陞
 From:勞保局
 Room:507
-Color:白色
-
-To:謝有惟
-From:全聯DM
 Color:白色
 
 To:張秀娟

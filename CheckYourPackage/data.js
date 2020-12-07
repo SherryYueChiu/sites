@@ -1,4 +1,4 @@
-lastUpdate = "~ 2020/12/04 20PM";
+lastUpdate = "~ 2020/12/07 23PM";
 packages = `
 To:吳美環
 From:全聯DM

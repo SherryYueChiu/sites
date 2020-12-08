@@ -1,5 +1,24 @@
-lastUpdate = "~ 2020/12/07 23PM";
+lastUpdate = "~ 2020/12/08 13PM";
 packages = `
+To:許甄霙
+From:天下雜誌
+Room:304
+Color:白色
+
+To:許呈祥
+From:天下雜誌
+Color:白色
+
+To:葉秋伶
+From:相聲瓦舍
+Room:503
+Color:白色
+
+To:康書偉
+From:華南銀行
+Room:510
+Color:白色
+
 To:吳美環
 From:全聯DM
 Color:白色

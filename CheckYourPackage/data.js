@@ -1,4 +1,4 @@
-lastUpdate = "~ 2020/12/08 13PM";
+lastUpdate = "~ 2020/12/10 08AM";
 packages = `
 To:許甄霙
 From:天下雜誌

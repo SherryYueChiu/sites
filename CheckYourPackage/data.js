@@ -1,4 +1,4 @@
-lastUpdate = "~ 2020/12/10 08AM";
+lastUpdate = "~ 2020/12/10 23PM";
 packages = `
 To:許甄霙
 From:天下雜誌
@@ -44,5 +44,5 @@ Color:褐色
 
 To:吳韻哲
 From:就服處
-Color:藍色x2、綠色x1
+Color:藍色x2、綠色x1、黃色x1
 `;

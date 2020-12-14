@@ -1,10 +1,5 @@
-lastUpdate = "~ 2020/12/14 18PM";
+lastUpdate = "~ 2020/12/15 03AM";
 packages = `
-To:許甄霙
-From:天下雜誌
-Room:304
-Color:白色
-
 To:陳奐如
 Room:305
 From:國泰世華

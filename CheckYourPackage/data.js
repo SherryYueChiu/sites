@@ -1,13 +1,5 @@
 lastUpdate = "~ 2020/12/16 10AM";
 packages = `
-To:許呈祥
-From:廣告服務業職業公會
-Color:白色
-
-To:Shen YuHsiang
-From:廣告讀物
-Color:透明
-
 To:陳奐如
 Room:305
 From:國泰世華

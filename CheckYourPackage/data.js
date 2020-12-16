@@ -1,4 +1,4 @@
-lastUpdate = "~ 2020/12/15 15PM";
+lastUpdate = "~ 2020/12/16 10AM";
 packages = `
 To:許呈祥
 From:廣告服務業職業公會

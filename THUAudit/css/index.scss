@@ -1,10 +1,15 @@
+$color1:#ef9a9a;
+$color2:#ffccbc;
+$color3:#1a237e;
+$color4:#b2dfdb;
+$color5:#e8f5e9;
 ::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
 }
 
 body {
-    background-color: #ffccbc;
+    background-color: $color2;
 }
 
 html,
@@ -15,29 +20,27 @@ body,
     overflow-y: auto;
 }
 
-#app {
-    position: fixed;
-    left: 0;
-    top: 0;
+a:hover {
+    color: $color1;
 }
 
 #page2 {
     display: none;
 }
 
-a:hover {
-    color: #ef9a9a;
+.page {
+    overflow-y: auto;
 }
 
-.scannerImg {
-    position: fixed;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    height: 0px;
-    z-index: -2;
-    -webkit-box-shadow: 0px 0px 15px 5px white;
-    box-shadow: 0px 0px 15px 5px white;
+.classCode {
+    text-align: right;
+    margin-top: -1.5em;
+}
+
+hr.style-one {
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #333, #ccc, #333);
 }
 
 #footer {
@@ -47,15 +50,6 @@ a:hover {
     height: 10px;
     z-index: 99;
     opacity: 0.6;
-}
-
-#busTimeline>.tag>h5 {
-    text-align: right;
-    color: #b2dfdb;
-}
-
-#clock {
-    color: #b2dfdb;
 }
 
 #footer>span {
@@ -75,7 +69,6 @@ a:hover {
     font-weight: bolder !important;
     border-radius: 50px;
     text-align: center;
-    -webkit-box-shadow: 2px 2px 3px #999;
     box-shadow: 2px 2px 3px #999;
     z-index: 99;
 }
@@ -103,44 +96,41 @@ a:hover {
 }
 
 .bgColor1 {
-    background-color: #ef9a9a;
+    background-color: $color1;
 }
 
 .color1 {
-    color: #ef9a9a;
+    color: $color1;
 }
 
 .bgColor2 {
-    background-color: #ffccbc;
+    background-color: $color2;
 }
 
 .color2 {
-    color: #ffccbc;
+    color: $color2;
 }
 
 .bgColor3 {
-    background-color: #1a237e;
+    background-color: $color3;
 }
 
 .color3 {
-    color: #1a237e;
+    color: $color3;
 }
 
 .bgColor4 {
-    background-color: #b2dfdb;
+    background-color: $color4;
 }
 
 .color4 {
-    color: #b2dfdb;
+    color: $color4;
 }
 
 .bgColor5 {
-    background-color: #e8f5e9;
+    background-color: $color5;
 }
 
 .color5 {
-    color: #e8f5e9;
+    color: $color5;
 }
-
-
-/*# sourceMappingURL=index.css.map */

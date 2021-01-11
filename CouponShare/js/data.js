@@ -9,7 +9,9 @@ couponsMd = `
 - 1顆原味蛋塔即享券
 - QR_L
 - 806015983763
-
+- 
+- 
+- piglet
 
 ## 其它折價券
 `;
@@ -26,3 +28,15 @@ var einvoiceMd = `
 - CODE39
 - 1069
 `;
+
+/*
+Coupon Format:
+0 -> coupon title
+1 -> coupon description
+2 -> format of primary code
+3 -> content of primary code
+[4] -> format of secondary code
+[5] -> content of secondary code
+[6] -> check query string in url
+[7] -> prompt password
+*/

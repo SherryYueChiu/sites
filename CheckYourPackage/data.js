@@ -1,13 +1,9 @@
-lastUpdate = "~ 2021/01/28 02AM";
+lastUpdate = "~ 2021/01/29 14PM";
 packages = `
-To:葉燕昇
-From:保險公司
+To:陳英和
+From:郵寄招領
 Color:白色
-Room:503
-
-To:馬智宣
-From:童綜合醫院
-Color:白色
+Room:307
 
 To:陳昱廷
 From:玉山銀行

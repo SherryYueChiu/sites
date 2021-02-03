@@ -1,4 +1,4 @@
-lastUpdate = "~ 2021/02/01 04AM";
+lastUpdate = "~ 2021/02/04 04AM";
 packages = `
 To:邱耀陞
 From:勞保局

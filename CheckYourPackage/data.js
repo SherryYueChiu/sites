@@ -1,4 +1,4 @@
-lastUpdate = "~ 2021/02/11 06AM";
+lastUpdate = "~ 2021/02/12 06AM";
 packages = `
 To:林鼎強
 From:東海大學註冊組

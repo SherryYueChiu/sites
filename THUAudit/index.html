@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-  <head>
+
+<head>
     <title>為旁聽而生的它</title>
     <meta name="Description" content="東海大學旁聽情報小冊" />
     <meta name="KeyWords" content="玥餅'東海大學'課表'選課'旁聽" />
@@ -24,18 +25,19 @@
 
     <!--local sources-->
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
-  </head>
-  <body>
-    <div id="app" class="w-100 h-100">
-      <img src="./img/machi1.png" id="bgImg1" />
-      <img src="./img/pusheen1.png" id="bgImg2" />
-      <button class="floatingBtn" data-toggle="collapse" data-target="#collapse" onclick="javascript:window.open('https://hackmd.io/@sherryyue/ByUr2wkBD')">🛸</button>
+</head>
 
-      <!--第一頁 選星期-->
-      <div id="page1" class="w-100 h-100 page" align="center">
-        <div class="tag bg-white p-4 mt-5 rounded-lg mx-auto shadow-lg w-75">
-          <span id="greetingMsg"></span>
-          <select class="form-control-lg w-100 h-75 mt-3" id="chooseDay" name="chooseDay">
+<body>
+    <div id="app" class="w-100 h-100">
+        <img src="./img/machi1.png" id="bgImg1" />
+        <img src="./img/pusheen1.png" id="bgImg2" />
+        <button class="floatingBtn" data-toggle="collapse" data-target="#collapse" onclick="javascript:window.open('https://hackmd.io/@sherryyue/ByUr2wkBD')">🛸</button>
+
+        <!--第一頁 選星期-->
+        <div id="page1" class="w-100 h-100 page" align="center">
+            <div class="tag bg-white p-4 mt-5 rounded-lg mx-auto shadow-lg w-75">
+                <span id="greetingMsg"></span>
+                <select class="form-control-lg w-100 h-75 mt-3" id="chooseDay" name="chooseDay">
             <option value="1" align="center">星期一</option>
             <option value="2" align="center">星期二</option>
             <option value="3" align="center">星期三</option>
@@ -44,7 +46,7 @@
             <option value="6" align="center">星期六</option>
             <option value="0" align="center">星期天</option>
           </select>
-          <select class="form-control-lg w-100 h-75 mt-3" id="chooseAceptTime" name="chooseAceptTime">
+                <select class="form-control-lg w-100 h-75 mt-3" id="chooseAceptTime" name="chooseAceptTime">
             <option value="1" align="center">第一節（早8）</option>
             <option value="2" align="center">第二節（早9）</option>
             <option value="3" align="center">第三節（10.）</option>
@@ -59,45 +61,45 @@
             <option value="12" align="center">第12節（20.）</option>
             <option value="13" align="center">第13節（21.）</option>
           </select>
-        </div>
+            </div>
 
-        <div class="form-group w-75 mt-3">
-          <select class="w-100 h-75 form-control-lg mx-auto shadow-lg" id="chooseAceptRegion" style="opacity: 0.6; border: 0;">
+            <div class="form-group w-75 mt-3">
+                <select class="w-100 h-75 form-control-lg mx-auto shadow-lg" id="chooseAceptRegion" style="opacity: 0.6; border: 0;">
             <option value="0" selected="selected">一二校都可</option>
             <option value="1">只在一校</option>
             <option value="2">只在二校</option>
           </select>
+            </div>
+
+            <div class="tag bg-dark p-4 mt-3 mb-5 rounded-lg mx-auto shadow-lg w-75">
+                <button id="page1Submit" class="btn btn-block bgColor4">OK</button>
+            </div>
+
+            <div class="tag bg-white p-4 mt-3 mb-5 rounded mx-auto shadow-lg w-75 w-75 color2">
+                <h4>支持</h4>
+                <hr/> LikeCoin是新形態的寫手生態，如果你願意拍手5下，作者能獲得平台分發的小額現金鼓勵
+                <br>
+                <iframe data-v-b66e9a5a="" src="https://button.like.co/in/embed/sherryyue/button?referrer=https://sherryyuechiu.github.io/sites/THUAudit/" frameborder="0" class="lc-margin-top-64 lc-margin-bottom-32 lc-mobile"></iframe>
+            </div>
         </div>
 
-        <div class="tag bg-dark p-4 mt-3 mb-5 rounded-lg mx-auto shadow-lg w-75">
-          <button id="page1Submit" class="btn btn-block bgColor4">OK</button>
+        <!--第二頁 篩選結果-->
+        <div id="page2" class="w-100 h-100 page" align="center">
+            <div id="classList" class="w-100 h-100" align="center"></div>
         </div>
-        
-        <div class="tag bg-white p-4 mt-3 mb-5 rounded mx-auto shadow-lg w-75 w-75 color2">
-      <h4>支持</h4>
-      <hr/>
-      LikeCoin是新形態的寫手生態，如果你願意拍手5下，作者能獲得平台分發的小額現金鼓勵<br>
-      <iframe data-v-b66e9a5a="" src="https://button.like.co/in/embed/sherryyue/button?referrer=https://sherryyuechiu.github.io/sites/THUAudit/" frameborder="0" class="lc-margin-top-64 lc-margin-bottom-32 lc-mobile"></iframe>
+
+        <div align="center" id="footer" class="m-3 mb-4">
+            <span class="badge badge-pill badge-light p-2 pl-3 pr-3 color4">玥餅 / THU 109-2</span>
         </div>
-      </div>
-
-      <!--第二頁 篩選結果-->
-      <div id="page2" class="w-100 h-100 page" align="center">
-        <div id="classList" class="w-100 h-100" align="center"></div>
-      </div>
-
-      <div align="center" id="footer" class="m-3 mb-4">
-        <span class="badge badge-pill badge-light p-2 pl-3 pr-3 color4">玥餅 / THU 109-2(維護中，還剩2天)</span>
-      </div>
     </div>
 
-	<!--guest view tracker-->
+    <!--guest view tracker-->
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript">
-      var sc_project = 12205318;
-      var sc_invisible = 1;
-      var sc_security = "3a1d72a6";
-      var sc_https = 1;
+        var sc_project = 12205318;
+        var sc_invisible = 1;
+        var sc_security = "3a1d72a6";
+        var sc_https = 1;
     </script>
     <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
     <noscript>
@@ -112,6 +114,7 @@ StatCounter"
         </a>
       </div>
     </noscript>
-	
-  </body>
+
+</body>
+
 </html>

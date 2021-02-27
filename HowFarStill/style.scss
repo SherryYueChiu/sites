@@ -43,8 +43,12 @@ body {
         border-style: none;
         background: #9ee0ff;
     }
-    #distanceDisplay {
+    #roundDistanceDisplay {
         font-size: 3rem;
+        margin: 1rem;
+    }
+    #distanceDisplay {
+        font-size: 1rem;
         margin: 1rem;
     }
 }

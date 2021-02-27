@@ -50,8 +50,13 @@ body button:focus {
   background: #9ee0ff;
 }
 
-.container #distanceDisplay {
+.container #roundDistanceDisplay {
   font-size: 3rem;
+  margin: 1rem;
+}
+
+.container #distanceDisplay {
+  font-size: 1rem;
   margin: 1rem;
 }
 

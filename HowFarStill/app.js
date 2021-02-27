@@ -1,10 +1,29 @@
 var watcher; //Listening GeoLocation
-var global = { lat: 0, lng: 0 };
+var start = { lat: 0, lng: 0 };
 var target = { lat: 0, lng: 0 };
+var totalDistance = 0;
+var distanceColor = [
+    "#E8837E",
+    "#EFB28C",
+    "#EED19C",
+    "#ACBA9D",
+    "#749D9B",
+    "#3E6B7E",
+    "#00314F"
+]
 
 startTrackingDistance = document.getElementById("startTrackingDistance");
 targetGeo = document.getElementById("targetGeo");
 distanceDisplay = document.getElementById("distanceDisplay");
+
+function distanceText(distance) {
+    if (distance > 10) return ">10Km";
+    else if (distance > 5) return ">5Km";
+    else if (distance > 2) return ">2Km";
+    else if (distance > 1) return ">1Km";
+    else if (distance > 0.5) return ">500m";
+    else if (distance > 0.2) return "即將抵達";
+}
 
 function isGeolocationAvailable() {
     if ("geolocation" in navigator) {
@@ -20,31 +39,37 @@ function getCurrentPosition() {
         let lat, lng;
         lat = position.coords.latitude;
         lng = position.coords.longitude;
-        global.lat = lat;
-        global.lng = lng;
-        console.log(`Now at: ${global.lat}, ${global.lng}`);
+        start.lat = lat;
+        start.lng = lng;
+        totalDistance = calcDisTance();
+        console.log(`Now at: ${start.lat}, ${start.lng}`);
     });
 }
 
 function startTrackingMyLocation() {
+    navigator.geolocation.clearWatch(watcher);
     watcher = navigator.geolocation.watchPosition(function(position) {
         let lat, lng;
         lat = position.coords.latitude;
         lng = position.coords.longitude;
-        global.lat = lat;
-        global.lng = lng;
+        start.lat = lat;
+        start.lng = lng;
         startTrackingDisTance();
-        console.log(`Now at: ${global.lat}, ${global.lng}`);
+        console.log(`Now at: ${start.lat}, ${start.lng}`);
     });
 }
 
 function startTrackingDisTance() {
-    distanceDisplay.innerHTML = `${calcDisTance().toFixed(1)} Km`;
+    distanceLeft = calcDisTance();
+    colorLevel = (distanceColor.length - 1) * calcDisTance() / totalDistance;
+    roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
+    distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} Km)`;
+    document.body.style.background = distanceColor[colorLevel];
 }
 
 function calcDisTance() {
-    lat1 = global.lat;
-    lon1 = global.lng;
+    lat1 = start.lat;
+    lon1 = start.lng;
     lat2 = target.lat;
     lon2 = target.lng;
     var R = 6371; // km

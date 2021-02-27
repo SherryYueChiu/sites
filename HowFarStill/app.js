@@ -22,7 +22,7 @@ function getCurrentPosition() {
         lng = position.coords.longitude;
         global.lat = lat;
         global.lng = lng;
-        console.log(`Now at: ${global.latitude}, ${global.longitude}`);
+        console.log(`Now at: ${global.lat}, ${global.lng}`);
     });
 }
 
@@ -34,7 +34,7 @@ function startTrackingMyLocation() {
         global.lat = lat;
         global.lng = lng;
         startTrackingDisTance();
-        console.log(`Now at: ${global.latitude}, ${global.longitude}`);
+        console.log(`Now at: ${global.lat}, ${global.lng}`);
     });
 }
 

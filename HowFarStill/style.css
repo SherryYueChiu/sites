@@ -1,0 +1,74 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: #1d3541;
+  color: aliceblue;
+}
+
+body input:focus,
+body select:focus,
+body textarea:focus,
+body button:focus {
+  outline: none;
+}
+
+.container {
+  position: absolute;
+  width: 75%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.container label {
+  font-size: 2rem;
+}
+
+.container #targetGeo {
+  width: 90%;
+  height: 2rem;
+  margin: .5rem;
+  text-align: center;
+  font-size: 1.3rem;
+  border-radius: .5rem;
+  border-style: none;
+}
+
+.container #startTrackingDistance {
+  width: 90%;
+  height: 2.5rem;
+  margin: .5rem;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: .5rem;
+  border-style: none;
+  background: #9ee0ff;
+}
+
+.container #distanceDisplay {
+  font-size: 3rem;
+  margin: 1rem;
+}
+
+#menuBtn {
+  position: fixed;
+  right: 2rem;
+  bottom: 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  border: aliceblue solid 2px;
+  border-radius: 50%;
+}
+
+#menuBtn .fas {
+  position: absolute;
+  -webkit-transform: translate(35%, 25%);
+          transform: translate(35%, 25%);
+  font-size: 2rem;
+}
+/*# sourceMappingURL=style.css.map */

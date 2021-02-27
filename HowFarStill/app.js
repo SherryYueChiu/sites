@@ -22,7 +22,8 @@ function distanceText(distance) {
     else if (distance > 2) return ">2Km";
     else if (distance > 1) return ">1Km";
     else if (distance > 0.5) return ">500m";
-    else if (distance > 0.2) return "即將抵達";
+    else if (distance > 0.2) return ">200m";
+    else if return "即將抵達";
 }
 
 function isGeolocationAvailable() {
@@ -61,7 +62,7 @@ function startTrackingMyLocation() {
 
 function startTrackingDisTance() {
     distanceLeft = calcDisTance();
-    colorLevel = (distanceColor.length - 1) * calcDisTance() / totalDistance;
+    colorLevel = Math.round((distanceColor.length - 1) * (calcDisTance() / totalDistance));
     roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
     distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} Km)`;
     document.body.style.background = distanceColor[colorLevel];

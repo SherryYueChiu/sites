@@ -1,0 +1,14 @@
+{
+    "short_name": "還有多遠？",
+    "name": "還有多遠？",
+    "icons": [{
+        "src": "/logo.png",
+        "type": "image/png",
+        "sizes": "512x512"
+    }],
+    "start_url": "/",
+    "background_color": "#1d3541",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#1d3541"
+}

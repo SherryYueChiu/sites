@@ -1,0 +1,30 @@
+From f5bcde1c7a943fea7264e6278aadd4214d07a9ef Mon Sep 17 00:00:00 2001
+Message-Id: <f5bcde1c7a943fea7264e6278aadd4214d07a9ef.1614446839.git.sherryyue.chiu@protonmail.com>
+From: =?UTF-8?q?=E6=A2=93=E6=A6=B3=28=E7=8E=A5=E9=A4=85=29?=
+ <sherryyue.c@protonmail.com>
+Date: Sat, 27 Feb 2021 18:32:30 +0800
+Subject: [PATCH] =?UTF-8?q?=E8=AA=9E=E6=B3=95=E9=8C=AF=E8=AA=A4?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ HowFarStill/app.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/HowFarStill/app.js b/HowFarStill/app.js
+index 8473326..a4ad11c 100644
+--- a/HowFarStill/app.js
++++ b/HowFarStill/app.js
+@@ -23,7 +23,7 @@ function distanceText(distance) {
+     else if (distance > 1) return ">1Km";
+     else if (distance > 0.5) return ">500m";
+     else if (distance > 0.2) return ">200m";
+-    else if return "即將抵達";
++    else return "即將抵達";
+ }
+ 
+ function isGeolocationAvailable() {
+-- 
+2.25.1
+

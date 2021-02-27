@@ -2,7 +2,7 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
-  background: #1d3541;
+  background: #EFF1F3;
   color: aliceblue;
 }
 
@@ -15,17 +15,21 @@ body button:focus {
 
 .container {
   position: absolute;
-  width: 75%;
   top: 50%;
   left: 50%;
+  width: 70%;
+  padding: 1.5rem;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   text-align: center;
   font-size: 1.5rem;
+  border-radius: 2rem;
+  background: rgba(29, 53, 65, 0.3);
 }
 
 .container label {
   font-size: 2rem;
+  font-weight: lighter;
 }
 
 .container #targetGeo {
@@ -51,13 +55,15 @@ body button:focus {
 }
 
 .container #roundDistanceDisplay {
-  font-size: 3rem;
   margin: 1rem;
+  font-size: 3.5rem;
+  font-weight: bolder;
 }
 
 .container #distanceDisplay {
-  font-size: 1rem;
   margin: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 #menuBtn {

@@ -1,74 +1,28 @@
+//variables
 var watcher; //Listening GeoLocation
+var wakeLock = null; //screen wake
 var start = { lat: 0, lng: 0 };
 var target = { lat: 0, lng: 0 };
 var totalDistance = 0;
 var distanceColor = [
-    "#E8837E",
-    "#EFB28C",
-    "#EED19C",
-    "#ACBA9D",
-    "#749D9B",
-    "#3E6B7E",
-    "#00314F"
+    "#FDE8E9",
+    "#E3BAC6",
+    "#BC9EC1",
+    "#596475",
+    "#1F2232"
 ]
 
+//DOMs
 startTrackingDistance = document.getElementById("startTrackingDistance");
 targetGeo = document.getElementById("targetGeo");
 distanceDisplay = document.getElementById("distanceDisplay");
 
-function distanceText(distance) {
-    if (distance > 10) return ">10Km";
-    else if (distance > 5) return ">5Km";
-    else if (distance > 2) return ">2Km";
-    else if (distance > 1) return ">1Km";
-    else if (distance > 0.5) return ">500m";
-    else if (distance > 0.2) return ">200m";
-    else return "即將抵達";
+// Converts numeric degrees to radians
+function toRad(Value) {
+    return Value * Math.PI / 180;
 }
 
-function isGeolocationAvailable() {
-    if ("geolocation" in navigator) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-//24.1814342, 120.5888504
-function getCurrentPosition() {
-    navigator.geolocation.getCurrentPosition(function(position) {
-        let lat, lng;
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-        start.lat = lat;
-        start.lng = lng;
-        totalDistance = calcDisTance();
-        console.log(`Now at: ${start.lat}, ${start.lng}`);
-    });
-}
-
-function startTrackingMyLocation() {
-    navigator.geolocation.clearWatch(watcher);
-    watcher = navigator.geolocation.watchPosition(function(position) {
-        let lat, lng;
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-        start.lat = lat;
-        start.lng = lng;
-        startTrackingDisTance();
-        console.log(`Now at: ${start.lat}, ${start.lng}`);
-    });
-}
-
-function startTrackingDisTance() {
-    distanceLeft = calcDisTance();
-    colorLevel = Math.round((distanceColor.length - 1) * (calcDisTance() / totalDistance));
-    roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
-    distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} Km)`;
-    document.body.style.background = distanceColor[colorLevel];
-}
-
-function calcDisTance() {
+function calcDistance() {
     lat1 = start.lat;
     lon1 = start.lng;
     lat2 = target.lat;
@@ -86,23 +40,94 @@ function calcDisTance() {
     return d;
 }
 
-// Converts numeric degrees to radians
-function toRad(Value) {
-    return Value * Math.PI / 180;
+function screenWake() {
+    try {
+        wakeLock = navigator.wakeLock.request('screen');
+    } catch (err) {}
+    //for reacquire
+    document.addEventListener('visibilitychange', async() => {
+        if (wakeLock !== null && document.visibilityState === 'visible') {
+            wakeLock = await navigator.wakeLock.request('screen');
+        }
+    });
 }
 
+function distanceText(distance) {
+    if (distance > 10) return ">10km";
+    else if (distance > 5) return ">5km";
+    else if (distance > 2) return ">2km";
+    else if (distance > 1) return ">1km";
+    else if (distance > 0.5) return ">500m";
+    else if (distance > 0.2) return ">200m";
+    else return "即將抵達";
+}
+
+function isGeolocationAvailable() {
+    if ("geolocation" in navigator) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//test: 24.1814342, 120.5888504
+function getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+        let lat, lng;
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        start.lat = lat;
+        start.lng = lng;
+        totalDistance = calcDistance();
+    });
+}
+
+function startTrackingMyLocation() {
+    navigator.geolocation.clearWatch(watcher);
+    watcher = navigator.geolocation.watchPosition(function(position) {
+        let lat, lng;
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        start.lat = lat;
+        start.lng = lng;
+        startTrackingDisTance();
+    });
+}
+
+function startTrackingDisTance() {
+    distanceLeft = calcDistance();
+    colorLevel = Math.round((distanceColor.length - 1) * (calcDistance() / totalDistance));
+    roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
+    distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} Km)`;
+    document.body.style.background = distanceColor[colorLevel];
+}
+
+//events
 startTrackingDistance.addEventListener("click", () => {
     if (isGeolocationAvailable()) {
         if (targetGeo.value) {
-            let tmp = targetGeo.value.split(",");
-            target.lat = 1 * tmp[0];
-            target.lng = 1 * tmp[1];
-            getCurrentPosition();
-            startTrackingMyLocation();
+            if (targetGeo.value.match(/[\d.]+, *[\d.]+/)) {
+                //format string: lat, lng
+                let regex = targetGeo.value.match(/([\d.]+), *([\d.]+)/);
+                target.lat = 1 * regex[1];
+                target.lng = 1 * regex[2];
+                getCurrentPosition();
+                startTrackingMyLocation();
+                //hide button
+                startTrackingDistance.style.display = "none";
+            } else {
+                alert("請輸入正確的格式：經度, 緯度");
+            }
         } else {
-            alert("未輸入目的地");
+            alert("請輸入目的地");
         }
     } else {
         alert("GPS未啟用");
     }
 });
+
+function onInit() {
+    screenWake();
+}
+
+onInit();

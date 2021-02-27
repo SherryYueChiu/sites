@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./logo.png">
     <title>還有多遠？</title>
     <link rel="stylesheet" href="./style.css">
     <script src="https://kit.fontawesome.com/f5e3a3eacb.js" crossorigin="anonymous"></script>
@@ -12,14 +13,14 @@
 
 <body>
     <div class="container">
-        <label for="targetGeo">目的地：</label>
-        <input id="targetGeo" type="text">
+        <label for="targetGeo"><i class="fas fa-flag-checkered"></i> 目的地</label>
+        <input id="targetGeo" type="text" placeholder="經度, 緯度">
         <div class="break"></div>
-        <button id="startTrackingDistance"><i class="fas fa-play"></i> 開始追蹤</button>
+        <button id="startTrackingDistance"><i class="fas fa-location-arrow"></i></button>
         <div id="roundDistanceDisplay"></div>
         <div id="distanceDisplay"></div>
     </div>
-    <div id="menuBtn"><i class="fas fa-bars"></i></div>
+    <!--<div id="menuBtn"><i class="fas fa-bars"></i></div>-->
     <script src="./app.js"></script>
 </body>
 

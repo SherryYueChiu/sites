@@ -2,7 +2,7 @@ body {
     width: 100%;
     height: 100%;
     margin: 0;
-    background: #1d3541;
+    background: #EFF1F3;
     color: aliceblue;
     input:focus,
     select:focus,
@@ -14,14 +14,18 @@ body {
 
 .container {
     position: absolute;
-    width: 75%;
     top: 50%;
     left: 50%;
+    width: 70%;
+    padding: 1.5rem;
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 1.5rem;
+    border-radius: 2rem;
+    background: rgba(29, 53, 65, 0.3);
     label {
         font-size: 2rem;
+        font-weight: lighter;
     }
     #targetGeo {
         width: 90%;
@@ -44,12 +48,14 @@ body {
         background: #9ee0ff;
     }
     #roundDistanceDisplay {
-        font-size: 3rem;
         margin: 1rem;
+        font-size: 3.5rem;
+        font-weight: bolder;
     }
     #distanceDisplay {
-        font-size: 1rem;
         margin: 1rem;
+        font-size: 1.5rem;
+        font-weight: bold;
     }
 }
 

@@ -1,14 +1,22 @@
 {
-    "short_name": "還有多遠？",
+    "dir": "ltr",
+    "lang": "Chinese",
     "name": "還有多遠？",
+    "short_name": "還有多遠？",
+    "scope": "/sites/HowFarStill/",
+    "display": "fullscreen",
+    "start_url": "https://sherryyuechiu.github.io/sites/HowFarStill/",
+    "background_color": "#000000",
+    "theme_color": "transparent",
+    "description": " 簡單的查看還有多遠才到",
+    "orientation": "portrait",
+    "related_applications": [],
+    "prefer_related_applications": false,
     "icons": [{
-        "src": "/logo.png",
+        "src": "https://sherryyuechiu.github.io/sites/HowFarStill/logo.png",
         "type": "image/png",
         "sizes": "512x512"
     }],
-    "start_url": "/",
-    "background_color": "#1d3541",
-    "display": "standalone",
-    "scope": "/",
-    "theme_color": "#1d3541"
+    "url": "https://sherryyuechiu.github.io/sites/HowFarStill/",
+    "screenshots": []
 }

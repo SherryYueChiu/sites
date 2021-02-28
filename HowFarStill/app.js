@@ -11,11 +11,14 @@ var distanceColor = [
     "#596475",
     "#1F2232"
 ]
+var data_storedPlaces = "";
 
 //DOMs
 startTrackingDistance = document.getElementById("startTrackingDistance");
 targetGeo = document.getElementById("targetGeo");
 distanceDisplay = document.getElementById("distanceDisplay");
+menuBtn = document.getElementById("menuBtn");
+selectPlaceStored = document.getElementById("selectPlaceStored");
 
 // Converts numeric degrees to radians
 function toRad(Value) {
@@ -102,6 +105,21 @@ function startTrackingDisTance() {
     document.body.style.background = distanceColor[colorLevel];
 }
 
+function initStoredPlaces() {
+    data_storedPlaces = localStorage.getItem("places");
+    listDOM = document.querySelector("#selectPlaceStored ul");
+    list = data_storedPlaces.trim().split(/[\r\n]+/);
+    listDOM.innerHTML = "";
+    list.forEach((cur, i, arr) => {
+        //隔行存
+        if (i % 2 != 0) {
+            geo = cur;
+            place = arr[i - 1];
+            listDOM.innerHTML += `<li geo="${geo}">${place}</li>`;
+        }
+    });
+}
+
 //events
 startTrackingDistance.addEventListener("click", () => {
     if (isGeolocationAvailable()) {
@@ -109,6 +127,15 @@ startTrackingDistance.addEventListener("click", () => {
             if (targetGeo.value.match(/[\d.]+, *[\d.]+/)) {
                 //format string: lat, lng
                 let regex = targetGeo.value.match(/([\d.]+), *([\d.]+)/);
+                target.lat = 1 * regex[1];
+                target.lng = 1 * regex[2];
+                getCurrentPosition();
+                startTrackingMyLocation();
+                //hide button
+                startTrackingDistance.style.display = "none";
+            } else if (targetGeo.getAttribute("realGeo").match(/[\d.]+, *[\d.]+/)) {
+                //format string: lat, lng
+                let regex = targetGeo.getAttribute("realGeo").match(/([\d.]+), *([\d.]+)/);
                 target.lat = 1 * regex[1];
                 target.lng = 1 * regex[2];
                 getCurrentPosition();
@@ -126,7 +153,50 @@ startTrackingDistance.addEventListener("click", () => {
     }
 });
 
+//menu button
+menuBtn.addEventListener("click", async() => {
+    //bind events
+    document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
+        element.addEventListener("click", (event) => {
+            targetGeo.setAttribute("realGeo") = element.getAttribute("geo");
+            targetGeo.value = element.innerHTML;
+        });
+    });
+    selectPlaceStored.style.display = "block";
+});
+
+//in selectPlaceStored
+document.querySelector("#selectPlaceStored .add").addEventListener("click", () => {
+    storePlaceModal.style.display = "block";
+});
+
+document.querySelector("#selectPlaceStored .dismiss").addEventListener("click", () => {
+    selectPlaceStored.style.display = "none";
+});
+
+//in storePlaceModal
+document.querySelector("#storePlaceModal .confirm").addEventListener("click", async() => {
+    localStorage.setItem("places", document.querySelector("#inputPlaces").value.trim());
+    storePlaceModal.style.display = "none";
+    await initStoredPlaces();
+    //bind events
+    document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
+        element.addEventListener("click", (event) => {
+            targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
+            targetGeo.value = element.innerHTML;
+        });
+    });
+});
+
+document.querySelector("#storePlaceModal .cancel").addEventListener("click", () => {
+    document.querySelector("#inputPlaces").value = localStorage.getItem("places");
+    storePlaceModal.style.display = "none";
+});
+
 function onInit() {
+    data_storedPlaces = localStorage.getItem("places").trim();
+    document.querySelector("#inputPlaces").value = data_storedPlaces;
+    initStoredPlaces();
     screenWake();
 }
 

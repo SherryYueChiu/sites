@@ -95,7 +95,7 @@ function startTrackingMyLocation() {
         lng = position.coords.longitude;
         start.lat = lat;
         start.lng = lng;
-        nowGeo.innerHTML = `${lat}, ${lng}`;
+        nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
         startTrackingDisTance();
     });
 }
@@ -229,7 +229,7 @@ async function onInit() {
         lng = position.coords.longitude;
         start.lat = lat;
         start.lng = lng;
-        nowGeo.innerHTML = `${lat}, ${lng}`;
+        nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
     });
 }
 

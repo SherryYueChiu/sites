@@ -18,7 +18,9 @@ startTrackingDistance = document.getElementById("startTrackingDistance");
 targetGeo = document.getElementById("targetGeo");
 distanceDisplay = document.getElementById("distanceDisplay");
 menuBtn = document.getElementById("menuBtn");
+pauseBtn = document.getElementById("pauseBtn");
 selectPlaceStored = document.getElementById("selectPlaceStored");
+nowGeo = document.getElementById("nowGeo");
 
 // Converts numeric degrees to radians
 function toRad(Value) {
@@ -93,6 +95,7 @@ function startTrackingMyLocation() {
         lng = position.coords.longitude;
         start.lat = lat;
         start.lng = lng;
+        nowGeo.innerHTML = `${lat}, ${lng}`;
         startTrackingDisTance();
     });
 }
@@ -131,8 +134,10 @@ startTrackingDistance.addEventListener("click", () => {
                 target.lng = 1 * regex[2];
                 getCurrentPosition();
                 startTrackingMyLocation();
-                //hide button
+                //toggle buttons
                 startTrackingDistance.style.display = "none";
+                menuBtn.style.display = "none";
+                pauseBtn.style.display = "block";
             } else if (targetGeo.getAttribute("realGeo").match(/[\d.]+, *[\d.]+/)) {
                 //format string: lat, lng
                 let regex = targetGeo.getAttribute("realGeo").match(/([\d.]+), *([\d.]+)/);
@@ -140,9 +145,10 @@ startTrackingDistance.addEventListener("click", () => {
                 target.lng = 1 * regex[2];
                 getCurrentPosition();
                 startTrackingMyLocation();
-                //hide button
+                //toggle buttons
                 startTrackingDistance.style.display = "none";
                 menuBtn.style.display = "none";
+                pauseBtn.style.display = "block";
             } else {
                 alert("請輸入正確的格式：經度, 緯度");
             }
@@ -154,13 +160,20 @@ startTrackingDistance.addEventListener("click", () => {
     }
 });
 
+//pause button
+pauseBtn.addEventListener("click", () => {
+    if (confirm("確定要結束？")) {
+        history.go(0);
+    }
+});
+
 //menu button
 menuBtn.addEventListener("click", async() => {
     //bind events
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
             targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
-            targetGeo.value = element.innerHTML;
+            targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
             document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
@@ -185,7 +198,7 @@ document.querySelector("#storePlaceModal .confirm").addEventListener("click", as
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
             targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
-            targetGeo.value = element.innerHTML;
+            targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
             document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
@@ -204,11 +217,20 @@ async function onInit() {
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
             targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
-            targetGeo.value = element.innerHTML;
+            targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
             document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
     screenWake();
+    //update current position
+    watcher = navigator.geolocation.watchPosition(function(position) {
+        let lat, lng;
+        lat = position.coords.latitude;
+        lng = position.coords.longitude;
+        start.lat = lat;
+        start.lng = lng;
+        nowGeo.innerHTML = `${lat}, ${lng}`;
+    });
 }
 
 onInit();

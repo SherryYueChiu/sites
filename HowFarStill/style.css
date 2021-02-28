@@ -13,6 +13,55 @@ body button:focus {
   outline: none;
 }
 
+body #nowGeo {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  color: gray;
+  font-size: 1.5rem;
+}
+
+body #pauseBtn {
+  display: none;
+  position: fixed;
+  right: 2rem;
+  bottom: 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  padding: .2rem;
+  background: #252424;
+  border: aliceblue solid 2px;
+  border-radius: 50%;
+  z-index: 100;
+}
+
+body #pauseBtn .fas {
+  position: absolute;
+  -webkit-transform: translate(35%, 25%);
+          transform: translate(35%, 25%);
+  font-size: 2rem;
+}
+
+body #menuBtn {
+  position: fixed;
+  right: 2rem;
+  bottom: 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  padding: .2rem;
+  background: #252424;
+  border: aliceblue solid 2px;
+  border-radius: 50%;
+  z-index: 100;
+}
+
+body #menuBtn .fas {
+  position: absolute;
+  -webkit-transform: translate(35%, 25%);
+          transform: translate(35%, 25%);
+  font-size: 2rem;
+}
+
 .container {
   position: absolute;
   top: 50%;
@@ -34,7 +83,7 @@ body button:focus {
 
 .container #targetGeo {
   width: 90%;
-  height: 2rem;
+  padding: .5rem;
   margin: .5rem;
   text-align: center;
   font-size: 1.3rem;
@@ -43,8 +92,8 @@ body button:focus {
 }
 
 .container #startTrackingDistance {
-  width: 90%;
-  height: 2.5rem;
+  width: 94%;
+  padding: .5rem;
   margin: .5rem;
   text-align: center;
   font-size: 1.3rem;
@@ -76,11 +125,10 @@ body button:focus {
           transform: translate(-50%, -50%);
   border: #252424 solid 2px;
   border-radius: 1rem;
-  z-index: 102;
+  z-index: 103;
 }
 
 .modal .header {
-  height: 2rem;
   padding: .5rem 1rem .5rem 1.5rem;
   background: #525252;
   font-size: 1.5rem;
@@ -104,31 +152,28 @@ body button:focus {
 }
 
 .modal .body button {
-  border-radius: 1rem;
+  padding: .2rem;
+  color: aliceblue;
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  border-style: none;
 }
 
 .modal .body button.confirm {
   position: relative;
   left: 0px;
   width: 40%;
-  margin: .2em .5em .2em 0em;
+  margin: 0em .5em 0em 0em;
   background: #4357AD;
-  color: aliceblue;
-  font-size: 1.5rem;
-  border-radius: .5rem;
-  border-style: none;
+  font-weight: bold;
 }
 
 .modal .body button.cancel {
   position: relative;
   right: 0px;
   width: 40%;
-  margin: .2em 0em .2em .5em;
+  margin: 0em 0em 0em .5em;
   background: #C1666B;
-  color: aliceblue;
-  font-size: 1.5rem;
-  border-radius: .5rem;
-  border-style: none;
 }
 
 .modal#storePlaceModal {
@@ -141,17 +186,18 @@ body button:focus {
   bottom: 0px;
   width: 100%;
   height: 50%;
-  background: aliceblue;
-  z-index: 101;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 102;
 }
 
 .popupList .header button {
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: .2rem;
   margin: .8rem;
   border-radius: 1rem;
   color: aliceblue;
-  font-size: 1.5rem;
+  font-size: 2rem;
   border-radius: .5rem;
   border-style: none;
 }
@@ -180,9 +226,7 @@ body button:focus {
   width: 80%;
   height: 70%;
   padding: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
+  margin: 0 auto 0 auto;
   text-align: center;
   list-style: none;
   overflow-y: auto;
@@ -190,7 +234,7 @@ body button:focus {
 
 .popupList .body ul li {
   padding: .5rem;
-  border-bottom: #252424 1px dashed;
+  border-bottom: #252424 2px dashed;
   font-size: 1.5rem;
 }
 
@@ -200,24 +244,5 @@ body button:focus {
 
 .popupList#selectPlaceStored {
   display: none;
-}
-
-#menuBtn {
-  position: fixed;
-  right: 2rem;
-  bottom: 2.5rem;
-  width: 3rem;
-  height: 3rem;
-  background: #252424;
-  border: aliceblue solid 2px;
-  border-radius: 50%;
-  z-index: 100;
-}
-
-#menuBtn .fas {
-  position: absolute;
-  -webkit-transform: translate(35%, 25%);
-          transform: translate(35%, 25%);
-  font-size: 2rem;
 }
 /*# sourceMappingURL=style.css.map */

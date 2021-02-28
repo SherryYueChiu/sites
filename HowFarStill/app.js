@@ -142,6 +142,7 @@ startTrackingDistance.addEventListener("click", () => {
                 startTrackingMyLocation();
                 //hide button
                 startTrackingDistance.style.display = "none";
+                menuBtn.style.display = "none";
             } else {
                 alert("請輸入正確的格式：經度, 緯度");
             }
@@ -160,6 +161,7 @@ menuBtn.addEventListener("click", async() => {
         element.addEventListener("click", (event) => {
             targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
             targetGeo.value = element.innerHTML;
+            document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
     selectPlaceStored.style.display = "block";
@@ -184,6 +186,7 @@ document.querySelector("#storePlaceModal .confirm").addEventListener("click", as
         element.addEventListener("click", (event) => {
             targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
             targetGeo.value = element.innerHTML;
+            document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
 });
@@ -202,6 +205,7 @@ async function onInit() {
         element.addEventListener("click", (event) => {
             targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
             targetGeo.value = element.innerHTML;
+            document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
     screenWake();

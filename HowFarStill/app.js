@@ -196,7 +196,14 @@ document.querySelector("#storePlaceModal .cancel").addEventListener("click", () 
 function onInit() {
     data_storedPlaces = localStorage.getItem("places").trim();
     document.querySelector("#inputPlaces").value = data_storedPlaces;
-    initStoredPlaces();
+    await initStoredPlaces();
+    //bind events
+    document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
+        element.addEventListener("click", (event) => {
+            targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
+            targetGeo.value = element.innerHTML;
+        });
+    });
     screenWake();
 }
 

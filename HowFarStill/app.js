@@ -158,7 +158,7 @@ menuBtn.addEventListener("click", async() => {
     //bind events
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
-            targetGeo.setAttribute("realGeo") = element.getAttribute("geo");
+            targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
             targetGeo.value = element.innerHTML;
         });
     });
@@ -193,7 +193,7 @@ document.querySelector("#storePlaceModal .cancel").addEventListener("click", () 
     storePlaceModal.style.display = "none";
 });
 
-function onInit() {
+async function onInit() {
     data_storedPlaces = localStorage.getItem("places").trim();
     document.querySelector("#inputPlaces").value = data_storedPlaces;
     await initStoredPlaces();

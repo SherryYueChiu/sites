@@ -1,4 +1,10 @@
+html,
 body {
+  background: #EFF1F3 !important;
+}
+
+body {
+  position: absolute;
   width: 100%;
   height: 100%;
   margin: 0;

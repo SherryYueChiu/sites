@@ -83,6 +83,9 @@ function getCurrentPosition() {
         lng = position.coords.longitude;
         start.lat = lat;
         start.lng = lng;
+        if (lat == 0 && lng == 0) {
+            nowGeo.innerHTML = "請開啟GPS";
+        }
         totalDistance = calcDistance();
     });
 }
@@ -123,6 +126,16 @@ function initStoredPlaces() {
     });
 }
 
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.body.requestFullscreen();
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
+}
+
 //events
 startTrackingDistance.addEventListener("click", () => {
     if (isGeolocationAvailable()) {
@@ -158,6 +171,10 @@ startTrackingDistance.addEventListener("click", () => {
     } else {
         alert("GPS未啟用");
     }
+});
+
+document.querySelector(".container").addEventListener("click", () => {
+    toggleFullScreen();
 });
 
 //pause button
@@ -221,7 +238,6 @@ async function onInit() {
             document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
-    screenWake();
     //update current position
     watcher = navigator.geolocation.watchPosition(function(position) {
         let lat, lng;
@@ -231,6 +247,7 @@ async function onInit() {
         start.lng = lng;
         nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
     });
+    screenWake();
 }
 
 onInit();

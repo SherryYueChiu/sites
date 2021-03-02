@@ -14,7 +14,7 @@ var distanceColor = [
 var data_storedPlaces = "";
 
 //DOMs
-var root = document.getElementsByTagName( 'html' )[0];
+var root = document.getElementsByTagName('html')[0];
 startTrackingDistance = document.getElementById("startTrackingDistance");
 targetGeo = document.getElementById("targetGeo");
 distanceDisplay = document.getElementById("distanceDisplay");
@@ -108,7 +108,11 @@ function startTrackingDisTance() {
     distanceLeft = calcDistance();
     colorLevel = Math.round((distanceColor.length - 1) * (calcDistance() / totalDistance));
     roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
-    distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} Km)`;
+    if (distanceLeft > 1) {
+        distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} km)`;
+    } else {
+        distanceDisplay.innerHTML = `(${(1000 * distanceLeft).toFixed(0)} m)`;
+    }
     document.body.style.background = distanceColor[colorLevel];
     root.style.background = distanceColor[colorLevel];
 }

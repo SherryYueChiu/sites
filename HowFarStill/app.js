@@ -14,6 +14,7 @@ var distanceColor = [
 var data_storedPlaces = "";
 
 //DOMs
+var root = document.getElementsByTagName( 'html' )[0];
 startTrackingDistance = document.getElementById("startTrackingDistance");
 targetGeo = document.getElementById("targetGeo");
 distanceDisplay = document.getElementById("distanceDisplay");
@@ -109,6 +110,7 @@ function startTrackingDisTance() {
     roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
     distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} Km)`;
     document.body.style.background = distanceColor[colorLevel];
+    root.style.background = distanceColor[colorLevel];
 }
 
 function initStoredPlaces() {

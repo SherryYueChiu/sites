@@ -46,17 +46,15 @@ function calcDistance() {
     return d;
 }
 
-function screenWake() {
+const requestWakeLock = async() => {
     try {
-        wakeLock = navigator.wakeLock.request('screen');
-    } catch (err) {}
-    //for reacquire
-    document.addEventListener('visibilitychange', async() => {
-        if (wakeLock !== null && document.visibilityState === 'visible') {
-            wakeLock = await navigator.wakeLock.request('screen');
-        }
-    });
+        const wakeLock = await navigator.wakeLock.request('screen');
+    } catch (err) {
+        // The wake lock request fails - usually system-related, such as low battery.
+        console.log(`${err.name}, ${err.message}`);
+    }
 }
+requestWakeLock();
 
 function distanceText(distance) {
     if (distance > 10) return ">10km";
@@ -253,7 +251,7 @@ async function onInit() {
         start.lng = lng;
         nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
     });
-    screenWake();
+    requestWakeLock();
 }
 
 onInit();

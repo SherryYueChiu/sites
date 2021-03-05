@@ -1,10 +1,10 @@
 {
     "dir": "ltr",
-    "lang": "Chinese",
+    "lang": "zh-Hant-TW",
     "name": "有信",
     "short_name": "有信",
     "scope": "./",
-    "display": "fullscreen",
+    "display": "standalone",
     "start_url": "./",
     "background_color": "#EFF1F3",
     "theme_color": "transparent",

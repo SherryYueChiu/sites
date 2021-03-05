@@ -1,10 +1,10 @@
 {
     "dir": "ltr",
-    "lang": "Chinese",
+    "lang": "zh-Hant-TW",
     "name": "為旁聽而生的它",
     "short_name": "為旁聽而生的它",
     "scope": "./",
-    "display": "fullscreen",
+    "display": "standalone",
     "start_url": "./",
     "background_color": "#FFCCBC",
     "theme_color": "transparent",

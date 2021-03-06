@@ -1,5 +1,6 @@
 const files = [
     './',
+    './img/',
     './app.js',
     './style.css',
 ];

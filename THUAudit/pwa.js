@@ -15,7 +15,7 @@ if ('serviceWorker' in navigator) {
 
 async function registerServiceWorker() {
     try {
-        const registration = await navigator.serviceWorker.register('sw.js');
+        const registration = await navigator.serviceWorker.register('./sw-generated.js');
         // do something with registration, e.g., registration.scope
     } catch (e) {
         console.error('ServiceWorker failed', e);

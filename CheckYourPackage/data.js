@@ -1,8 +1,24 @@
-lastUpdate = "~ 2021/03/08 06AM";
+lastUpdate = "~ 2021/03/11 06AM";
 packages = `
+To:鍾*薇
+From:中國信託
+Color:白色
+Room:207
+
+To:康書偉
+From:華南銀行
+Color:白色
+Room:510
+
+To:吳蘊哲
+From:彰化銀行
+Color:白色
+Room:501
+
 To:吳蘊哲
 From:郵寄招領：彰化銀行
 Color:白色
+Room:501
 
 To:劉天仲
 From:東海大學註冊組

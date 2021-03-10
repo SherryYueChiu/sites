@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["css/index.css","b14bfb45810889550e6afa2bdcf61367"],["img/machi1.png","22e2140295b74db52806f9ecfdd95c04"],["img/pusheen1.png","c75936329f24c05b67dd1f00976039ca"],["index.html","63a7cdf53ad489ef5f412cc887b92cac"],["js/allClass.js","b0d217039886d914348a2823e2d02a8f"],["js/index.js","2cdeaf7eaf822c9d5bea8f08ce9aabab"]];
+var precacheConfig = [["css/index.css","b2cf52b60c8805b3a606cd30c6cfbaaf"],["img/machi1.png","22e2140295b74db52806f9ecfdd95c04"],["img/pusheen1.png","c75936329f24c05b67dd1f00976039ca"],["index.html","be4a6a85a7d83ce74f54fd491de6ed3a"],["js/allClass.js","b0d217039886d914348a2823e2d02a8f"],["js/index.js","f1fd067327adc62ec1fa82232cb60c2e"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
@@ -285,7 +285,7 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
-toolbox.router.get(/this\\.is\\.a\\.regex/, toolbox.networkFirst, {});
+toolbox.router.get(/.*/, toolbox.cacheFirst, {});
 
 
 

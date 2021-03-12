@@ -1,9 +1,5 @@
-lastUpdate = "~ 2021/03/12 06AM";
+lastUpdate = "~ 2021/03/13 06AM";
 packages = `
-To:林鼎強
-Color:黑色
-Room:403
-
 To:鍾筱薇
 From:中國信託
 Color:白色

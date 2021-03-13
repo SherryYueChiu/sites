@@ -1,4 +1,16 @@
 /*
+Coupon Format:
+0 -> coupon title
+1 -> coupon description
+2 -> format of primary code
+3 -> content of primary code
+[4] -> format of secondary code
+[5] -> content of secondary code
+[6] -> check query string in url
+[7] -> prompt password
+*/
+
+/*
 DOMs
  */
 let einvoiceBtn = document.querySelector("#eInvoiceCode");
@@ -16,6 +28,33 @@ let cardCode = document.querySelector("#cardCode");
 let cardCode2 = document.querySelector("#cardCode2");
 let aboutBtn = document.querySelector("#aboutBtn");
 
+//generate code DOM
+function PaintCode(format, value) {
+  //picture file
+  if (format == "IMG") {
+      return `
+<img src="./cardsImg/${value}">`;
+  }
+
+  //QRCode
+  else if (format.search(/QR/i) != -1) {
+      return QRCode.generateSVG(value, {
+          ecclevel: format.charAt(format.search(/[L|M|Q|H]$/i)).toUpperCase() || "H",
+          modulesize: 1
+      }).outerHTML;
+  }
+
+  //BarCode
+  else {
+      return `<svg class="barcode"
+  jsbarcode-height="100"
+  jsbarcode-format="${format}"
+  jsbarcode-value="${value}"
+  jsbarcode-displayvalue="false">
+  </svg>`;
+  }
+}
+
 /*
 DOM events
  */
@@ -31,14 +70,14 @@ sections.forEach((section) => {
       section.classList.remove("opacity");
       try {
         section.querySelector(".drawnCode").classList.remove("hide");
-      } catch (e) {}
+      } catch (e) { }
     }
     //toggle hide
     else {
       section.classList.add("opacity");
       try {
         section.querySelector(".drawnCode").classList.add("hide");
-      } catch (e) {}
+      } catch (e) { }
     }
   });
 });
@@ -64,13 +103,13 @@ closeBtns.forEach((closeBtn) => {
 //translate Markdown text to 2-dim test array
 function md2arr(md) {
   let line = [],
-  pattern = [];
+    pattern = [];
   line = md.split(/[\r\n]+/);
   line.forEach(function (o) {
     pattern.push([
-        o.substring(0, o.search(" ")),
-        o.substring(o.search(" ") + 1)
-      ]);
+      o.substring(0, o.search(" ")),
+      o.substring(o.search(" ") + 1)
+    ]);
   });
 
   let arr = [];
@@ -110,13 +149,14 @@ window.onload = function () {
   });
   str += `</ul>`;
   document.querySelector("#einvoiceModal>.modal-body").innerHTML = str;
-  //bind event
+  //bind events
   agent = document.querySelectorAll("#einvoiceModal ul>li");
   agent.forEach((which) => {
     which.addEventListener("click", () => {
       let str = which.innerHTML;
       einvoices.forEach(function (einvoice) {
-        if (str.indexOf(einvoice[0]) != -1) {
+        //click item to show einvoice barcode
+        if (str.includes(einvoice[0])) {
           einvoiceModal.classList.add("fade");
           eInvoiceName.innerHTML = einvoice[0];
           eInvoiceCode.innerHTML = PaintCode(einvoice[1], einvoice[2]);
@@ -124,11 +164,12 @@ window.onload = function () {
 
         }
       });
+      //click to show einvoice block
       if (einvoiceSec.classList.contains("opacity")) {
         einvoiceSec.classList.remove("opacity");
         try {
           einvoiceSec.querySelector(".drawnCode").classList.remove("hide");
-        } catch (e) {}
+        } catch (e) { }
       }
     });
   });
@@ -141,20 +182,24 @@ window.onload = function () {
   coupons.forEach(function (o, i) {
     if (o[0] != "newline") {
       let disable = false;
-      if (!!o[6] && o[6] != "") {
+      //user claim their group in url
+      if (!!o[6]) {
         disable = true;
         let group = o[6];
         let url = window.location.href;
-        if (url.indexOf(group) != -1)
+        //this coupon is provided for a specific group
+        if (url.includes(group))
           disable = false;
-        console.log("o7 test: " + o[1]);
       }
+      //group filter passed
       if (!disable) {
         str += `
     <div class="StoreTag"><span>${o[0]}</span></div>
                   `;
       }
-    } else {
+    }
+    //start processing another coupon
+    else {
       if (i != 0) {
         str += `
 </details>
@@ -177,25 +222,27 @@ window.onload = function () {
       disable = false;
       str = storeTag.innerHTML;
       coupons.forEach(function (o) {
-        if (str.indexOf(o[0]) != -1) {
-          //request password
+        if (str.includes(o[0])) {
           let disable = false;
-          if (!!o[7] && o[7] != "") {
+          //request password
+          if (!!o[7]) {
             disable = true;
             let pswd = o[7];
-            if (prompt("密語").indexOf(pswd) != -1)
+            if (prompt("密語").includes(pswd))
               disable = false;
-            console.log("o7 test: " + o[1]);
           }
+          //password filter passed
           if (!disable) {
             let str = storeTag.innerHTML;
             coupons.forEach(function (o) {
-              if (str.indexOf(o[0]) != -1) {
+              //found barcode
+              if (str.includes(o[0])) {
                 cardModal.classList.add("fade");
                 cardName.innerHTML = o[0];
                 cardDescription.innerHTML = o[1];
                 cardCode.innerHTML = PaintCode(o[2], o[3]);
                 cardCode2.classList.add("nodisplay");
+                //has second barcode
                 if (!!o[4]) {
                   cardCode2.innerHTML = PaintCode(o[4], o[5]);
                   cardCode2.classList.remove("nodisplay");
@@ -203,11 +250,10 @@ window.onload = function () {
                 JsBarcode(".barcode").init();
               }
             });
+            //toggle show hide by clicking
             if (cardSec.classList.contains("opacity")) {
               cardSec.classList.remove("opacity");
-              try {
-                cardSec.querySelector(".drawnCode").classList.remove("hide");
-              } catch (e) {}
+              cardSec.querySelector(".drawnCode")?.classList.remove("hide");
             }
 
           } else {
@@ -219,4 +265,4 @@ window.onload = function () {
   });
 
   JsBarcode(".barcode").init();
-};
+}

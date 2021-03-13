@@ -1,4 +1,4 @@
-lastUpdate = "~ 2021/03/13 06AM";
+lastUpdate = "~ 2021/03/14 06AM";
 packages = `
 To:鍾筱薇
 From:中國信託
@@ -10,10 +10,9 @@ From:華南銀行
 Color:白色
 Room:510
 
-To:吳蘊哲
-From:彰化銀行
-Color:白色
-Room:501
+To:林鼎強
+Color:黑色
+Room:403
 
 To:吳蘊哲
 From:郵寄招領：彰化銀行

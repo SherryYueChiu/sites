@@ -1,84 +1,86 @@
 <html lang="zh-Hant-TW">
 
 <head>
-    <meta charset="UTF-8">
-    <link href="./manifest.json" rel="manifest">
-    <script src="./pwa.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="https://sherryyuechiu.github.io/sites/CouponShare/images/logo.png">
-    <link rel="stylesheet" href="./style.css">
-    <script src="./js/JsBarcode.all.min.js"></script>
-    <script src="./js/qrjs2.min.js"></script>
-    <script src="./js/data.js"></script>
-    <script src="./js/showdown.min.js"></script>
-    <script src="./js/global.js"></script>
-    <!-- HTML Meta Tags -->
-    <title>優惠券分享</title>
-    <meta name="description" content="優惠券分享">
-    <meta name="Author" content="玥餅" />
-    <link rev="made" href="mailto:sherryyue.c@protonmail.com" />
+  <meta charset="UTF-8">
+  <link href="./manifest.json" rel="manifest">
+  <script src="./pwa.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://sherryyuechiu.github.io/sites/CouponShare/images/logo.png">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./js/JsBarcode.all.min.js"></script>
+  <script src="./js/qrjs2.min.js"></script>
+  <script src="./js/data.js"></script>
+  <script src="./js/showdown.min.js"></script>
+  <!-- HTML Meta Tags -->
+  <title>優惠券分享</title>
+  <meta name="description" content="優惠券分享">
+  <meta name="Author" content="玥餅" />
+  <link rev="made" href="mailto:sherryyue.c@protonmail.com" />
 
-    <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://sherryyuechiu.github.io/sites/CouponShare/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="優惠券分享">
-    <meta property="og:description" content="優惠券分享">
-    <meta property="og:image" content="https://sherryyuechiu.github.io/sites/CouponShare/images/logo.png">
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://sherryyuechiu.github.io/sites/CouponShare/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="優惠券分享">
+  <meta property="og:description" content="優惠券分享">
+  <meta property="og:image" content="https://sherryyuechiu.github.io/sites/CouponShare/images/logo.png">
 
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="sherryyuechiu.github.io">
-    <meta property="twitter:url" content="https://sherryyuechiu.github.io/sites/CouponShare/">
-    <meta name="twitter:title" content="優惠券分享">
-    <meta name="twitter:description" content="優惠券分享">
-    <meta name="twitter:image" content="https://sherryyuechiu.github.io/sites/CouponShare/images/logo.png">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="sherryyuechiu.github.io">
+  <meta property="twitter:url" content="https://sherryyuechiu.github.io/sites/CouponShare/">
+  <meta name="twitter:title" content="優惠券分享">
+  <meta name="twitter:description" content="優惠券分享">
+  <meta name="twitter:image" content="https://sherryyuechiu.github.io/sites/CouponShare/images/logo.png">
 </head>
 
 <body>
-    <div class="container">
-        <div id="einvoiceSec" class="fixSec">
-            <h1>載具</h1>
-            <div id="eInvoiceName">/NSDGGV9</div>
-            <div id="eInvoiceCode" class="drawnCode">
-                <svg class="barcode" jsbarcode-format="CODE39" jsbarcode-value="/NSDGGV9" jsbarcode-displayvalue="false"></svg>
-            </div>
-        </div>
-        <div id="cardSec" class="sec">
-            <h1 id="cardName">票券夾</h1>
-            <div id="cardDescription"></div>
-            <div id="cardCode" class="drawnCode">
-                <img src="./images/draw.png" alt="default picture">
-            </div>
-            <div id="cardCode2" class="drawnCode">
-                <img src="./images/draw.png" class="nodisplay" alt="default picture">
-            </div>
-        </div>
-        <div id="noteSec" class="sec">
-            <iframe data-v-b66e9a5a="" src="https://button.like.co/in/embed/sherryyue/button?referrer=https://sherryyuechiu.github.io/sites/CouponShare/" frameborder="0" class="lc-margin-top-64 lc-margin-bottom-32 lc-mobile"></iframe>
-        </div>
+  <div class="container">
+    <div id="einvoiceSec" class="fixSec">
+      <h1>載具</h1>
+      <div id="eInvoiceName">/NSDGGV9</div>
+      <div id="eInvoiceCode" class="drawnCode">
+        <svg class="barcode" jsbarcode-format="CODE39" jsbarcode-value="/NSDGGV9" jsbarcode-displayvalue="false"></svg>
+      </div>
     </div>
-    <div id="einvoiceModal" class="modal fade">
-        <div class="modal-header">
-            <span>載具</span>
-            <span class="close" target="#einvoiceModal">X</span>
-        </div>
-        <div class="modal-body"></div>
+    <div id="cardSec" class="sec">
+      <h1 id="cardName">票券夾</h1>
+      <div id="cardDescription"></div>
+      <div id="cardCode" class="drawnCode">
+        <img src="./images/draw.png" alt="default picture">
+      </div>
+      <div id="cardCode2" class="drawnCode">
+        <img src="./images/draw.png" class="nodisplay" alt="default picture">
+      </div>
     </div>
-    <div id="cardModal" class="modal fade">
-        <div class="modal-header">
-            <span>會員卡</span>
-            <span class="close" target="#cardModal">X</span></div>
-        <div class="modal-body"></div>
+    <div id="noteSec" class="sec">
+      <iframe data-v-b66e9a5a=""
+        src="https://button.like.co/in/embed/sherryyue/button?referrer=https://sherryyuechiu.github.io/sites/CouponShare/"
+        frameborder="0" class="lc-margin-top-64 lc-margin-bottom-32 lc-mobile"></iframe>
     </div>
-    <div id="scannerAnim"></div>
-    <button id="aboutBtn">🛸</button>
+  </div>
+  <div id="einvoiceModal" class="modal fade">
+    <div class="modal-header">
+      <span>載具</span>
+      <span class="close" target="#einvoiceModal">X</span>
+    </div>
+    <div class="modal-body"></div>
+  </div>
+  <div id="cardModal" class="modal fade">
+    <div class="modal-header">
+      <span>會員卡</span>
+      <span class="close" target="#cardModal">X</span>
+    </div>
+    <div class="modal-body"></div>
+  </div>
+  <div id="scannerAnim"></div>
+  <button id="aboutBtn">🛸</button>
 
-    <img id="popupImg" class="fade" />
-    </button>
-    <img src="./images/br_bkgd.png" id="bgImg_br" />
-    <img src="./images/tl_bkgd.png" id="bgImg_tl" />
+  <img id="popupImg" class="fade" />
+  </button>
+  <img src="./images/br_bkgd.png" id="bgImg_br" />
+  <img src="./images/tl_bkgd.png" id="bgImg_tl" />
 
-    <script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 
 </html>

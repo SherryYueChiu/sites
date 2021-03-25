@@ -1,5 +1,9 @@
-lastUpdate = "~ 2021/03/25 06AM";
+lastUpdate = "~ 2021/03/26 06AM";
 packages = `
+To:許呈翔
+From:旺旺集團友聯產物保險
+Color:白色信封
+
 To:鍾筱薇
 From:中國信託
 Color:白色信封

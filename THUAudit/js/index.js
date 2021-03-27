@@ -11,7 +11,7 @@ function showClass() {
     classPool.forEach(function(o) {
 
         //插入課程泡泡
-        html = `
+        let html = `
 <div class="tag bg-dark p-3 mt-3 mb-3 rounded-lg mx-auto shadow-lg w-75">
 	<span><h4 class="color4" style="overflow-x: auto;">${o.name}</h4></span>
 	<hr class="style-one">
@@ -38,11 +38,11 @@ function classFilter(day, time) {
         let result = true;
         //辨識二校教學區
         if ($("#chooseAceptRegion").val() == "2") {
-            t = o.room.search(/^(FA|M|MU|PG)\d+$/) != -1;
+            let t = o.room.search(/^(FA|M|MU|PG)\d+$/) != -1;
             result = (result == t);
         }
         if ($("#chooseAceptRegion").val() == "1") {
-            t = o.room.search(/^(FA|M|MU|PG)\d+$/) == -1;
+            let t = o.room.search(/^(FA|M|MU|PG)\d+$/) == -1;
             result = (result == t);
         }
         return (o.time.indexOf(weekDayWord[day]) != -1) && result;

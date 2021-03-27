@@ -4,7 +4,7 @@ packagesBlock = document.querySelectorAll(".packages");
 
 function showPackages() {
     //to package array
-    packages = packages.trim().split(/[\r\n]{2,}/);
+    let packages = packages.trim().split(/[\r\n]{2,}/);
 
     //to package-attribute array
     packages = packages.map(package => package.split(/[\r\n]+/));
@@ -26,7 +26,7 @@ function showPackages() {
 
     //show DOM
     packages.forEach(o => {
-        let html = `
+        const html = `
 <div class="package">
     ${o.to?"<span class='to'>"+o.to+"</span>":""}
     ${o.from?"<span class='from'>"+o.from+"</span>":""}

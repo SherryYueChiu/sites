@@ -4,8 +4,7 @@ var popTextTimer, popTextTimes = 50;
 var serverAddr = "sherryyue2.azurewebsites.net/THUBus/";
 var curTime, selectRoute, recentBusTime, nextBusTime;
 
-function pad(n, width, z) {
-  z = z || '0';
+function pad(n, width, z = '0') {
   n = n + '';
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
 }
@@ -14,21 +13,21 @@ $(function () {
 
   //公車到站時間推估
   function busTrackUpdate() {
-    curTime = new Date();
-    curTimeHHMM = `${curTime.getHours()}:${pad(curTime.getMinutes(), 2)}`;
+    const curTime = new Date();
+    const curTimeHHMM = `${curTime.getHours()}:${pad(curTime.getMinutes(), 2)}`;
     $("#clock").html(curTimeHHMM.toString());
     //追蹤前十分鐘到現在的發車
-    recentBusTime = busTimeTable.find(function (o) {
+    const recentBusTime = busTimeTable.find(function (o) {
       return new Date(o).getTime() >= curTime.getTime() - 10 * 60000;
     });
-    nextBusTime = busTimeTable.find(function (o) {
+    const nextBusTime = busTimeTable.find(function (o) {
       return new Date(o).getTime() > recentBusTime.getTime();
     });
 
     $("#busTimeline>.busStop").each(function () {
       let stopName = $(this).attr("stopid");
-      let html = "",
-      timeOffset = 0;
+      let html = "";
+      let timeOffset = 0;
       if (stopName.indexOf("科技大樓（ST）") != -1) {
         if (selectRoute == "1" || selectRoute == "4")
           timeOffset = 0;
@@ -139,9 +138,9 @@ ${pad(time2.getHours(), 2)}:${pad(time2.getMinutes(), 2)}
         $("#busRoute").html(data);
         //讀出時間表
         $("#busRoute>div:first>table td").each(function () {
-          let timeHHMM = $(this).html().split(":");
-          let dt = new Date();
-          let time = new Date(`${dt.getFullYear()}/${dt.getMonth()+1}/${dt.getDate()} ${timeHHMM[0]}:${timeHHMM[1]}:00`);
+          const timeHHMM = $(this).html().split(":");
+          const dt = new Date();
+          const time = new Date(`${dt.getFullYear()}/${dt.getMonth()+1}/${dt.getDate()} ${timeHHMM[0]}:${timeHHMM[1]}:00`);
           busTimeTable.push(time);
         });
         //讀出時間表

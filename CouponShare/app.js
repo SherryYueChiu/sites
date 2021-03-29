@@ -13,20 +13,20 @@ Coupon Format:
 /*
 DOMs
  */
-let einvoiceBtn = document.querySelector("#eInvoiceCode");
-let cardBtn = document.querySelector("#cardCode");
-let sections = document.querySelectorAll(".sec");
-let noteSec = document.querySelector("#noteSec");
-let einvoiceModal = document.querySelector("#einvoiceModal");
-let cardModal = document.querySelector("#cardModal");
-let closeBtns = document.querySelectorAll(".close");
-let eInvoiceName = document.querySelector("#eInvoiceName");
-let eInvoiceCode = document.querySelector("#eInvoiceCode");
-let cardName = document.querySelector("#cardName");
-let cardDescription = document.querySelector("#cardDescription");
-let cardCode = document.querySelector("#cardCode");
-let cardCode2 = document.querySelector("#cardCode2");
-let aboutBtn = document.querySelector("#aboutBtn");
+einvoiceBtn = document.querySelector("#eInvoiceCode");
+cardBtn = document.querySelector("#cardCode");
+sections = document.querySelectorAll(".sec");
+noteSec = document.querySelector("#noteSec");
+einvoiceModal = document.querySelector("#einvoiceModal");
+cardModal = document.querySelector("#cardModal");
+closeBtns = document.querySelectorAll(".close");
+eInvoiceName = document.querySelector("#eInvoiceName");
+eInvoiceCode = document.querySelector("#eInvoiceCode");
+cardName = document.querySelector("#cardName");
+cardDescription = document.querySelector("#cardDescription");
+cardCode = document.querySelector("#cardCode");
+cardCode2 = document.querySelector("#cardCode2");
+aboutBtn = document.querySelector("#aboutBtn");
 
 //generate code DOM
 function PaintCode(format, value) {
@@ -68,16 +68,12 @@ sections.forEach((section) => {
     //toggle show
     if (section.classList.contains("opacity")) {
       section.classList.remove("opacity");
-      try {
-        section.querySelector(".drawnCode").classList.remove("hide");
-      } catch (e) { }
+        section.querySelector(".drawnCode")?.classList.remove("hide");
     }
     //toggle hide
     else {
       section.classList.add("opacity");
-      try {
-        section.querySelector(".drawnCode").classList.add("hide");
-      } catch (e) { }
+        section.querySelector(".drawnCode")?.classList.add("hide");
     }
   });
 });
@@ -143,14 +139,14 @@ window.onload = function () {
   /*
   put einvoices to DOM
    */
-  var str = `<ul>`;
+  let str = `<ul>`;
   einvoices.forEach(function (einvoice) {
     str += `<li class="list-group-item">${einvoice[0]}</li>`;
   });
   str += `</ul>`;
   document.querySelector("#einvoiceModal>.modal-body").innerHTML = str;
   //bind events
-  agent = document.querySelectorAll("#einvoiceModal ul>li");
+  let agent = document.querySelectorAll("#einvoiceModal ul>li");
   agent.forEach((which) => {
     which.addEventListener("click", () => {
       let str = which.innerHTML;
@@ -167,9 +163,7 @@ window.onload = function () {
       //click to show einvoice block
       if (einvoiceSec.classList.contains("opacity")) {
         einvoiceSec.classList.remove("opacity");
-        try {
-          einvoiceSec.querySelector(".drawnCode").classList.remove("hide");
-        } catch (e) { }
+        einvoiceSec.querySelector(".drawnCode")?.classList.remove("hide");
       }
     });
   });
@@ -219,11 +213,11 @@ window.onload = function () {
   storeTags = document.querySelectorAll("#cardModal .StoreTag");
   storeTags.forEach((storeTag) => {
     storeTag.addEventListener("click", () => {
-      disable = false;
-      str = storeTag.innerHTML;
+      let disable = false;
+      let str = storeTag.innerHTML;
       coupons.forEach(function (o) {
         if (str.includes(o[0])) {
-          let disable = false;
+          disable = false;
           //request password
           if (!!o[7]) {
             disable = true;
@@ -233,7 +227,7 @@ window.onload = function () {
           }
           //password filter passed
           if (!disable) {
-            let str = storeTag.innerHTML;
+            str = storeTag.innerHTML;
             coupons.forEach(function (o) {
               //found barcode
               if (str.includes(o[0])) {

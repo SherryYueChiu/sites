@@ -11,16 +11,17 @@ distanceColor = [
     "#1F2232"
 ]
 data_storedPlaces = "";
+isTracking = false;
 
 //DOMs
-root = document.getElementsByTagName('html')[0];
-startTrackingDistance = document.getElementById("startTrackingDistance");
-targetGeo = document.getElementById("targetGeo");
-distanceDisplay = document.getElementById("distanceDisplay");
-menuBtn = document.getElementById("menuBtn");
-pauseBtn = document.getElementById("pauseBtn");
-selectPlaceStored = document.getElementById("selectPlaceStored");
-nowGeo = document.getElementById("nowGeo");
+$root = document.getElementsByTagName('html')[0];
+$startTrackingDistance = document.getElementById("startTrackingDistance");
+$targetGeo = document.getElementById("targetGeo");
+$distanceDisplay = document.getElementById("distanceDisplay");
+$menuBtn = document.getElementById("menuBtn");
+$pauseBtn = document.getElementById("pauseBtn");
+$selectPlaceStored = document.getElementById("selectPlaceStored");
+$nowGeo = document.getElementById("nowGeo");
 
 // Converts numeric degrees to radians
 function toRad(Value) {
@@ -69,8 +70,8 @@ function getCurrentPosition() {
         const lng = position.coords.longitude;
         fromLocation.lat = lat;
         fromLocation.lng = lng;
-        if (lat == 0 && lng == 0) {
-            nowGeo.innerHTML = "請開啟GPS";
+        if (!lat && !lng) {
+            $nowGeo.innerHTML = "請開啟GPS";
         }
         totalDistance = calcDistance();
     });
@@ -83,22 +84,22 @@ function startTrackingMyLocation() {
         const lng = position.coords.longitude;
         fromLocation.lat = lat;
         fromLocation.lng = lng;
-        nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
-        startTrackingDisTance();
+        $nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
+        startTrackingDistance();
     });
 }
 
-function startTrackingDisTance() {
+function startTrackingDistance() {
     distanceLeft = calcDistance();
     colorLevel = Math.round((distanceColor.length - 1) * (calcDistance() / totalDistance));
     roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
     if (distanceLeft > 1) {
-        distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} km)`;
+        $distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} km)`;
     } else {
-        distanceDisplay.innerHTML = `(${(1000 * distanceLeft).toFixed(0)} m)`;
+        $distanceDisplay.innerHTML = `(${(1000 * distanceLeft).toFixed(0)} m)`;
     }
     document.body.style.background = distanceColor[colorLevel];
-    root.style.background = distanceColor[colorLevel];
+    $root.style.background = distanceColor[colorLevel];
 }
 
 function initStoredPlaces() {
@@ -127,33 +128,34 @@ function toggleFullScreen() {
     }
 }
 
-//events
-startTrackingDistance.addEventListener("click", () => {
+//bind events
+$startTrackingDistance.addEventListener("click", () => {
+	isTracking = true;
     if (isGeolocationAvailable()) {
-        if (targetGeo.value) {
-            if (targetGeo.value.match(/[\d.]+, *[\d.]+/)) {
+        if ($targetGeo.value) {
+            if ($targetGeo.value.match(/[\d.]+, *[\d.]+/)) {
                 //format string: lat, lng
-                const regex = targetGeo.value.match(/([\d.]+), *([\d.]+)/);
+                const regex = $targetGeo.value.match(/([\d.]+), *([\d.]+)/);
                 targetLocation.lat = 1 * regex[1];
                 targetLocation.lng = 1 * regex[2];
                 getCurrentPosition();
                 startTrackingMyLocation();
                 //toggle buttons
-                startTrackingDistance.style.display = "none";
-                menuBtn.style.display = "none";
-                pauseBtn.style.display = "block";
+                $startTrackingDistance.style.display = "none";
+                $menuBtn.style.display = "none";
+                $pauseBtn.style.display = "block";
                 localStorage.setItem("targetLocation", `${targetLocation.lat}, ${targetLocation.lng}`);
-            } else if (targetGeo.getAttribute("realGeo").match(/[\d.]+, *[\d.]+/)) {
+            } else if ($targetGeo.getAttribute("realGeo").match(/[\d.]+, *[\d.]+/)) {
                 //format string: lat, lng
-                const regex = targetGeo.getAttribute("realGeo").match(/([\d.]+), *([\d.]+)/);
+                const regex = $targetGeo.getAttribute("realGeo").match(/([\d.]+), *([\d.]+)/);
                 targetLocation.lat = 1 * regex[1];
                 targetLocation.lng = 1 * regex[2];
                 getCurrentPosition();
                 startTrackingMyLocation();
                 //toggle buttons
-                startTrackingDistance.style.display = "none";
-                menuBtn.style.display = "none";
-                pauseBtn.style.display = "block";
+                $startTrackingDistance.style.display = "none";
+                $menuBtn.style.display = "none";
+                $pauseBtn.style.display = "block";
                 localStorage.setItem("targetLocation", `${targetLocation.lat}, ${targetLocation.lng}`);
             } else {
                 alert("請輸入正確的格式：經度, 緯度");
@@ -170,25 +172,38 @@ document.querySelector(".container").addEventListener("click", () => {
     toggleFullScreen();
 });
 
+//direct to Google map when click coordunate here
+$nowGeo.addEventListener("click", () => {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${$nowGeo.innerHTML}`);
+});
+
+//direct to Google map when click coordunate of target
+$targetGeo.addEventListener("click", () => {
+    if(isTracking) {
+        window.open(`https://www.google.com/maps/search/?api=1&query=${targetLocation.lat.toFixed(7)},${targetLocation.lng.toFixed(7)}`);
+    }
+});
+
 //pause button
-pauseBtn.addEventListener("click", () => {
+$pauseBtn.addEventListener("click", () => {
     if (confirm("確定要結束？")) {
+		isTracking = false;
         localStorage.setItem("targetLocation", "");
         history.go(0);
     }
 });
 
 //menu button
-menuBtn.addEventListener("click", async() => {
+$menuBtn.addEventListener("click", async() => {
     //bind events
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
-            targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
-            targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
+            $targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
+            $targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
             document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
-    selectPlaceStored.style.display = "block";
+    $selectPlaceStored.style.display = "block";
 });
 
 //in selectPlaceStored
@@ -197,7 +212,7 @@ document.querySelector("#selectPlaceStored .add").addEventListener("click", () =
 });
 
 document.querySelector("#selectPlaceStored .dismiss").addEventListener("click", () => {
-    selectPlaceStored.style.display = "none";
+    $selectPlaceStored.style.display = "none";
 });
 
 //in storePlaceModal
@@ -208,8 +223,8 @@ document.querySelector("#storePlaceModal .confirm").addEventListener("click", as
     //bind events
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
-            targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
-            targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
+            $targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
+            $targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
             document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
@@ -228,15 +243,15 @@ async function onInit() {
     if(!!localStorage.getItem("targetLocation")){
         let storedLocation = {};
         [storedLocation.lat, storedLocation.lng] = localStorage.getItem("targetLocation").split(",");
-        targetGeo.value = `${storedLocation.lat}, ${storedLocation.lng}`;
-        startTrackingDistance.click();
+        $targetGeo.value = `${storedLocation.lat}, ${storedLocation.lng}`;
+        $startTrackingDistance.click();
     }
     //bind events
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
-            targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
-            targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
-            document.querySelector("#selectPlaceStored .dismiss").click();
+            $targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
+            $targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
+            document.querySelector("#$selectPlaceStored .dismiss").click();
         });
     });
     //update current position
@@ -245,7 +260,7 @@ async function onInit() {
         const lng = position.coords.longitude;
         fromLocation.lat = lat;
         fromLocation.lng = lng;
-        nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
+        $nowGeo.innerHTML = `${lat.toFixed(7)},${lng.toFixed(7)}`;
     });
 }
 

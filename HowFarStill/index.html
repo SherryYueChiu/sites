@@ -12,13 +12,13 @@
     <script src="https://kit.fontawesome.com/f5e3a3eacb.js" crossorigin="anonymous"></script>
     <!-- HTML Meta Tags -->
     <title>還有多遠？</title>
-    <meta name="description" content="簡單的看，距離目的地還有多遠？">
+    <meta name="description" content="不需要閱讀地圖，卻能簡單的知道還有多遠？">
 
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://sherryyuechiu.github.io/sites/HowFarStill/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="還有多遠？">
-    <meta property="og:description" content="簡單的看，距離目的地還有多遠？">
+    <meta property="og:description" content="不需要閱讀地圖，卻能簡單的知道還有多遠？">
     <meta property="og:image" content="https://sherryyuechiu.github.io/sites/HowFarStill/logo.png">
 
     <!-- Twitter Meta Tags -->
@@ -26,25 +26,25 @@
     <meta property="twitter:domain" content="sherryyuechiu.github.io">
     <meta property="twitter:url" content="https://sherryyuechiu.github.io/sites/HowFarStill/">
     <meta name="twitter:title" content="還有多遠？">
-    <meta name="twitter:description" content="簡單的看，距離目的地還有多遠？">
+    <meta name="twitter:description" content="不需要閱讀地圖，卻能簡單的知道還有多遠？">
     <meta name="twitter:image" content="https://sherryyuechiu.github.io/sites/HowFarStill/logo.png">
 </head>
 
 <body>
     <div class="container">
-        <label for="targetGeo"><i class="fas fa-flag-checkered"></i> 目的地</label>
+        <label for="targetGeo"><i class="fas fa-map-marker-alt"></i> 前往</label>
         <input id="targetGeo" type="text" placeholder="經度, 緯度">
         <div class="break"></div>
-        <button id="startTrackingDistance"><i class="fas fa-location-arrow"></i></button>
+        <button id="startTrackingDistance"><i class="fas fa-location-arrow"></i> 走吧</button>
         <div id="roundDistanceDisplay"></div>
         <div id="distanceDisplay"></div>
     </div>
     <div id="storePlaceModal" class="modal">
-        <div class="header">儲存常用地點</div>
+        <div class="header"><i class="far fa-bookmark"></i> 口袋名單</div>
         <div class="body">
             <textarea id="inputPlaces" placeholder="地點&#13;&#10;經度, 緯度&#13;&#10;地點&#13;&#10;經度, 緯度&#13;&#10;......"></textarea>
-            <button class="confirm">儲存</button>
-            <button class="cancel">取消</button>
+            <button class="confirm"><i class="far fa-save"></i> 儲存</button>
+            <button class="cancel"><i class="fas fa-times"></i> 取消</button>
         </div>
     </div>
     <div id="selectPlaceStored" class="popupList">

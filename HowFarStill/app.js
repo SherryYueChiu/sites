@@ -144,8 +144,9 @@ $startTrackingDistance.addEventListener("click", () => {
                 $startTrackingDistance.style.display = "none";
                 $menuBtn.style.display = "none";
                 $pauseBtn.style.display = "block";
-                localStorage.setItem("targetLocation", `${targetLocation.lat}, ${targetLocation.lng}`);
-            } else if ($targetGeo.getAttribute("realGeo").match(/[\d.]+, *[\d.]+/)) {
+                localStorage.setItem("targetLocation", $targetGeo.getAttribute("realGeo"));
+                localStorage.setItem("targetGeo", `${targetLocation.lat}, ${targetLocation.lng}`);
+            } else if ($targetGeo.getAttribute("realGeo")?.match(/[\d.]+, *[\d.]+/)) {
                 //format string: lat, lng
                 const regex = $targetGeo.getAttribute("realGeo").match(/([\d.]+), *([\d.]+)/);
                 targetLocation.lat = 1 * regex[1];
@@ -156,7 +157,8 @@ $startTrackingDistance.addEventListener("click", () => {
                 $startTrackingDistance.style.display = "none";
                 $menuBtn.style.display = "none";
                 $pauseBtn.style.display = "block";
-                localStorage.setItem("targetLocation", `${targetLocation.lat}, ${targetLocation.lng}`);
+                localStorage.setItem("targetLocation", $targetGeo.value);
+                localStorage.setItem("targetGeo", `${targetLocation.lat}, ${targetLocation.lng}`);
             } else {
                 alert("請輸入正確的格式：經度, 緯度");
             }
@@ -172,9 +174,11 @@ document.querySelector(".container").addEventListener("click", () => {
     toggleFullScreen();
 });
 
-//direct to Google map when click coordunate here
+//save location here
 $nowGeo.addEventListener("click", () => {
-    window.open(`https://www.google.com/maps/search/?api=1&query=${$nowGeo.innerHTML}`);
+    if(!confirm("把這裡存起來"))    return;
+    let here = `\n臨時點\n${$nowGeo.innerHTML}`;
+    localStorage.setItem("places", (localStorage.getItem("places") ?? "") + here);
 });
 
 //direct to Google map when click coordunate of target
@@ -189,6 +193,7 @@ $pauseBtn.addEventListener("click", () => {
     if (confirm("確定要結束？")) {
 		isTracking = false;
         localStorage.setItem("targetLocation", "");
+        localStorage.setItem("targetGeo", "");
         history.go(0);
     }
 });
@@ -240,10 +245,11 @@ async function onInit() {
     document.querySelector("#inputPlaces").value = data_storedPlaces??"";
     await initStoredPlaces();
     //restore previous state
-    if(!!localStorage.getItem("targetLocation")){
+    if(!!localStorage.getItem("targetGeo")){
         let storedLocation = {};
-        [storedLocation.lat, storedLocation.lng] = localStorage.getItem("targetLocation").split(",");
-        $targetGeo.value = `${storedLocation.lat}, ${storedLocation.lng}`;
+        [storedLocation.lat, storedLocation.lng] = localStorage.getItem("targetGeo").split(",");
+        $targetGeo.value =  localStorage.getItem("targetLocation");
+        $targetGeo.setAttribute("realGeo", `${storedLocation.lat}, ${storedLocation.lng}`);
         $startTrackingDistance.click();
     }
     //bind events
@@ -251,7 +257,7 @@ async function onInit() {
         element.addEventListener("click", (event) => {
             $targetGeo.setAttribute("realGeo", element.getAttribute("geo"));
             $targetGeo.value = element.innerHTML.replace(/<.+> ?/g, "");
-            document.querySelector("#$selectPlaceStored .dismiss").click();
+            document.querySelector("#selectPlaceStored .dismiss").click();
         });
     });
     //update current position

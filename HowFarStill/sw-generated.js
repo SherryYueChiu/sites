@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["app.js","a906a301d51e26aa26f424c565e5b8e7"],["index.html","9e1e21426c9c3364aea6c11d39d5a74f"],["style.css","033a8be6a627cd758be1cd24e874f578"]];
+var precacheConfig = [["app.js","9e45efc0c4221604570b765fe0aa48dc"],["index.html","1c83c1fad829adf68f854f02f72d1ea2"],["style.css","033a8be6a627cd758be1cd24e874f578"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
@@ -285,7 +285,7 @@ self.addEventListener('fetch', function(event) {
 
 // Runtime cache configuration, using the sw-toolbox library.
 
-toolbox.router.get(/.*/, toolbox.cacheFirst, {});
+toolbox.router.get(/.*/, toolbox.networkFirst, {});
 
 
 

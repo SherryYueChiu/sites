@@ -9,7 +9,7 @@ module.exports = {
     ],
     runtimeCaching: [{
         urlPattern: /.*/,
-        handler: 'cacheFirst'
+        handler: 'networkFirst'
     }],
     swFile: 'sw-generated.js'
 };

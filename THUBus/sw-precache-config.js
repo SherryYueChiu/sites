@@ -2,8 +2,8 @@ module.exports = {
     staticFileGlobs: [
         './',
         './img/**.*',
-        './js/index.js',
-        './css/index.css',
+        './js/**.js',
+        './css/**.css',
         './index.html'
     ],
     runtimeCaching: [{

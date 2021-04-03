@@ -10,5 +10,5 @@ module.exports = {
         urlPattern: /.*/,
         handler: 'networkFirst'
     }],
-    swFile: 'sw-generated.js'
+    swFile: 'service-worker.js'
 };

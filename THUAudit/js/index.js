@@ -108,4 +108,4 @@ $(function() {
 });
 
 //register service worker
-navigator.serviceWorker.register('../service-worker.js',{ scope: "."});
+navigator.serviceWorker.register('service-worker.js',{ scope: "."});

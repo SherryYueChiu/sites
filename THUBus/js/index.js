@@ -203,4 +203,4 @@ ${pad(time2.getHours(), 2)}:${pad(time2.getMinutes(), 2)}
 });
 
 //register service worker
-navigator.serviceWorker.register('../service-worker.js',{ scope: "."});
+navigator.serviceWorker.register('service-worker.js',{ scope: "."});

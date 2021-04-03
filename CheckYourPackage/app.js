@@ -40,5 +40,7 @@ function showPackages() {
 window.onload = function() {
     lastUpdateBlock.innerHTML = lastUpdate;
     showPackages();
-
 };
+
+//register service worker
+navigator.serviceWorker.register('service-worker.js',{ scope: "."});

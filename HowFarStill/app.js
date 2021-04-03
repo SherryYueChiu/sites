@@ -177,7 +177,7 @@ document.querySelector(".container").addEventListener("click", () => {
 //save location here
 $nowGeo.addEventListener("click", () => {
     if(!confirm("把這裡存起來"))    return;
-    let here = `\n臨時點\n${$nowGeo.innerHTML}`;
+    let here = `\n<i class="fas fa-thumbtack"></i> 臨時點\n${$nowGeo.innerHTML}`;
     localStorage.setItem("places", (localStorage.getItem("places") ?? "") + here);
 });
 

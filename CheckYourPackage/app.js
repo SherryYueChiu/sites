@@ -28,19 +28,19 @@ function showPackages() {
     packages.forEach(o => {
         const html = `
 <div class="package">
-    ${o.to?"<span class='to'>"+o.to+"</span>":""}
-    ${o.from?"<span class='from'>"+o.from+"</span>":""}
-    ${o.room?"<span class='room'>"+o.room+"</span>":""}
-    ${o.color?"<span class='color'>"+o.color+"</span>":""}
+    ${o.to ? "<span class='to'>" + o.to + "</span>" : ""}
+    ${o.from ? "<span class='from'>" + o.from + "</span>" : ""}
+    ${o.room ? "<span class='room'>" + o.room + "</span>" : ""}
+    ${o.color ? "<span class='color'>" + o.color + "</span>" : ""}
 </div>
     `;
         container.insertAdjacentHTML("beforeend", html);
     });
 }
-window.onload = function() {
+window.onload = function () {
     lastUpdateBlock.innerHTML = lastUpdate;
     showPackages();
 };
 
 //register service worker
-navigator.serviceWorker.register('service-worker.js',{ scope: "."});
+navigator.serviceWorker.register('service-worker.js', { scope: "." });

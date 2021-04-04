@@ -1,5 +1,5 @@
 var busTimeTable = [],
-busStopTable = [];
+  busStopTable = [];
 var popTextTimer, popTextTimes = 50;
 var serverAddr = "sherryyue2.azurewebsites.net/THUBus/";
 var curTime, selectRoute, recentBusTime, nextBusTime;
@@ -140,7 +140,7 @@ ${pad(time2.getHours(), 2)}:${pad(time2.getMinutes(), 2)}
         $("#busRoute>div:first>table td").each(function () {
           const timeHHMM = $(this).html().split(":");
           const dt = new Date();
-          const time = new Date(`${dt.getFullYear()}/${dt.getMonth()+1}/${dt.getDate()} ${timeHHMM[0]}:${timeHHMM[1]}:00`);
+          const time = new Date(`${dt.getFullYear()}/${dt.getMonth() + 1}/${dt.getDate()} ${timeHHMM[0]}:${timeHHMM[1]}:00`);
           busTimeTable.push(time);
         });
         //讀出時間表
@@ -165,8 +165,8 @@ ${pad(time2.getHours(), 2)}:${pad(time2.getMinutes(), 2)}
           popTextTimes--;
           if (popTextTimes >= 0) {
             $("body").append(`
-<div style="position:fixed; left: ${Math.random()*100}VW;top: ${Math.random()*100}VH;">	
-	<span style="font-size: ${Math.random()*3}em">它今天不發車</span>
+<div style="position:fixed; left: ${Math.random() * 100}VW;top: ${Math.random() * 100}VH;">	
+	<span style="font-size: ${Math.random() * 3}em">它今天不發車</span>
 </div>					
 						`);
           } else {
@@ -203,4 +203,4 @@ ${pad(time2.getHours(), 2)}:${pad(time2.getMinutes(), 2)}
 });
 
 //register service worker
-navigator.serviceWorker.register('service-worker.js',{ scope: "."});
+navigator.serviceWorker.register('service-worker.js', { scope: "." });

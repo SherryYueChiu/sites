@@ -1,8 +1,8 @@
-$color1:#ef9a9a;
-$color2:#ffccbc;
-$color3:#1a237e;
-$color4:#b2dfdb;
-$color5:#e8f5e9;
+$color1: #ef9a9a;
+$color2: #ffccbc;
+$color3: #1a237e;
+$color4: #b2dfdb;
+$color5: #e8f5e9;
 ::-webkit-scrollbar {
     width: 0px;
     height: 0px;
@@ -53,7 +53,7 @@ a:hover {
     opacity: 0.6;
 }
 
-#busTimeline>.tag>h5 {
+#busTimeline > .tag > h5 {
     text-align: right;
     color: #b2dfdb;
 }
@@ -62,7 +62,7 @@ a:hover {
     color: #b2dfdb;
 }
 
-#footer>span {
+#footer > span {
     font-size: medium;
     margin-left: -2em;
 }

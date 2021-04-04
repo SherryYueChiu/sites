@@ -12,11 +12,13 @@
     "orientation": "portrait",
     "related_applications": [],
     "prefer_related_applications": false,
-    "icons": [{
-        "src": "./images/logo.png",
-        "type": "image/png",
-        "sizes": "512x512"
-    }],
+    "icons": [
+        {
+            "src": "./images/logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
     "url": "./",
     "screenshots": []
 }

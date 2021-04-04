@@ -8,7 +8,7 @@ var textPool = {
 
 //顯示篩選後課程列表
 function showClass() {
-    classPool.forEach(function(o) {
+    classPool.forEach(function (o) {
 
         //插入課程泡泡
         let html = `
@@ -18,7 +18,7 @@ function showClass() {
 	<span><h5 class="color5">第${o.time.join("、")}節</h5></span>
 	`;
 
-        o.room.split(",").forEach(function(o2) {
+        o.room.split(",").forEach(function (o2) {
             html += `
 		<span class="badge bgColor2 rounded-lg pl-2 pr-2 pb-0" style="border-radius: 10px; color: #333;"><h6>${o2}</h6></span>
 	`;
@@ -34,7 +34,7 @@ function showClass() {
 
 function classFilter(day, time) {
     //過濾掉不在當天的課
-    classPool = classPool.filter(function(o) {
+    classPool = classPool.filter(function (o) {
         let result = true;
         //辨識二校教學區
         if ($("#chooseAceptRegion").val() == "2") {
@@ -49,11 +49,11 @@ function classFilter(day, time) {
     });
 
     //截取每門課當天上哪幾節
-    classPool = classPool.filter(function(o) {
+    classPool = classPool.filter(function (o) {
         let lBound = 0,
             rBound = o.time.length - 1;
         let foundDay = false;
-        o.time.forEach(function(o2, i) {
+        o.time.forEach(function (o2, i) {
             if (!foundDay) {
                 if (o2 == weekDayWord[day]) {
                     lBound = i;
@@ -69,7 +69,7 @@ function classFilter(day, time) {
         return ClassTimeOfToday.indexOf(time) != -1;
     });
     //用課程名稱首字排序
-    classPool = classPool.sort(function(a, b) {
+    classPool = classPool.sort(function (a, b) {
         let result = false;
         let AMinusB = a.name.charCodeAt() - b.name.charCodeAt();
         //中文字優先在前
@@ -84,10 +84,10 @@ function classFilter(day, time) {
     showClass();
 }
 
-$(function() {
+$(function () {
 
     //送出選擇
-    $("#page1Submit").click(function() {
+    $("#page1Submit").click(function () {
         $("#page1").fadeOut(200);
         $("#page2").fadeIn(200);
         classFilter($("#chooseDay").val(), $("#chooseAceptTime").val());
@@ -95,7 +95,7 @@ $(function() {
 
     function init() {
         //讀取所有課程
-        $.get("./js/allClass.js", function(json) {
+        $.get("./js/allClass.js", function (json) {
             classPool = $.parseJSON(json);
         });
 
@@ -108,4 +108,4 @@ $(function() {
 });
 
 //register service worker
-navigator.serviceWorker.register('service-worker.js',{ scope: "."});
+navigator.serviceWorker.register('service-worker.js', { scope: "." });

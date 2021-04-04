@@ -32,21 +32,21 @@ aboutBtn = document.querySelector("#aboutBtn");
 function PaintCode(format, value) {
   //picture file
   if (format == "IMG") {
-      return `
+    return `
 <img src="./cardsImg/${value}">`;
   }
 
   //QRCode
   else if (format.search(/QR/i) != -1) {
-      return QRCode.generateSVG(value, {
-          ecclevel: format.charAt(format.search(/[L|M|Q|H]$/i)).toUpperCase() || "H",
-          modulesize: 1
-      }).outerHTML;
+    return QRCode.generateSVG(value, {
+      ecclevel: format.charAt(format.search(/[L|M|Q|H]$/i)).toUpperCase() || "H",
+      modulesize: 1
+    }).outerHTML;
   }
 
   //BarCode
   else {
-      return `<svg class="barcode"
+    return `<svg class="barcode"
   jsbarcode-height="100"
   jsbarcode-format="${format}"
   jsbarcode-value="${value}"
@@ -68,12 +68,12 @@ sections.forEach((section) => {
     //toggle show
     if (section.classList.contains("opacity")) {
       section.classList.remove("opacity");
-        section.querySelector(".drawnCode")?.classList.remove("hide");
+      section.querySelector(".drawnCode")?.classList.remove("hide");
     }
     //toggle hide
     else {
       section.classList.add("opacity");
-        section.querySelector(".drawnCode")?.classList.add("hide");
+      section.querySelector(".drawnCode")?.classList.add("hide");
     }
   });
 });
@@ -262,4 +262,4 @@ window.onload = function () {
 }
 
 //register service worker
-navigator.serviceWorker.register('service-worker.js',{ scope: "."});
+navigator.serviceWorker.register('service-worker.js', { scope: "." });

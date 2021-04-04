@@ -8,7 +8,7 @@
     "start_url": "./",
     "background_color": "#EFF1F3",
     "theme_color": "transparent",
-    "description": " 簡單的看，距離目的地還有多遠？",
+    "description": "不需要閱讀地圖，卻能簡單的知道還有多遠？",
     "orientation": "portrait",
     "related_applications": [],
     "prefer_related_applications": false,

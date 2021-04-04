@@ -42,7 +42,8 @@
     <div id="storePlaceModal" class="modal">
         <div class="header"><i class="far fa-bookmark"></i> 口袋名單</div>
         <div class="body">
-            <textarea id="inputPlaces" placeholder="地點&#13;&#10;緯度, 經度&#13;&#10;地點&#13;&#10;經度, 緯度&#13;&#10;......"></textarea>
+            <textarea id="inputPlaces"
+                placeholder="地點&#13;&#10;緯度, 經度&#13;&#10;地點&#13;&#10;經度, 緯度&#13;&#10;......"></textarea>
             <button class="confirm"><i class="far fa-save"></i> 儲存</button>
             <button class="cancel"><i class="fas fa-times"></i> 取消</button>
         </div>
@@ -61,14 +62,22 @@
     <div id="menuBtn"><i class="fas fa-bars"></i></div>
     <div id="nowGeo"></div>
     <script src="./app.js"></script>
-    <!--
-    <script>
-        // This is the "Offline copy of pages" service worker
-        const el = document.createElement('pwa-update');
-        document.body.appendChild(el);
+    <!-- Default Statcounter code for HowFarStill
+        https://sherryyuechiu.github.io/sites/HowFarStill/ -->
+    <script type="text/javascript">
+        var sc_project = 12507226;
+        var sc_invisible = 1;
+        var sc_security = "eef00bec";
     </script>
-    <script src="./pwabuilder-sw.js"></script>
-    -->
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+        <div class="statcounter">
+            <a title="Web Analytics" href="https://statcounter.com/" target="_blank">
+                <img class="statcounter" src="https://c.statcounter.com/12507226/0/eef00bec/1/" alt="Web Analytics">
+            </a>
+        </div>
+    </noscript>
+    <!-- End of Statcounter Code -->
 </body>
 
 </html>

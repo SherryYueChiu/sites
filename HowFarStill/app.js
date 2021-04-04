@@ -65,7 +65,7 @@ function isGeolocationAvailable() {
 }
 
 function getCurrentPosition() {
-    navigator.geolocation.getCurrentPosition(function(position) {
+    navigator.geolocation.getCurrentPosition(function (position) {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         fromLocation.lat = lat;
@@ -79,7 +79,7 @@ function getCurrentPosition() {
 
 function startTrackingMyLocation() {
     navigator.geolocation.clearWatch(watcher);
-    watcher = navigator.geolocation.watchPosition(function(position) {
+    watcher = navigator.geolocation.watchPosition(function (position) {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         fromLocation.lat = lat;
@@ -104,7 +104,7 @@ function startTrackingDistance() {
 
 function initStoredPlaces() {
     data_storedPlaces = localStorage.getItem("places");
-    if(!data_storedPlaces)  return;
+    if (!data_storedPlaces) return;
     listDOM = document.querySelector("#selectPlaceStored ul");
     list = data_storedPlaces.trim().split(/[\r\n]+/);
     listDOM.innerHTML = "";
@@ -130,7 +130,7 @@ function toggleFullScreen() {
 
 //bind events
 $startTrackingDistance.addEventListener("click", () => {
-	isTracking = true;
+    isTracking = true;
     if (isGeolocationAvailable()) {
         if ($targetGeo.value) {
             if ($targetGeo.value.match(/[\d.]+, *[\d.]+/)) {
@@ -176,14 +176,14 @@ document.querySelector(".container").addEventListener("click", () => {
 
 //save location here
 $nowGeo.addEventListener("click", () => {
-    if(!confirm("把這裡存起來"))    return;
+    if (!confirm("把這裡存起來")) return;
     let here = `\n<i class="fas fa-thumbtack"></i> 臨時點\n${$nowGeo.innerHTML}`;
     localStorage.setItem("places", (localStorage.getItem("places") ?? "") + here);
 });
 
 //direct to Google map when click coordunate of target
 $targetGeo.addEventListener("click", () => {
-    if(isTracking) {
+    if (isTracking) {
         window.open(`https://www.google.com/maps/search/?api=1&query=${targetLocation.lat.toFixed(7)},${targetLocation.lng.toFixed(7)}`);
     }
 });
@@ -191,7 +191,7 @@ $targetGeo.addEventListener("click", () => {
 //pause button
 $pauseBtn.addEventListener("click", () => {
     if (confirm("確定要結束？")) {
-		isTracking = false;
+        isTracking = false;
         localStorage.setItem("targetLocation", "");
         localStorage.setItem("targetGeo", "");
         history.go(0);
@@ -199,7 +199,7 @@ $pauseBtn.addEventListener("click", () => {
 });
 
 //menu button
-$menuBtn.addEventListener("click", async() => {
+$menuBtn.addEventListener("click", async () => {
     //bind events
     document.querySelectorAll("#selectPlaceStored li").forEach((element) => {
         element.addEventListener("click", (event) => {
@@ -221,8 +221,8 @@ document.querySelector("#selectPlaceStored .dismiss").addEventListener("click", 
 });
 
 //in storePlaceModal
-document.querySelector("#storePlaceModal .confirm").addEventListener("click", async() => {
-    localStorage.setItem("places", document.querySelector("#inputPlaces").value.trim()??"");
+document.querySelector("#storePlaceModal .confirm").addEventListener("click", async () => {
+    localStorage.setItem("places", document.querySelector("#inputPlaces").value.trim() ?? "");
     storePlaceModal.style.display = "none";
     await initStoredPlaces();
     //bind events
@@ -236,19 +236,19 @@ document.querySelector("#storePlaceModal .confirm").addEventListener("click", as
 });
 
 document.querySelector("#storePlaceModal .cancel").addEventListener("click", () => {
-    document.querySelector("#inputPlaces").value = localStorage.getItem("places")??"";
+    document.querySelector("#inputPlaces").value = localStorage.getItem("places") ?? "";
     storePlaceModal.style.display = "none";
 });
 
 async function onInit() {
     data_storedPlaces = localStorage.getItem("places")?.trim();
-    document.querySelector("#inputPlaces").value = data_storedPlaces??"";
+    document.querySelector("#inputPlaces").value = data_storedPlaces ?? "";
     await initStoredPlaces();
     //restore previous state
-    if(!!localStorage.getItem("targetGeo")){
+    if (!!localStorage.getItem("targetGeo")) {
         let storedLocation = {};
         [storedLocation.lat, storedLocation.lng] = localStorage.getItem("targetGeo").split(",");
-        $targetGeo.value =  localStorage.getItem("targetLocation");
+        $targetGeo.value = localStorage.getItem("targetLocation");
         $targetGeo.setAttribute("realGeo", `${storedLocation.lat}, ${storedLocation.lng}`);
         $startTrackingDistance.click();
     }
@@ -261,7 +261,7 @@ async function onInit() {
         });
     });
     //update current position
-    watcher = navigator.geolocation.watchPosition(function(position) {
+    watcher = navigator.geolocation.watchPosition(function (position) {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
         fromLocation.lat = lat;
@@ -273,4 +273,4 @@ async function onInit() {
 onInit();
 
 //register service worker
-navigator.serviceWorker.register('service-worker.js',{ scope: "."});
+navigator.serviceWorker.register('service-worker.js', { scope: "." });

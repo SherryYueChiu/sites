@@ -64,6 +64,28 @@ function isGeolocationAvailable() {
     }
 }
 
+function grantNotification() {
+				Notification.requestPermission().then(function(result) {
+								
+				});
+}
+
+function pushNotification(msg) {
+				if (Notification.permission == "granted") {
+								var notification = new Notification("抵達通知", 
+												{
+												body: msg, 
+												icon: 'logo.png',
+												renotify: true, 
+												vibrate: [200, 100, 200]
+												}
+								);
+								notification.onclick = function() {
+												notification.close();
+								};
+				} 
+}
+
 function getCurrentPosition() {
     navigator.geolocation.getCurrentPosition(function (position) {
         const lat = position.coords.latitude;
@@ -270,7 +292,9 @@ async function onInit() {
     });
 }
 
-onInit();
-
 //register service worker
 navigator.serviceWorker.register('service-worker.js', { scope: "." });
+
+onInit();
+grantNotification();
+pushNotification(1);

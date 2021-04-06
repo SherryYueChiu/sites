@@ -118,7 +118,7 @@ function startTrackingDistance() {
     colorLevel = Math.round((distanceColor.length - 1) * (distanceLeft / totalDistance));
     roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
     //km or m
-    if (distanceLeft > 1) {
+    if (distanceLeft >= 1) {
         $distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} km)`;
     } else {
         $distanceDisplay.innerHTML = `(${(1000 * distanceLeft).toFixed(0)} m)`;

@@ -65,11 +65,17 @@ function isGeolocationAvailable() {
     }
 }
 
-function grantNotification() {
+function isNewNotificationSupported() {
     if (!window.Notification || !Notification.requestPermission)
         return false;
     if (Notification.permission == 'granted')
         throw new Error('You must only call this *before* calling Notification.requestPermission(), otherwise this feature detect would bug the user with an actual notification!');
+    try {
+        new Notification('');
+    } catch (e) {
+        if (e.name == 'TypeError')
+            return false;
+    }
     return true;
 }
 
@@ -308,9 +314,10 @@ async function onInit() {
 navigator.serviceWorker.register('service-worker.js', { scope: "." });
 
 onInit();
+
 //notification
 if (window.Notification && Notification.permission == 'granted') {
 
 } else if (isNewNotificationSupported()) {
-    showOptInUIForNotifications();
+    Notification.requestPermission();
 }

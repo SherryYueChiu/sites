@@ -1,17 +1,18 @@
 //variables
-watcher = null; //Listening GeoLocation
-fromLocation = { lat: 0, lng: 0 };
-targetLocation = { lat: 0, lng: 0 };
-totalDistance = 0;
-distanceColor = [
+var watcher = null; //Listening GeoLocation
+var fromLocation = { lat: 0, lng: 0 };
+var targetLocation = { lat: 0, lng: 0 };
+var totalDistance = 0;
+var distanceColor = [
     "#FDE8E9",
     "#E3BAC6",
     "#BC9EC1",
     "#596475",
     "#1F2232"
-]
-data_storedPlaces = "";
-isTracking = false;
+];
+var data_storedPlaces = "";
+var isTracking = false;
+var notification1 = false, notification2 = false;
 
 //DOMs
 $root = document.getElementsByTagName('html')[0];
@@ -64,6 +65,35 @@ function isGeolocationAvailable() {
     }
 }
 
+function isNewNotificationSupported() {
+    if (!window.Notification || !Notification.requestPermission)
+        return false;
+    if (Notification.permission == 'granted')
+        throw new Error('You must only call this *before* calling Notification.requestPermission(), otherwise this feature detect would bug the user with an actual notification!');
+    try {
+        new Notification('');
+    } catch (e) {
+        if (e.name == 'TypeError')
+            return false;
+    }
+    return true;
+}
+
+function pushNotification(msg) {
+    if (Notification.permission == "granted") {
+        var notification = new Notification("抵達通知", {
+            body: msg,
+            icon: 'logo.png',
+            renotify: true,
+            vibrate: [200, 100, 200],
+            tag: "arrival"
+        });
+        notification.onclick = function () {
+            notification.close();
+        };
+    }
+}
+
 function getCurrentPosition() {
     navigator.geolocation.getCurrentPosition(function (position) {
         const lat = position.coords.latitude;
@@ -91,12 +121,22 @@ function startTrackingMyLocation() {
 
 function startTrackingDistance() {
     distanceLeft = calcDistance();
-    colorLevel = Math.round((distanceColor.length - 1) * (calcDistance() / totalDistance));
+    colorLevel = Math.round((distanceColor.length - 1) * (distanceLeft / totalDistance));
     roundDistanceDisplay.innerHTML = `${distanceText(distanceLeft)} `;
-    if (distanceLeft > 1) {
+    //km or m
+    if (distanceLeft >= 1) {
         $distanceDisplay.innerHTML = `(${distanceLeft.toFixed(1)} km)`;
     } else {
         $distanceDisplay.innerHTML = `(${(1000 * distanceLeft).toFixed(0)} m)`;
+    }
+    //notify
+    if (!notification1 && distanceLeft < 2) {
+        pushNotification("即將抵達");
+        notification1 = true;
+    }
+    else if (!notification2 && (distanceLeft / totalDistance) < 0.1) {
+        pushNotification("即將抵達");
+        notification2 = true;
     }
     document.body.style.background = distanceColor[colorLevel];
     $root.style.background = distanceColor[colorLevel];
@@ -144,7 +184,7 @@ $startTrackingDistance.addEventListener("click", () => {
                 $startTrackingDistance.style.display = "none";
                 $menuBtn.style.display = "none";
                 $pauseBtn.style.display = "block";
-                localStorage.setItem("targetLocation", $targetGeo.getAttribute("realGeo"));
+                localStorage.setItem("targetLocation", $targetGeo.value);
                 localStorage.setItem("targetGeo", `${targetLocation.lat}, ${targetLocation.lng}`);
             } else if ($targetGeo.getAttribute("realGeo")?.match(/[\d.]+, *[\d.]+/)) {
                 //format string: lat, lng
@@ -270,7 +310,14 @@ async function onInit() {
     });
 }
 
-onInit();
-
 //register service worker
 navigator.serviceWorker.register('service-worker.js', { scope: "." });
+
+onInit();
+
+//notification
+if (window.Notification && Notification.permission == 'granted') {
+
+} else if (isNewNotificationSupported()) {
+    Notification.requestPermission();
+}

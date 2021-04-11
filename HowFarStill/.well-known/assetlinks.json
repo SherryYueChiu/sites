@@ -1,0 +1,5 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target" : { "namespace": "android_app", "package_name": "com.sherryyue.howfarstill",
+               "sha256_cert_fingerprints": ["64:C7:E2:C3:4F:11:44:23:BD:B8:66:74:65:95:F6:45:69:47:4C:88:F2:BE:47:44:77:23:FC:42:3C:20:96:6A"] }
+}]

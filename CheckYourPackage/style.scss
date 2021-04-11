@@ -18,7 +18,6 @@ body {
     padding-top: 0.4em;
     padding-bottom: 0.4em;
     text-align: center;
-    font-weight: bold;
     border-bottom-left-radius: 0.6em;
     border-bottom-right-radius: 0.6em;
     z-index: 9;
@@ -45,28 +44,32 @@ body {
     border-radius: 0.5em;
     .to {
         position: absolute;
-        font-size: 2em;
         left: 25%;
         color: aliceblue;
+        font-size: 2em;
+        white-space: nowrap;
         transform: translate(0em, 0.4em);
     }
     .from {
         position: absolute;
-        font-size: 1em;
         right: 12%;
         color: aliceblue;
+        font-size: 1em;
+        white-space: nowrap;
     }
     .room {
         position: absolute;
-        font-size: 1em;
-        color: aliceblue;
         left: 12%;
+        color: aliceblue;
+        font-size: 1em;
+        white-space: nowrap;
     }
     .color {
         position: absolute;
-        font-size: 1em;
         right: 12%;
         color: aliceblue;
+        font-size: 1em;
+        white-space: nowrap;
         transform: translate(0em, 3em);
     }
 }

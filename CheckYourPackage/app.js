@@ -4,7 +4,7 @@ packagesBlock = document.querySelectorAll(".packages");
 
 function showPackages() {
     //to package array
-    let packages = packages.trim().split(/[\r\n]{2,}/);
+    packages = packages.trim().split(/[\r\n]{2,}/);
 
     //to package-attribute array
     packages = packages.map(package => package.split(/[\r\n]+/));

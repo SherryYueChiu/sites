@@ -1,37 +1,24 @@
-lastUpdate = "~ 2021/04/14 6AM";
+lastUpdate = "~ 2021/04/16 6AM";
 packages = `
-To:林勇安
-From:郵局招領
-Color:白色單張
-Room:502
+To:陳靜如
+From:
+Color:褐色卡片
+Room:504
 
-To:許呈翔
-From:旺旺產險
+To:陳玉琳
+From:中國信託
 Color:白色信封
+Room:306
 
-To:許呈翔
-From:中華電信
+To:康書偉
+From:華南銀行
 Color:白色信封
-
-To:葉明陽
-From:新光銀行
-Color:白色信封
-Room:505
-
-To:鄧翔文
-From:遠東銀行
-Color:白色信封
-Room:508
+Room:510
 
 To:陳昱廷
 From:南山人壽
 Color:白色信封
 Room:505
-
-To:鍾筱薇
-From:中國信託
-Color:白色信封
-Room:207
 
 To:吳蘊哲
 From:彰化銀行

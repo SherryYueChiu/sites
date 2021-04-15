@@ -1,7 +1,7 @@
 lastUpdate = "~ 2021/04/16 6AM";
 packages = `
 To:陳靜如
-From:
+From:喜帖
 Color:褐色卡片
 Room:504
 

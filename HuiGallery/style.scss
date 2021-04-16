@@ -2,33 +2,39 @@ body {
   margin: 0;
 }
 .panel {
-  .left {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 2rem;
-    z-index: 6;
-  }
+  .left,
   .right {
     position: absolute;
-    right: 0;
     top: 50%;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.5rem 0.3rem 0.5rem 0.7rem;
+    margin: 4vw;
     transform: translateY(-50%);
-    padding: 2rem;
+    background: #ffffffbb;
+    border-radius: 1rem;
+    filter: blur(1px);
+    font-size: 1rem;
     z-index: 6;
+  }
+  .left {
+    left: 0;
+  }
+  .right {
+    right: 0;
   }
 }
 
 .poem {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 500;
   & > marquee {
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    left: 50%;
+    max-width: 90%;
+    min-height: 100%;
+    transform: translateX(-40%);
+    font-size: .9rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     line-height: 2;
   }
 }
@@ -39,13 +45,13 @@ section {
   width: 100%;
   height: 100%;
   background: rgb(255, 255, 255);
-  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(205, 205, 205, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  background: radial-gradient(circle, #fff 0%, #aaa 70%, #444 100%);
   display: none;
   overflow-y: auto;
   .piece {
     & > img {
       position: absolute;
-      left: 40%;
+      left: 45%;
       top: 60%;
       max-width: 50vw;
       max-height: 50vh;
@@ -58,6 +64,7 @@ section {
     &:before,
     &:after {
       position: absolute;
+      left: 45%;
       height: 50%;
       width: 1px;
       background: black;
@@ -67,16 +74,16 @@ section {
       animation: fromTop 0.5s 0s ease-out;
     }
     &:before {
-      left: 33%;
+      margin-left: -7%;
     }
     &:after {
-      left: 47%;
+      margin-left: 7%;
     }
   }
   .intro {
     position: absolute;
     right: 5%;
-    top: 20%;
+    top: 10%;
     padding: 1rem;
     min-width: 10rem;
     min-height: 5rem;
@@ -109,18 +116,18 @@ section {
   }
 }
 
-.thanks{
+.thanks {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  h1{
-    font-size: 3rem;
+  h1 {
+    font-size: 1.3rem;
     font-weight: 600;
   }
-  h2{
-    font-size: 2rem;
+  h2 {
+    font-size: 1rem;
     font-weight: 500;
   }
 }

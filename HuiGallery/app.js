@@ -32,12 +32,27 @@ function autoSkip() {
   }, 20000);
 }
 
-$prev.addEventListener("click", () => {
+function switchPrev() {
   switchPieces(--nowIndex);
+}
+
+function switchNext() {
+  switchPieces(++nowIndex);
+}
+
+$prev.addEventListener("click", () => {
+  switchPrev();
 });
 
 $next.addEventListener("click", () => {
-  switchPieces(++nowIndex);
+  switchNext();
+});
+
+document.body.addEventListener("keyup", (e) => {
+  if (e.key == "ArrowLeft")
+    switchPrev();
+  else if (e.key == "ArrowRight")
+    switchNext();
 });
 
 function init() {

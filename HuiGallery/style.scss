@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+}
+.panel {
+  .left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 2rem;
+    z-index: 6;
+  }
+  .right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 2rem;
+    z-index: 6;
+  }
+}
+
+.poem {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 500;
+  & > marquee {
+    width: 100%;
+    height: 100%;
+    line-height: 2;
+  }
+}
+
+section {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(205, 205, 205, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  display: none;
+  overflow-y: auto;
+  .piece {
+    & > img {
+      position: absolute;
+      left: 40%;
+      top: 60%;
+      max-width: 50vw;
+      max-height: 50vh;
+      transform: translate(-50%, -50%);
+      outline: 30px #cd7f32 solid;
+      outline-style: groove;
+      z-index: 3;
+      animation: fromTop 0.5s 0s ease-out;
+    }
+    &:before,
+    &:after {
+      position: absolute;
+      height: 50%;
+      width: 1px;
+      background: black;
+      filter: blur(2px);
+      content: "\A0";
+      z-index: 1;
+      animation: fromTop 0.5s 0s ease-out;
+    }
+    &:before {
+      left: 33%;
+    }
+    &:after {
+      left: 47%;
+    }
+  }
+  .intro {
+    position: absolute;
+    right: 5%;
+    top: 20%;
+    padding: 1rem;
+    min-width: 10rem;
+    min-height: 5rem;
+    max-width: 15rem;
+    max-height: 15rem;
+    background: #fff;
+    z-index: 5;
+    filter: drop-shadow(2px 4px 6px black);
+  }
+}
+
+.intro {
+  animation: fromRight 0.5s 0s ease-out;
+  .name {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+  .author {
+    display: inline-block;
+    font-size: 0.8rem;
+  }
+  .description {
+    display: inline-block;
+    padding: 1rem 0.5rem 0em;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: black;
+    filter: blur(0.4px);
+  }
+}
+
+.thanks{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  h1{
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  h2{
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}
+
+@keyframes fromTop {
+  from {
+    margin-top: -200px;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+
+@keyframes fromRight {
+  from {
+    margin-right: -200px;
+  }
+  to {
+    margin-right: 0;
+  }
+}

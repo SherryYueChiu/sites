@@ -1,9 +1,13 @@
-lastUpdate = "~ 2021/04/21 6AM";
+lastUpdate = "~ 2021/04/23  6AM";
 packages = `
-To:鄧翔文
-From:郵寄招領
-Color:白色一張
-Room:508
+To:陳靜如
+From:東震
+Color:白色信封
+Room:504
+
+To:吳美環
+From:中華電信帳單
+Color:白色信封
 
 To:陳玉琳
 From:台積電

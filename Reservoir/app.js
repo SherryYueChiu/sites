@@ -13,6 +13,8 @@
        var id = data[reservoirName].id;
        var netFlow = -parseFloat(data[reservoirName].daliyNetflow).toFixed(1);
        var netPercentageVar;
+       var usageDay = 0;
+       var _usageDay = "空了";
        
        if (isNaN(percentage)) {
          $('#'+id).parent().remove();
@@ -29,8 +31,8 @@
          netPercentageVar = ((-netFlow) / 
             parseFloat(data[reservoirName].baseAvailable)*100).toFixed(2);
          
-         var usageDay = Math.round(percentage/netPercentageVar);
-         var _usageDay = usageDay.toString();
+         usageDay = Math.round(percentage/netPercentageVar);
+         _usageDay = usageDay+"天";
          if (data[reservoirName].percentage > 80 && netPercentageVar > 2) {
             usageDay = 60; 
          }

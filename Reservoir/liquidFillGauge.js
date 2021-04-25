@@ -155,7 +155,7 @@ function loadLiquidFillGauge(elementId, value, config, usageDay) {
     if (config.valueCountUp) {
         var textTween = function () {
             var i = d3.interpolate(this.textContent, textFinalValue);
-            return function (t) { this.textContent = percentText + "天"; }
+            return function (t) { this.textContent = percentText; }
         };
         text1.transition()
             .duration(config.waveRiseTime)

@@ -21,9 +21,9 @@
       
        if (isNaN(netFlow)) {
           $('#'+id).siblings('.state')
+                  .addClass('gray')
                   .children('h5')
-                  .text('昨日水量狀態：待更新');
-          $('#'+id).siblings('.state').removeClass();
+                  .text('水量狀態：待更新');
        }
        else if (netFlow < 0) {
          netPercentageVar = ((-netFlow) / 

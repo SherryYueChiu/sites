@@ -5,11 +5,10 @@ html body {
   font-weight: bold;
 }
 .reservoir {
-  min-height: 450px;
   display: inline-block;
   min-width: 250px;
   margin: 0.5rem;
-  padding: 0 1rem 0 1rem;
+  padding: 0 1rem 1rem 1rem;
   border: 3px dashed gray;
   border-radius: 1rem;
 }
@@ -23,11 +22,6 @@ html body {
   margin-top: 5px;
   line-height: 2em;
 }
-.reservoir h5 {
-  margin-top: 5px;
-  position: relative;
-  left: 20px;
-}
 .reservoir-wrap {
   width: 100%;
   margin: 30px auto;
@@ -38,6 +32,10 @@ html body {
 }
 .blue {
   background: rgb(23, 139, 202);
+  color: aliceblue;
+}
+.gray{
+  background: rgb(83, 83, 83);
   color: aliceblue;
 }
 .links {
@@ -87,16 +85,23 @@ button:hover {
   border-color: #204d74;
 }
 .reservoir h3 {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+.reservoir>.name>.district{
+  margin-bottom: .5rem;
 }
 .reservoir h5 {
-  font-size: 0.8rem;
+  margin-top: 5px;
+  position: relative;
+  left: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 .state {
   border-radius: 0.3rem;
   padding: 0.2rem 0 0.2rem 0;
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 .reservoir h5 {
   margin-bottom: 0;
@@ -109,7 +114,7 @@ button:hover {
 }
 .updateAt > h5 {
   font-size: 0.7rem;
-  transform: translate(1rem, 0.5rem);
+  transform: translate(1rem, 0);
 }
 #title {
   text-align: center;

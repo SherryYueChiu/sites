@@ -131,3 +131,13 @@ button:hover {
   margin: 0 1rem 1rem 0;
   font-size: 0.6rem;
 }
+.floatArea{
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+  padding: .2rem .8rem;
+  color: white;
+  background: gray;
+  border-radius: 1rem;
+  opacity: 0.5;
+}

@@ -1,4 +1,5 @@
 (function () {
+  var basicComsumption = 40;
 
   d3.json('https://www.taiwanstat.com/waters/latest', function (error, data) {
     visualize(data[0]);
@@ -27,6 +28,7 @@
           .children('h5')
           .text('水量狀態：待更新');
       }
+
       else if (netFlow < 0) {
         netPercentageVar = ((-netFlow) /
           parseFloat(data[reservoirName].baseAvailable) * 100).toFixed(2);
@@ -36,7 +38,7 @@
 
         //剔除不合理的數據
         if (usageDay == Infinity) {
-          netPercentageVar = ((50) /
+          netPercentageVar = ((basicComsumption) /
             parseFloat(data[reservoirName].baseAvailable) * 100).toFixed(2);
           usageDay = Math.round(percentage / netPercentageVar);
           _usageDay = usageDay + "天";
@@ -71,11 +73,20 @@
         netPercentageVar = ((netFlow) /
           parseFloat(data[reservoirName].baseAvailable) * 100).toFixed(2);
 
+        //剔除不合理的數據
+        netPercentageVar = ((basicComsumption) /
+          parseFloat(data[reservoirName].baseAvailable) * 100).toFixed(2);
+        usageDay = Math.round(percentage / netPercentageVar);
+        _usageDay = usageDay + "天";
+
         $('#' + id).siblings('.state')
           .children('h5')
           .text('昨天上升：' + netPercentageVar + '%');
         $('#' + id).siblings('.state').addClass('blue');
       }
+
+      //0天改為空了
+      if(usageDay == 0)  _usageDay = "空了";
 
       configs[reservoirName] = liquidFillGaugeDefaultSettings();
       configs[reservoirName].waveAnimate = true;

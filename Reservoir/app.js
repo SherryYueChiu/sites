@@ -1,6 +1,4 @@
 (function () {
-  var basicComsumption = 40;
-
   d3.json('https://www.taiwanstat.com/waters/latest', function (error, data) {
     visualize(data[0]);
   });
@@ -38,7 +36,7 @@
 
         //剔除不合理的數據
         if (usageDay == Infinity) {
-          netPercentageVar = ((basicComsumption) /
+          netPercentageVar = ((data[reservoirName].baseAvailable * 0.02) /
             parseFloat(data[reservoirName].baseAvailable) * 100).toFixed(2);
           usageDay = Math.round(percentage / netPercentageVar);
           _usageDay = usageDay + "天";
@@ -74,7 +72,7 @@
           parseFloat(data[reservoirName].baseAvailable) * 100).toFixed(2);
 
         //剔除不合理的數據
-        netPercentageVar = ((basicComsumption) /
+        netPercentageVar = (((data[reservoirName].baseAvailable * 0.02)) /
           parseFloat(data[reservoirName].baseAvailable) * 100).toFixed(2);
         usageDay = Math.round(percentage / netPercentageVar);
         _usageDay = usageDay + "天";

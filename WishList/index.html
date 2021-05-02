@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>希望收到的禮物們</title>
+  <link rel="icon" href="logo.png">
+  <meta name="description" content="只送禮物不送廢物">
+  <meta name="KeyWords" content="只送禮物不送廢物'如果想送禮'希望收到的禮物們'WishList'present'gift" />
+  <meta name="Author" content="玥餅" />
+  <link rev="made" href="mailto:sherryyue.c@protonmail.com" />
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://sherryyuechiu.github.io/sites/WishList/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="希望收到的禮物們">
+  <meta property="og:description" content="只送禮物不送廢物">
+  <meta property="og:image" content="https://sherryyuechiu.github.io/sites/WishList/logo.png">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="sherryyuechiu.github.io">
+  <meta property="twitter:url" content="https://sherryyuechiu.github.io/sites/WishList/">
+  <meta name="twitter:title" content="希望收到的禮物們">
+  <meta name="twitter:description" content="只送禮物不送廢物">
+  <meta name="twitter:image" content="https://sherryyuechiu.github.io/sites/WishList/logo.png">
+  <link rel="stylesheet" href="style.css">
+  <!--jQuery-->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!--Toastr-->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+  <!--FontAwesome-->
+  <script src="./fontawesome/js/all.js"></script>
+  <link href='./fontawesome/css/all.min.css' rel='stylesheet'></link>
+</head>
+
+<body>
+
+  <section>
+    <div class="viewBox">
+      <div class="name"></div>
+      <div class="memo"></div>
+      <div class="wishList"></div>
+    </div>
+    <div class="enterBox">
+    <button id="signin"><i class="fas fa-sign-in-alt"></i> 登入</button>
+    <button id="signup"><i class="fas fa-users"></i> 加入</button>
+    </div>
+  </section>
+  <section>
+    <div class="signinBox">
+      <div class="backToEnter"><i class="fas fa-chevron-left"></i></div>
+      <label for="signin_account"><i class="fas fa-envelope"></i> 帳號</label>
+      <input type="text" id="signin_account">
+      <label for="signin_pswd"><i class="fas fa-key"></i> 密碼</label>
+      <input type="number" id="signin_pswd">
+      <button id="signin_submit">登入</button>
+    </div>
+  </section>
+  <section>
+    <div class="signupBox">
+      <div class="backToEnter"><i class="fas fa-chevron-left"></i></div>
+      <label for="signup_account"><i class="fas fa-envelope"></i> 帳號 (建議用信箱)</label>
+      <input type="text" id="signup_account">
+      <label for="signup_pswd"><i class="fas fa-key"></i> 密碼 (純數字)</label>
+      <input type="number" id="signup_pswd">
+      <label for="signup_name"><i class="fas fa-address-card"></i> 稱呼 (給人看的)</label>
+      <input type="text" id="signup_name">
+      <button id="signup_submit">註冊</button>
+    </div>
+  </section>
+  <section>
+    <div class="infoBox">
+      <div class="backToEnter"><i class="fas fa-chevron-left"></i></div>
+      <label for="myname"><i class="fas fa-address-card"></i> 名字</label>
+      <input type="text" id="myname">
+      <label for="memo"><i class="fas fa-signature"></i> 留言</label>
+      <textarea id="memo">我好想要這些，可以當禮物送我嗎？</textarea>
+      <label for="wishList" style="flex-basis: 100%;"><i class="fas fa-heart"></i> 願望清單</label>
+      <ul id="wishList">
+        <li id="appendNew">
+          <i class="fas fa-plus"></i> 還要
+        </li>
+      </ul>
+      <button id="info_update" disable=""><i class="fas fa-save"></i> 更新</button>
+      <button id="share"><i class="fas fa-share-alt"></i> 轉傳</button>
+    </div>
+  </section>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.0/firebase-analytics.js"></script>
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyC2ms3DxuqhqHevaMUt2ZJp8EKXFUSCyOo",
+      authDomain: "wishlist-d56f0.firebaseapp.com",
+      projectId: "wishlist-d56f0",
+      storageBucket: "wishlist-d56f0.appspot.com",
+      messagingSenderId: "211245207656",
+      appId: "1:211245207656:web:6fc2535387f094f5feebdd",
+      measurementId: "G-2WZH2PQFPZ"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

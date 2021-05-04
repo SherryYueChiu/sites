@@ -339,7 +339,7 @@ autoLogin = function () {
   let pswd = localStorage.getItem("pswd") ?? "";
   login(uid, pswd);
 }
-if (!!localStorage.getItem("uid"))  //autoLogin();
+//if (!!localStorage.getItem("uid"))  autoLogin();
 
   //view other
   viewOther();

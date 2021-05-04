@@ -1,3 +1,5 @@
+var baseUrl = "https://sherryyuechiu.github.io/sites/WishList/";
+
 var $enterBox = document.querySelector(".enterBox");
 var $signinBox = document.querySelector(".signinBox");
 var $signupBox = document.querySelector(".signupBox");
@@ -40,7 +42,6 @@ var viewOther = function () {
     $viewBox.style.display = "none";
     return;
   }
-  console.log("view " + view);
   //restore infomation
   getData(`users/${view}`, null, (valid) => {
     if (!valid) return;
@@ -287,15 +288,15 @@ $share.addEventListener("click", () => {
     navigator.share({
       title: `${name}想收到的禮物`,
       text: '只送禮物不送廢物--希望收到的禮物們',
-      url: `https://sherryyuechiu.github.io/sites/WishList/?view=${uid}`,
+      url: `${baseUrl}?view=${uid}`,
     })
       .then(() => console.log('成功分享'))
       .catch((error) => {
-        location.href = `https://sherryyuechiu.github.io/sites/WishList/?view=${uid}`;
+        location.href = `${baseUrl}?view=${uid}`;
         console.log('發生錯誤', error);
       });
   } else {
-    location.href = `https://sherryyuechiu.github.io/sites/WishList/?view=${uid}`;
+    location.href = `${baseUrl}?view=${uid}`;
   }
 });
 
